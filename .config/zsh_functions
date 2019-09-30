@@ -1,0 +1,20 @@
+function cdt {
+    # Display dir as tree and truncate after 10 lines
+    builtin cd "$@" && tree -L 1 -tC | sed '
+        10 {
+            a[...]
+            q
+        }
+    '
+}
+
+
+function t {
+    tree -L 2 -t -C --filelimit 8 | sed '
+        20 {
+            a[...]
+            q
+        }
+    '
+}
+
