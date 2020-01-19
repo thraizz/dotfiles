@@ -1,7 +1,7 @@
 function cdt {
-    # Display dir as tree and truncate after 10 lines
+    # Display dir as tree and truncate after 20 lines
     builtin cd "$@" && tree -L 1 -tC | sed '
-        10 {
+        20 {
             a[...]
             q
         }
@@ -18,3 +18,15 @@ function t {
     '
 }
 
+function addtheme {
+    echo ZSH_THEME_RANDOM_CANDIDATES+=\"$(echo $RANDOM_THEME | sed -r 's/.*themes\///' | sed -r 's/.zsh-theme//')\" >> $ZSH/.zsh_themes
+}
+
+function log {
+	if [ $# > 0 ]
+	then
+	    echo "$(date +%d.%m.%Y-%H:%M): $*" >> $HOME/logfile.txt
+	else
+	    cat $HOME/logfile.txt
+	fi
+}
