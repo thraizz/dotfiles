@@ -23,10 +23,10 @@ function addtheme {
 }
 
 function log {
-	if [ $# > 0 ]
-	then
+    echo $#
+	if [ $# -gt 0 ]; then
 	    echo "$(date +%d.%m.%Y-%H:%M): $*" >> $HOME/logfile.txt
-	else
+    else
 	    cat $HOME/logfile.txt
 	fi
 }

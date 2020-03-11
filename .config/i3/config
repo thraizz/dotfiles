@@ -1,9 +1,33 @@
-#My i3 config 
+# colors first
+set $base00 #2E3440
+set $base01 #3B4252
+set $base02 #434C5E
+set $base03 #4C566A
+set $base04 #D8DEE9
+set $base05 #E5E9F0
+set $base06 #ECEFF4
+set $base07 #8FBCBB
+set $base08 #88C0D0
+set $base09 #81A1C1
+set $base0A #5E81AC
+set $base0B #BF616A
+set $base0C #D08770
+set $base0D #EBCB8B
+set $base0E #A3BE8C
+set $base0F #B48EAD
+
+set_from_resource $background i3wm.background $base3
+set_from_resource $foreground i3wm.foreground $base00
+
+set_from_resource $lighterbg  i3wm.lighterbg  $base02
+set_from_resource $separator  i3wm.separator  $lighterbg
+
+# i3 hotkeys
 set $mod Mod4
 set $alt Mod1
 
-font pango: Noto Sans 8
-
+font pango: Iosevka 10
+exec $HOME/startup.sh
 
 # start a terminal
 bindsym $mod+Return exec gnome-terminal
@@ -129,11 +153,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-
-###########################################
-# USER DEFINED STUFF
-###########################################
-
 # set stuff
 focus_wrapping no
 show_marks no
@@ -141,7 +160,7 @@ default_border pixel 0
 default_border none
 default_border none
 default_floating_border none
-for_window [class="Vivaldi-stable"] border pixel -1
+for_window [class="chromium"] border pixel -1
 hide_edge_borders vertical
 hide_edge_borders horizontal
 hide_edge_borders both
@@ -151,27 +170,12 @@ set $center move absolute position center
 set $inner 32
 set $outer 16
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl --set-sink-volume 9 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
-
-
 bindsym $mod+l exec "~/.local/bin/fuzzy_lock.sh"
 exec xautolock -time 4 -locker "~/.local/bin/fuzzy_lock.sh"
 exec albert
 exec dunst
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id compton
-
-# Use custom colors for black
-set $black       #282828
-set $darkblack   #1d2021
-set $transparent #00000000
-
  
 
 # panel
@@ -191,15 +195,16 @@ bar {
 }
 
 # colour of border, background, text, indicator, and child_border
-client.focused              #4c5363 #57637a #d8dee8 #4c5363 #4c5363
-client.focused_inactive     #2f343f #4b5466 #d8dee8 #2f343f #2f343f
-client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.background           #2f343f
+client.focused          $base05 $base0D $base00 $base0D $base0C
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+client.placeholder      $base00 $base00 $base05 $base00 $base00
+client.background       $base07
 
-for_window [class=".*"] border pixel 4
-assign [class=URxvt] 8
+
+for_window [class=".*"] border pixel 2
+assign [class=KeePassXC] 8
 assign [class=Firefox|Transmission-gtk] 2
 assign [class=Thunar|File-roller] 3
 assign [class=Geany|Evince|Gucharmap|Soffice|libreoffice*] 4

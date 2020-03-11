@@ -15,6 +15,8 @@ plugins=(
 source $HOME/.config/zsh_functions
 source $ZSH/oh-my-zsh.sh
 
+ENABLE_CORRECTION="true"
+DISALE_CORRECTION="false"
 export HISTCONTROL=ignoredups:ignorespace
 export HISTFILESIZE=99999
 export HISTSIZE=999
@@ -22,7 +24,7 @@ export HISTTIMEFORMAT='%Y-%m-%d %H:%M.%S | '
 export HISTIGNORE="ls:exit:history:[bf]g:jobs"
 unsetopt share_history
 unsetopt inc_append_history
-
+setopt correct_all
 
 alias python="python3.8"
 precmd_functions+=logpath
