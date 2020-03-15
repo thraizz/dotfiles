@@ -26,5 +26,10 @@ unsetopt share_history
 unsetopt inc_append_history
 setopt correct_all
 
+# Alias
 alias python="python3.8"
+alias note="vim $HOME/note.md"
+
+# This logs the current path for opening a new terminal in same path
+logpath() { pwd > /tmp/whereami }
 precmd_functions+=logpath
