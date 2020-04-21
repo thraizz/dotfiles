@@ -187,8 +187,8 @@ bar {
 
         # colour of border, background, and text
         focused_workspace       #4c5363 #A3BE8C #2E3440
-        inactive_workspace      #4e5f82 #4C566A #ECEFF4
-        active_workspace        #4b5466 #2E3440 #ECEFF4
+        inactive_workspace      #4e5f82 #2E3440 #ECEFF4
+        active_workspace        #4b5466 #4C566A #ECEFF4
         urgent_workspace        #2f343f #ebcb8b #EBCB8B
     }
         status_command i3status
