@@ -1,5 +1,5 @@
 # Set screenlayout
-exec --no-startup-id /home/arons/.screenlayout/default.sh
+exec --no-startup-id $HOME/.screenlayout/default.sh
 
 # Set keyboard to qwerty layout with altgr as modifier
 setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl

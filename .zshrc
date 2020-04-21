@@ -1,4 +1,4 @@
-export ZSH="/home/asterix/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export PATH=/usr/bin:/bin:/usr/local/bin:${PATH}
 logpath() { pwd > /tmp/whereami }
 

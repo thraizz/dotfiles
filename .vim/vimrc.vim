@@ -13,6 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdcommenter'
 
 Plugin 'scrooloose/nerdtree'
+Plugin 'chriskempson/base16-vim'
 
 set conceallevel=1
 Plugin 'Yggdroot/indentLine'
@@ -40,3 +41,6 @@ set shiftwidth=4
 set expandtab
 " View line numbers
 set number
+
+colorscheme base16-nord
+syntax on

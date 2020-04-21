@@ -1,1 +1,1 @@
-so /home/asterix/.vim/vimrc.vim
+so $HOME/.vim/vimrc.vim
