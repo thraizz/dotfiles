@@ -30,8 +30,8 @@ font pango: Iosevka 10
 exec $HOME/startup.sh
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
-bindsym $mod+Shift+Return exec gnome-terminal --working-directory=$(cat /tmp/whereami)
+bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Shift+Return exec xfce4-terminal --working-directory=$(cat /tmp/whereami)
 
 # kill focused window
 bindsym $mod+Shift+q kill

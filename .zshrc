@@ -29,6 +29,7 @@ setopt correct_all
 # Alias
 alias python="python3.8"
 alias note="vim $HOME/note.md"
+alias git="nocorrect git"
 
 # This logs the current path for opening a new terminal in same path
 logpath() { pwd > /tmp/whereami }
