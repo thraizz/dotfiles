@@ -1,0 +1,34 @@
+align=center
+separator=true
+color=#ffffff
+separator_block_width=20
+markup=pango
+
+[live]
+command=$HOME/scripts/get_live.sh
+interval=5
+label=<span color="#BF616A">Live: </span>
+
+[latest_follower]
+command=$HOME/scripts/get_follower.sh
+interval=30
+label=<span color="#B48EAD">Latest Follower: </span>
+
+[mediaplayer]
+command=playerctl metadata --format "{{ artist }} - {{ title }}"
+interval=2
+label=<span color="#a9e185">🔊 </span>
+
+[weather]
+command=curl wttr.in/${1:-Köln}\?lang=de\&format="+%c+%t+%o" --silent
+interval=30
+
+[time]
+command=date '+%H:%M'
+interval=1
+label=<span color="#ffb86c"> </span>
+
+[date]
+command=date '+%A, %e.%m.%y'
+interval=60
+label=<span color="#8be9fd"> </span>
