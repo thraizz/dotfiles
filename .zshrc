@@ -27,13 +27,9 @@ setopt correct_all
 # Alias
 alias python="python3.7"
 alias note="vim $HOME/note.md"
-<<<<<<< Updated upstream
-alias git="nocorrect git"
-=======
 # Disable zsh correction for following commands
 alias git="nocorrect git"
 alias log="nocorrect log"
->>>>>>> Stashed changes
 
 # This logs the current path for opening a new terminal in same path
 logpath() { pwd > /tmp/whereami }
