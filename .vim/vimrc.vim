@@ -1,4 +1,5 @@
 set nocompatible              " be iMproved, required
+set shell=/bin/bash
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -9,14 +10,16 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
+" My own plugins
 Plugin 'scrooloose/nerdcommenter'
-
 Plugin 'scrooloose/nerdtree'
 Plugin 'chriskempson/base16-vim'
+Plugin 'Yggdroot/indentLine'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
 
 set conceallevel=1
-Plugin 'Yggdroot/indentLine'
+
 let g:indentLine_conceallevel=1
 let g:indentLine_char='|'
 let g:indentLine_enabled=1

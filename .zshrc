@@ -1,7 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=/usr/bin:/bin:/usr/local/bin:${PATH}
-logpath() { pwd > /tmp/whereami }
-
 
 #source $ZSH/.zsh_themes
 ZSH_THEME="refined"
@@ -27,10 +25,16 @@ unsetopt inc_append_history
 setopt correct_all
 
 # Alias
-alias python="python3.8"
+alias python="python3.7"
 alias note="vim $HOME/note.md"
+<<<<<<< Updated upstream
 alias git="nocorrect git"
+=======
+# Disable zsh correction for following commands
+alias git="nocorrect git"
+alias log="nocorrect log"
+>>>>>>> Stashed changes
 
 # This logs the current path for opening a new terminal in same path
 logpath() { pwd > /tmp/whereami }
-precmd_functions+=logpath
+recmd_functions+=logpath
