@@ -30,6 +30,8 @@ font pango: Iosevka 10
 
 # Set keyboard to qwerty layout with altgr as modifier
 exec --no-startup-id setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
+# Set mouse speed
+xinput --set-prop "2.4G Mouse" "Coordinate Transformation Matrix" 0.7 0 0 0 0.7 0 0 0 1
 
 # Start audio applications
 exec --no-startup-id pulseaudio
@@ -37,7 +39,7 @@ exec --no-startup-id pa-applet
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nitrogen --restore; sleep 1; picom
 exec --no-startup-id feh --randomize --bg-fill ~/Wallpapers/*
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
@@ -57,7 +59,9 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme nord
+bindsym $mod+Tab exec --no-startup-id rofi -show window
+
 
 # focus windows
 bindsym $mod+Left focus left

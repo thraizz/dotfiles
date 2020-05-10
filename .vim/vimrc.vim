@@ -11,12 +11,14 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 " My own plugins
+
+Plugin 'xolox/vim-notes'
+Plugin 'xolox/vim-misc'
+
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'chriskempson/base16-vim'
 Plugin 'Yggdroot/indentLine'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-notes'
 
 set conceallevel=1
 

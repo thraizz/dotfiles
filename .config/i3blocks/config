@@ -19,6 +19,11 @@ command=playerctl metadata --format "{{ artist }} - {{ title }}"
 interval=2
 label=<span color="#a9e185">🔊 </span>
 
+[cpu_temp]
+command=sensors | grep "CPUTIN:" | awk '{print $2}'
+interval=30
+label=<span color="#a9e185">🌡️ </span>
+
 [weather]
 command=curl wttr.in/${1:-Köln}\?lang=de\&format="+%c+%t+%o" --silent
 interval=30
