@@ -31,7 +31,7 @@ font pango: Iosevka 10
 # Set keyboard to qwerty layout with altgr as modifier
 exec --no-startup-id setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
 # Set mouse speed
-xinput --set-prop "2.4G Mouse" "Coordinate Transformation Matrix" 0.7 0 0 0 0.7 0 0 0 1
+exec --no-startup-id xinput --set-prop "2.4G Mouse" "Coordinate Transformation Matrix" 0.7 0 0 0 0.7 0 0 0 1
 
 # Start audio applications
 exec --no-startup-id pulseaudio
