@@ -13,7 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 " My own plugins
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'chriskempson/base16-vim'
+Plugin 'arcticicestudio/nord-vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
@@ -28,7 +28,6 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
 
@@ -45,5 +44,5 @@ set expandtab
 " View line numbers
 set number
 
-colorscheme base16-nord
+colorscheme custom
 syntax on
