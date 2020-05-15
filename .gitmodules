@@ -1,0 +1,3 @@
+[submodule ".vim/bundle/vim-notes"]
+	path = .vim/bundle/vim-notes
+	url = git@github.com:thraizz/vim-notes.git

@@ -12,7 +12,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " My own plugins
 
-Plugin 'xolox/vim-notes'
+Plugin 'thraizz/vim-notes'
 Plugin 'xolox/vim-misc'
 
 Plugin 'scrooloose/nerdcommenter'
@@ -48,3 +48,7 @@ set number
 
 colorscheme custom
 syntax on
+
+" Settings for vim notes
+highlight link notesDoneItem Conceal
+highlight link notesInlineCode Special
