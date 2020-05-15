@@ -65,3 +65,7 @@ cnoremap <C-l> <Right>
 nnoremap <S-Tab> <<
 " for insert mode
 inoremap <S-Tab> <C-d>
+
+" Settings for vim notes
+highlight link notesDoneItem Conceal
+highlight link notesInlineCode Special
