@@ -17,23 +17,23 @@ Plugin 'xolox/vim-misc'
 
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'chriskempson/base16-vim'
+Plugin 'dlanaraps/wal.vim'
 Plugin 'Yggdroot/indentLine'
+
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
 
 set conceallevel=1
 
 let g:indentLine_conceallevel=1
 let g:indentLine_char='|'
 let g:indentLine_enabled=1
-
-call vundle#end()            " required
-filetype plugin indent on    " required
-
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-
-
 
 map <C-n> :NERDTreeFocus<CR>
 
@@ -47,5 +47,6 @@ set expandtab
 " View line numbers
 set number
 
-colorscheme base16-nord
+colorscheme wal
 syntax on
+"set hi VertSplit ctermfg=2
