@@ -1,26 +1,14 @@
-# colors first
-set $base00 #2E3440
-set $base01 #3B4252
-set $base02 #434C5E
-set $base03 #4C566A
-set $base04 #D8DEE9
-set $base05 #E5E9F0
-set $base06 #ECEFF4
-set $base07 #8FBCBB
-set $base08 #88C0D0
-set $base09 #81A1C1
-set $base0A #5E81AC
-set $base0B #BF616A
-set $base0C #D08770
-set $base0D #EBCB8B
-set $base0E #A3BE8C
-set $base0F #B48EAD
-
-set_from_resource $background i3wm.background $base3
-set_from_resource $foreground i3wm.foreground $base00
-
-set_from_resource $lighterbg  i3wm.lighterbg  $base02
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
 set_from_resource $separator  i3wm.separator  $lighterbg
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+client.background       $bg
 
 # i3 hotkeys
 set $mod Mod4
@@ -42,10 +30,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; picom
 exec --no-startup-id feh --randomize --bg-fill ~/Wallpapers/*
 exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
-exec --no-startup-id start_conky_maia
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 # start a terminal
@@ -198,23 +183,23 @@ exec dunst
 # panel
 bar {
         colors {
-        background #3B4252
-        statusline #ffffff
-        separator #6078ab
+        background $base0A
+        statusline $base05
+        separator  $base01
 
         # colour of border, background, and text
-        focused_workspace       #4c5363 #A3BE8C #2E3440
-        inactive_workspace      #4e5f82 #2E3440 #ECEFF4
-        active_workspace        #4b5466 #4C566A #ECEFF4
-        urgent_workspace        #2f343f #ebcb8b #EBCB8B
+        focused_workspace       $base05 $base0D $base05
+        inactive_workspace      $base02 $base0B $base05
+        active_workspace        $base02 $base0B $base05
+        urgent_workspace        $base08 $base0B $base00
     }
         status_command i3blocks
 }
 
 # colour of border, background, text, indicator, and child_border
 client.focused          $base05 $base0D $base00 $base0D $base0C
-client.focused_inactive $base01 $base01 $base05 $base03 $base01
-client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.focused_inactive $base01 $base01 $base0D $base03 $base01
+client.unfocused        $base01 $base00 $base0D $base01 $base01
 client.urgent           $base08 $base08 $base00 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
