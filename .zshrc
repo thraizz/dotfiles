@@ -1,4 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
+cat ~/.cache/wal/sequences
 export PATH=/usr/bin:/bin:/usr/local/bin:${PATH}
 
 #source $ZSH/.zsh_themes

@@ -1,15 +1,20 @@
-set_from_resource $fg i3wm.color7 #f0f0f0
-set_from_resource $bg i3wm.color2 #f0f0f0
-set_from_resource $separator  i3wm.separator  $lighterbg
+set_from_resource $bg           i3wm.color0 #ff0000
+set_from_resource $bg-alt       i3wm.color14 #ff0000
+set_from_resource $fg           i3wm.color15 #ff0000
+set_from_resource $fg-alt       i3wm.color2 #ff0000
+set_from_resource $hl           i3wm.color13 #ff0000
 
-# class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $fg  $bg       $bg
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
-client.urgent           $bg     $bg     $fg  $bg       $bg
-client.placeholder      $bg     $bg     $fg  $bg       $bg
+# class                 border      backgr. text indicator      child_border
+client.focused          $fg-alt     $bg     $hl  $fg-alt        $hl
+client.focused_inactive $fg-alt     $bg     $fg  $fg-alt        $fg-alt
+client.unfocused        $fg-alt     $bg     $fg  $fg-alt        $fg-alt
+client.urgent           $fg-alt     $bg     $fg  $fg-alt        $fg-alt
+client.placeholder      $fg-alt     $bg     $fg  $fg-alt        $fg-alt
+client.background $bg
+
+
+
 client.background       $bg
-
 # i3 hotkeys
 set $mod Mod4
 set $alt Mod1
@@ -27,8 +32,8 @@ exec --no-startup-id pa-applet
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; picom
-exec --no-startup-id feh --randomize --bg-fill ~/Wallpapers/*
+exec --no-startup-id picom
+exec --no-startup-id wal -i "/home/arons/Wallpapers" -l
 exec --no-startup-id nm-applet
 exec --no-startup-id clipit
 exec_always --no-startup-id ff-theme-util
@@ -45,8 +50,8 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec rofi -show drun -theme nord
-bindsym $mod+Tab exec rofi -show window
+bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+Tab exec --no-startup-id rofi -show window
 
 
 # focus windows
@@ -183,26 +188,18 @@ exec dunst
 # panel
 bar {
         colors {
-        background $base0A
-        statusline $base05
-        separator  $base01
+        background $bg-alt
+        statusline $bg-alt
+        separator  $fg
 
         # colour of border, background, and text
-        focused_workspace       $base05 $base0D $base05
-        inactive_workspace      $base02 $base0B $base05
-        active_workspace        $base02 $base0B $base05
-        urgent_workspace        $base08 $base0B $base00
+        focused_workspace       $fg $bg-alt $fg
+        inactive_workspace      $fg-alt $bg $fg-alt
+        active_workspace        $fg-alt $bg $fg-alt
+        urgent_workspace        $fg-alt $bg $fg-alt
     }
         status_command i3blocks
 }
-
-# colour of border, background, text, indicator, and child_border
-client.focused          $base05 $base0D $base00 $base0D $base0C
-client.focused_inactive $base01 $base01 $base0D $base03 $base01
-client.unfocused        $base01 $base00 $base0D $base01 $base01
-client.urgent           $base08 $base08 $base00 $base08 $base08
-client.placeholder      $base00 $base00 $base05 $base00 $base00
-client.background       $base07
 
 
 for_window [class=".*"] border pixel 2
