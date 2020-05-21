@@ -1,6 +1,4 @@
 [Configuration]
-RunCustomCommand=TRUE
-CustomCommand=zsh
 MiscAlwaysShowTabs=FALSE
 MiscBell=FALSE
 MiscBellUrgent=FALSE
