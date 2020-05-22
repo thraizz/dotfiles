@@ -1,6 +1,6 @@
 align=center
 separator=true
-color={$(xrdb -query | grep '*color6'| awk '{print $NF}') }
+color="{$(xrdb -query | grep '*color7'| awk '{print $NF}') }"
 separator_block_width=20
 
 [battery]
