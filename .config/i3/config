@@ -115,6 +115,11 @@ set $ws10 "10"
 set $ws11 "11"
 set $ws12 "12"
 set $ws13 "13"
+set $ws14 "14"
+set $ws15 "15"
+set $ws16 "16"
+set $ws17 "17"
+set $ws18 "18"
 set $ws19 "19"
 set $ws20 "20"
 
@@ -129,11 +134,16 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
-bindsym $mod+Alt+1 workspace $ws11
-bindsym $mod+Alt+2 workspace $ws12
-bindsym $mod+Alt+3 workspace $ws13
-bindsym $mod+Alt+9 workspace $ws19
-bindsym $mod+Alt+0 workspace $ws20
+bindsym $mod+$alt+1 workspace $ws11
+bindsym $mod+$alt+2 workspace $ws12
+bindsym $mod+$alt+3 workspace $ws13
+bindsym $mod+$alt+4 workspace $ws14
+bindsym $mod+$alt+5 workspace $ws15
+bindsym $mod+$alt+6 workspace $ws16
+bindsym $mod+$alt+7 workspace $ws17
+bindsym $mod+$alt+8 workspace $ws18
+bindsym $mod+$alt+9 workspace $ws19
+bindsym $mod+$alt+0 workspace $ws20
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -146,11 +156,16 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
-bindsym $mod+Shift+Alt+1 move container to workspace $ws11
-bindsym $mod+Shift+Alt+2 move container to workspace $ws12
-bindsym $mod+Shift+Alt+3 move container to workspace $ws13
-bindsym $mod+Shift+Alt+9 move container to workspace $ws19
-bindsym $mod+Shift+Alt+0 move container to workspace $ws20
+bindsym $mod+Shift+$alt+1 move container to workspace $ws11
+bindsym $mod+Shift+$alt+2 move container to workspace $ws12
+bindsym $mod+Shift+$alt+3 move container to workspace $ws13
+bindsym $mod+Shift+$alt+4 move container to workspace $ws14
+bindsym $mod+Shift+$alt+5 move container to workspace $ws15
+bindsym $mod+Shift+$alt+6 move container to workspace $ws16
+bindsym $mod+Shift+$alt+7 move container to workspace $ws17
+bindsym $mod+Shift+$alt+8 move container to workspace $ws18
+bindsym $mod+Shift+$alt+9 move container to workspace $ws19
+bindsym $mod+Shift+$alt+0 move container to workspace $ws20
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
