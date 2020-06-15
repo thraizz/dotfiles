@@ -25,7 +25,8 @@ font pango: Hack 10
 # Set keyboard to qwerty layout with altgr as modifier
 exec --no-startup-id setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
 # Set mouse speed
-exec --no-startup-id xinput --set-prop "2.4G Mouse" "Coordinate Transformation Matrix" 0.7 0 0 0 0.7 0 0 0 1
+set $mousespeed 0.25
+exec --no-startup-id xinput --set-prop "2.4G Mouse" "Coordinate Transformation Matrix" $mousespeed 0 0 0 $mousespeed 0 0 0 1
 
 # Start audio applications
 exec --no-startup-id pulseaudio
@@ -34,11 +35,14 @@ exec --no-startup-id pa-applet
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id picom
-exec --no-startup-id wal -i "/home/arons/Wallpapers" -l
 exec --no-startup-id nm-applet
 exec --no-startup-id clipit
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+# Restore 
+exec --no-startup-id wal -R
+
+
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
 bindsym $mod+Shift+Return exec xfce4-terminal --working-directory=$(cat /tmp/whereami)
@@ -53,13 +57,15 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 
+# show scratchpad
+bindsym $mod+c scratchpad show
+
 
 # focus windows
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
 
 # move windows
 bindsym $mod+Shift+Left move left
@@ -77,7 +83,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+bindsym $mod+s sticky toggle
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -106,6 +112,11 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+set $ws11 "11"
+set $ws12 "12"
+set $ws13 "13"
+set $ws19 "19"
+set $ws20 "20"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -118,6 +129,11 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
+bindsym $mod+Alt+1 workspace $ws11
+bindsym $mod+Alt+2 workspace $ws12
+bindsym $mod+Alt+3 workspace $ws13
+bindsym $mod+Alt+9 workspace $ws19
+bindsym $mod+Alt+0 workspace $ws20
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -130,6 +146,11 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+Alt+1 move container to workspace $ws11
+bindsym $mod+Shift+Alt+2 move container to workspace $ws12
+bindsym $mod+Shift+Alt+3 move container to workspace $ws13
+bindsym $mod+Shift+Alt+9 move container to workspace $ws19
+bindsym $mod+Shift+Alt+0 move container to workspace $ws20
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -181,7 +202,7 @@ set $center move absolute position center
 set $inner 32
 set $outer 16
 
-bindsym $mod+l exec "~/.local/bin/fuzzy_lock.sh"
+bindsym $mod+Shift+l exec "~/.local/bin/fuzzy_lock.sh"
 exec dunst
  
 
@@ -200,8 +221,7 @@ exec dunst
 #    }
 #        status_command polybar
 #}
-exec_always --no-startup-id polybar dp5
-exec_always --no-startup-id polybar dp1
+exec_always --no-startup-id /home/arons/.config/polybar/launch.sh
 
 
 for_window [class=".*"] border pixel 2
@@ -211,7 +231,7 @@ for_window [class=Chromium] border pixel 2
 assign [class=Thunar|File-roller] 3
 assign [class=Geany|Evince|Gucharmap|Soffice|libreoffice*] 4
 assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 5
-assign [class=Lxappearance|System-config-printer.py|Lxtask|GParted|Pavucontrol|Exo-helper*|Lxrandr|Arandr] 6
+assign [class=Lxappearance|System-config-printer.py|Lxtask|GParted|Exo-helper*|Lxrandr|Arandr] 6
 for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
 for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
@@ -222,13 +242,10 @@ for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo
 
 # Set inner/outer gaps
 gaps inner 8
-gaps outer 0
+gaps outer 10
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px> 
-
-# Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
