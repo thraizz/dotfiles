@@ -97,75 +97,54 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+1 exec --no-startup-id ~/scripts/i3-workspace.sh goto 1
+bindsym $mod+2 exec --no-startup-id ~/scripts/i3-workspace.sh goto 2
+bindsym $mod+3 exec --no-startup-id ~/scripts/i3-workspace.sh goto 3
+bindsym $mod+4 exec --no-startup-id ~/scripts/i3-workspace.sh goto 4
+bindsym $mod+5 exec --no-startup-id ~/scripts/i3-workspace.sh goto 5
+bindsym $mod+6 exec --no-startup-id ~/scripts/i3-workspace.sh goto 6
+bindsym $mod+7 exec --no-startup-id ~/scripts/i3-workspace.sh goto 7
+bindsym $mod+8 exec --no-startup-id ~/scripts/i3-workspace.sh goto 8
+bindsym $mod+9 exec --no-startup-id ~/scripts/i3-workspace.sh goto 9
+bindsym $mod+0 exec --no-startup-id ~/scripts/i3-workspace.sh goto 0
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
-set $ws11 "11"
-set $ws12 "12"
-set $ws13 "13"
-set $ws14 "14"
-set $ws15 "15"
-set $ws16 "16"
-set $ws17 "17"
-set $ws18 "18"
-set $ws19 "19"
-set $ws20 "20"
+bindsym $mod+Shift+1 exec --no-startup-id ~/scripts/i3-workspace.sh move 1
+bindsym $mod+Shift+2 exec --no-startup-id ~/scripts/i3-workspace.sh move 2
+bindsym $mod+Shift+3 exec --no-startup-id ~/scripts/i3-workspace.sh move 3
+bindsym $mod+Shift+4 exec --no-startup-id ~/scripts/i3-workspace.sh move 4
+bindsym $mod+Shift+5 exec --no-startup-id ~/scripts/i3-workspace.sh move 5
+bindsym $mod+Shift+6 exec --no-startup-id ~/scripts/i3-workspace.sh move 6
+bindsym $mod+Shift+7 exec --no-startup-id ~/scripts/i3-workspace.sh move 7
+bindsym $mod+Shift+8 exec --no-startup-id ~/scripts/i3-workspace.sh move 8
+bindsym $mod+Shift+9 exec --no-startup-id ~/scripts/i3-workspace.sh move 9
+bindsym $mod+Shift+0 exec --no-startup-id ~/scripts/i3-workspace.sh move 0
 
-# switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
-bindsym $mod+$alt+1 workspace $ws11
-bindsym $mod+$alt+2 workspace $ws12
-bindsym $mod+$alt+3 workspace $ws13
-bindsym $mod+$alt+4 workspace $ws14
-bindsym $mod+$alt+5 workspace $ws15
-bindsym $mod+$alt+6 workspace $ws16
-bindsym $mod+$alt+7 workspace $ws17
-bindsym $mod+$alt+8 workspace $ws18
-bindsym $mod+$alt+9 workspace $ws19
-bindsym $mod+$alt+0 workspace $ws20
 
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
-bindsym $mod+Shift+$alt+1 move container to workspace $ws11
-bindsym $mod+Shift+$alt+2 move container to workspace $ws12
-bindsym $mod+Shift+$alt+3 move container to workspace $ws13
-bindsym $mod+Shift+$alt+4 move container to workspace $ws14
-bindsym $mod+Shift+$alt+5 move container to workspace $ws15
-bindsym $mod+Shift+$alt+6 move container to workspace $ws16
-bindsym $mod+Shift+$alt+7 move container to workspace $ws17
-bindsym $mod+Shift+$alt+8 move container to workspace $ws18
-bindsym $mod+Shift+$alt+9 move container to workspace $ws19
-bindsym $mod+Shift+$alt+0 move container to workspace $ws20
+workspace 1a output DP-1
+workspace 2a output DP-1
+workspace 3a output DP-1
+workspace 4a output DP-1
+workspace 5a output DP-1
+workspace 6a output DP-1
+workspace 7a output DP-1
+workspace 8a output DP-1
+workspace 9a output DP-1
+workspace 0a output DP-1
+
+
+workspace 1b output DP-5
+workspace 2b output DP-5
+workspace 3b output DP-5
+workspace 4b output DP-5
+workspace 5b output DP-5
+workspace 6b output DP-5
+workspace 7b output DP-5
+workspace 8b output DP-5
+workspace 9b output DP-5
+workspace 0b output DP-5
+
+bindsym $mod+F2 focus output DP-1
+bindsym $mod+F1 focus output DP-5
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
