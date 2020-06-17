@@ -41,4 +41,5 @@ ColorBold=#D8DEE9
 ColorSelectionUseDefault=FALSE
 TabActivityColor=#88C0D0
 ColorUseTheme=TRUE
+ScrollingOnOutput=FALSE
 
