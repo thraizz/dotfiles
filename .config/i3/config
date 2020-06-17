@@ -24,6 +24,7 @@ font pango: Hack 10
 
 # Set keyboard to qwerty layout with altgr as modifier
 exec --no-startup-id setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
+exec --no-startup-id /home/arons/.screnlayout/default1.sh
 # Set mouse speed
 set $mousespeed 0.25
 exec --no-startup-id xinput --set-prop "2.4G Mouse" "Coordinate Transformation Matrix" $mousespeed 0 0 0 $mousespeed 0 0 0 1
@@ -144,8 +145,8 @@ workspace 8b output DP-5
 workspace 9b output DP-5
 workspace 0b output DP-5
 
-bindsym $mod+F2 focus output DP-1
-bindsym $mod+F1 focus output DP-5
+bindsym $mod+F2 focus output DP-5
+bindsym $mod+F1 focus output DP-1
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -198,35 +199,13 @@ set $inner 32
 set $outer 16
 
 bindsym $mod+Shift+l exec "~/.local/bin/fuzzy_lock.sh"
-exec dunst
- 
 
-# panel
-#bar {
-#        colors {
-#        background $bg-alt
-#        statusline $bg-alt
-#        separator  $fg
-#
-#        # colour of border, background, and text
-#        focused_workspace       $hl     $bg $fg
-#        inactive_workspace      $fg-alt $bg $fg-alt
-#        active_workspace        $fg-alt $bg $fg-alt
-#        urgent_workspace        $fg-alt $bg $fg-alt
-#    }
-#        status_command polybar
-#}
+exec_always --no-startup-id dunst
 exec_always --no-startup-id /home/arons/.config/polybar/launch.sh
 
 
 for_window [class=".*"] border pixel 2
-assign [class=KeePassXC] 8
-assign [class=Firefox|Transmission-gtk] 2
 for_window [class=Chromium] border pixel 2
-assign [class=Thunar|File-roller] 3
-assign [class=Geany|Evince|Gucharmap|Soffice|libreoffice*] 4
-assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 5
-assign [class=Lxappearance|System-config-printer.py|Lxtask|GParted|Exo-helper*|Lxrandr|Arandr] 6
 for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
 for_window [class=Xfce4-terminal|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
