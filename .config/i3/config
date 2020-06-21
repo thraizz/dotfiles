@@ -24,10 +24,10 @@ font pango: Hack 10
 
 # Set keyboard to qwerty layout with altgr as modifier
 exec --no-startup-id setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
-exec --no-startup-id /home/arons/.screenlayout/default1.sh
-# Set mouse speed
-set $mousespeed 0.25
-exec --no-startup-id xinput --set-prop "2.4G Mouse" "Coordinate Transformation Matrix" $mousespeed 0 0 0 $mousespeed 0 0 0 1
+exec --no-startup-id /home/arons/.screenlayout/default.sh
+## Set mouse speed
+#set $mousespeed 0.25
+#exec --no-startup-id xinput --set-prop "2.4G Mouse" "Coordinate Transformation Matrix" $mousespeed 0 0 0 $mousespeed 0 0 0 1
 
 # Start audio applications
 exec --no-startup-id pulseaudio
@@ -58,11 +58,16 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 
-# show scratchpad
+# move to / show scratchpad
+bindsym $mod+Shift+c move scratchpad
 bindsym $mod+c scratchpad show
 
 
 # focus windows
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -74,11 +79,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
-
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -133,22 +135,20 @@ workspace 9a output DP-1
 workspace 0a output DP-1
 
 
-workspace 1b output DP-5
-workspace 2b output DP-5
-workspace 3b output DP-5
-workspace 4b output DP-5
-workspace 5b output DP-5
-workspace 6b output DP-5
-workspace 7b output DP-5
-workspace 8b output DP-5
-workspace 9b output DP-5
-workspace 0b output DP-5
+workspace 1b output DP-4
+workspace 2b output DP-4
+workspace 3b output DP-4
+workspace 4b output DP-4
+workspace 5b output DP-4
+workspace 6b output DP-4
+workspace 7b output DP-4
+workspace 8b output DP-4
+workspace 9b output DP-4
+workspace 0b output DP-4
 
-bindsym $mod+F2 focus output DP-5
-bindsym $mod+F1 focus output DP-1
+bindsym $mod+F1 focus output DP-4
+bindsym $mod+F2 focus output DP-1
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -205,6 +205,7 @@ exec_always --no-startup-id /home/arons/.config/polybar/launch.sh
 
 for_window [class=".*"] border pixel 2
 for_window [class=Chromium] border pixel 2
+for_window [title="Timer"] floating enable; sticky enable; resize set 300 50
 for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
 for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
