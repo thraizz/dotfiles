@@ -206,7 +206,7 @@ exec_always --no-startup-id /home/arons/.config/polybar/launch.sh
 
 for_window [class=".*"] border pixel 2
 for_window [class=Chromium] border pixel 2
-for_window [title="Timer"] floating enable; sticky enable; resize set 300 50
+# for_window [title="Timer"] floating enable; sticky enable; resize set 300 50
 for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
 for_window [class=Xfce4-terminal|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus

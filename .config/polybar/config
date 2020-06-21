@@ -26,10 +26,10 @@ primary = ${xrdb:color1}
 secondary = ${xrdb:color2}
 alert = #bd2c40
 
-[bar/dp5]
-monitor = ${env:MONITOR:DP-5}
+[bar/dp4]
+monitor = ${env:MONITOR:DP-4}
 width = 100%
-height = 27
+height = 34
 radius = 6.0
 fixed-center = true
 separator = %{F#33ffffff} | %{F-}
@@ -180,8 +180,10 @@ type = custom/menu
 expand-right = false
 menu-0-0 = "[  next"
 menu-0-0-exec = playerctl next
-menu-0-1 = open spotify
-menu-0-1-exec = i3-msg "[class=Spotify] focus"
+menu-0-1 = pick_playlist
+menu-0-1-exec = $HOME/scripts/spotify-selector.py
+menu-0-2 = open_spotify
+menu-0-2-exec = i3-msg "[class=Spotify] focus"
 label-open = ""
 label-close = "x  ]"
 format-spacing = 2
