@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Comment=Suspend the system.
+Name=Suspend
+Icon=/home/arons/Pictures/timer.png
+Exec=sleep 1 && xset -display :0.0 dpms force off
+Terminal=false
+Catagories=Utility
