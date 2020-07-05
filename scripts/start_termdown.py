@@ -10,6 +10,6 @@ def callRofi(title="Pick one"):
 
 time = callRofi("How long?")
 
-c = 'xfce4-terminal --title="Timer" --zoom=2 -x termdown {} --no-figlet'.format(time)
-c = c+"; i3-msg '[title=Timer] floating enable; sticky enable; resize set 200 80; move position 2200 100'"
+c = 'urxvt -fn "xft:Monospace:pixelsize=24" -name timer -title timer -geometry 10x3 -e termdown {} --no-figlet'.format(time)
+#c = c+"; i3-msg '[title=Timer] floating enable; sticky enable; resize set 200 80; move position 2000 100'"
 subprocess.Popen(c, shell=True)

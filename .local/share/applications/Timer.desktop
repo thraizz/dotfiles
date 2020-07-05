@@ -1,7 +1,8 @@
 [Desktop Entry]
 Type=Application
+Comment=Start a timer
 Name=Timer
-Icon=/home/arons/Pictures/wow_icon.png
-Exec=zsh -c "source ~/.zshrc && ~/scripts/start_termdown.py;$SHELL"
+Icon=/home/arons/Pictures/timer.png
+Exec=/home/arons/scripts/start_termdown.py
 Terminal=false
 Catagories=Utility
