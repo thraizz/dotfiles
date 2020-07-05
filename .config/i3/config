@@ -22,28 +22,12 @@ set $alt Mod1
 
 font pango: Hack 10
 
-# Set keyboard to qwerty layout with altgr as modifier
-exec --no-startup-id setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
-exec --no-startup-id /home/arons/.screenlayout/default.sh
-## Set mouse speed
-#set $mousespeed 0.25
-#exec --no-startup-id xinput --set-prop "2.4G Mouse" "Coordinate Transformation Matrix" $mousespeed 0 0 0 $mousespeed 0 0 0 1
-
-# Start audio applications
-exec --no-startup-id pulseaudio
-exec --no-startup-id pa-applet
-
-# Autostart applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id picom
-exec --no-startup-id nm-applet
-exec --no-startup-id clipit
+# Start programms
+exec --no-startup-id $HOME/scripts/startup.sh
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-# Restore 
-exec --no-startup-id wal -R
-exec --no-startup-id albert
 
+exec --no-startup-id $HOME/git/i3-alternating-layout/alternating_layouts.py
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
@@ -57,25 +41,33 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-#bindsym $mod+d exec --no-startup-id rofi -show drun -width 500
+bindsym $mod+d exec --no-startup-id rofi -show drun -width 500
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 
 # move to / show scratchpad
 bindsym $mod+Shift+c move scratchpad
 bindsym $mod+c scratchpad show
 
+set $up l
+set $down k
+set $left j
+set $right semicolon
 
 # focus windows
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move windows
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -89,12 +81,14 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s sticky toggle
+bindsym $mod+Shift+s exec --no-startup-id $HOME/scripts/layout_manager.sh
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+floating_modifier Mod4
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -184,29 +178,28 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # set stuff
-# focus_wrapping no
-# show_marks no
-# default_border pixel 0
-# default_border none
-# default_border none
-# default_floating_border none
-# hide_edge_borders vertical
-# hide_edge_borders horizontal
-# hide_edge_borders both
+focus_wrapping no
+show_marks no
+default_border pixel 0
+default_border none
+default_border none
+default_floating_border none
+hide_edge_borders vertical
+hide_edge_borders horizontal
+hide_edge_borders both
 
 
 set $center move absolute position center
 set $inner 32
 set $outer 16
 
-bindsym $mod+Shift+l exec "~/.local/bin/fuzzy_lock.sh"
 
 exec_always --no-startup-id dunst
-exec_always --no-startup-id /home/arons/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh i3
 
 
 for_window [class=".*"] border pixel 2
-for_window [class=albert] border none
+for_window [class=albert] border none; position set 400 400
 # for_window [title="Timer"] floating enable; sticky enable; resize set 300 50
 for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
 for_window [class=Xfce4-terminal|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus

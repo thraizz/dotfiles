@@ -41,5 +41,5 @@ ColorSelectionUseDefault=FALSE
 TabActivityColor=#88C0D0
 ColorUseTheme=TRUE
 BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
-TitleMode=TERMINAL_TITLE_HIDE
+TitleMode=TERMINAL_TITLE_REPLACE
 
