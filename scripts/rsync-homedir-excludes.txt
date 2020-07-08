@@ -359,3 +359,5 @@ nohup.out
 # ccache, remove cache but keep config
 .ccache/?
 .ccache/tmp
+
+node_modules/
