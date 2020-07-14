@@ -41,7 +41,6 @@ bindsym $mod+Shift+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 bindsym $mod+d exec --no-startup-id rofi -show drun -width 500
-bindsym $mod+Tab exec --no-startup-id rofi -show window
 
 # move to / show scratchpad
 bindsym $mod+Shift+c move scratchpad
@@ -217,6 +216,21 @@ gaps outer 10
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+
+bindsym $mod+Shift+f \
+gaps inner current set 0 \
+gaps outer current set 0 \
+exec polybar-msg cmd hide 
+
+bindsym $mod+$alt+f \
+gaps inner current set 8 \
+gaps outer current set 10 \
+exec polybar-msg cmd show
+
+bindsym $mod+m mark --replace swapme
+bindsym $mod+Tab swap container with mark swapme
+bindsym $mod+Shift+Tab '[con_mark="swapme"]' focus
+
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner

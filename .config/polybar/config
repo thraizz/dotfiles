@@ -17,17 +17,19 @@
 ;==========================================================
 
 [colors]
-background = ${xrdb:color0}
+background = ${xrdb:color8}
 background-alt = #00ffffff
-background-alt2 = ${xrdb.color5}
-foreground = ${xrdb:color7}
-foreground-alt = ${xrdb:color6}
+background-alt2 = ${xrdb:color0}
+foreground = ${xrdb:color6}
+foreground-alt = ${xrdb:color7}
 primary = ${xrdb:color1}
 secondary = ${xrdb:color2}
 alert = #bd2c40
 
 [bar/dp4]
 monitor = ${env:MONITOR:DP-4}
+background = ${colors.background}
+enable-ipc = true
 width = 100%
 height = 34
 radius = 6.0
@@ -50,7 +52,7 @@ padding-right = 2
 module-margin-left = 2
 module-margin-right = 2
 
-modules-left = mpd spotifymenu 
+modules-left = mpd toggl
 modules-right = cpu eth temperature date
 
 tray-position = right
@@ -62,7 +64,9 @@ cursor-scroll = ns-resize
 
 [bar/dp1]
 monitor = ${env:MONITOR:DP-1}
+enable-ipc=true
 width = 100%
+background = ${colors.background}
 height = 27
 radius = 6.0
 fixed-center = false
@@ -162,8 +166,8 @@ wrapping-scroll = false
 pin-workspaces = true
 
 label-mode-padding = 4
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+label-mode-foreground = ${colors.primary}
+label-mode-background = ${colors.secondary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %{F#b48ead}%index:0:1%%{F-}
@@ -172,7 +176,7 @@ label-focused-underline= ${colors.primary}
 label-focused-padding = 4
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %{F#5e81ac}%index:0:1%%{F-}
+label-unfocused = %{F${colors.background-alt}%index:0:1%%{F-}
 label-unfocused-padding = 4
 
 ; visible = Active workspace on unfocused monitor
@@ -381,6 +385,11 @@ label-active-font = 2
 label-foreground = ${colors.foreground-alt}
 format-underline = #00ffffff
 
+[module/toggl]
+type = custom/script
+exec = ~/go/bin/toggl current | cut -d $'\n' -f5
+label-foreground = ${colors.foreground-alt}
+format-underline = #00ffffff
 
 [settings]
 screenchange-reload = true
