@@ -28,11 +28,10 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
 
-set conceallevel=1
 
-let g:indentLine_conceallevel=1
-let g:indentLine_char='|'
-let g:indentLine_enabled=1
+"let g:indentLine_conceallevel=1
+"let g:indentLine_char='|'
+"let g:indentLine_enabled=1
 
 map <C-n> :NERDTreeFocus<CR>
 
@@ -46,7 +45,6 @@ set expandtab
 " View line numbers
 set number
 
-colorscheme wal
 syntax on
 
 " Settings for vim notes

@@ -1,10 +1,8 @@
-#
 # ~/.zshrc
-#
 
 export ZSH="$HOME/.oh-my-zsh"
 cat ~/.cache/wal/sequences
-export PATH=/usr/bin:/bin:/usr/local/bin:${PATH}
+export PATH=/usr/bin:/bin:/usr/local/bin:~/go/bin:${PATH}
 
 #source $ZSH/.zsh_themes
 ZSH_THEME="refined"
@@ -29,7 +27,8 @@ unsetopt share_history
 setopt inc_append_history
 unsetopt correct_all
 
-
+export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
+export LESS=' -R '
 export EDITOR="vim"
 
 # Alias
@@ -41,5 +40,5 @@ alias log="nocorrect log"
 
 # This logs the current path for opening a new terminal in same path
 logpath() { pwd > /tmp/whereami }
-recmd_functions+=logpath
+precmd_functions+=logpath
 
