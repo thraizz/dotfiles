@@ -213,7 +213,7 @@ label-empty-separator = ""
  label-separator = ""
 [module/mpd]
 type = custom/script
-exec = playerctl metadata --format '{{artist}} | {{title}}' | cut -c -30
+exec = playerctl metadata --format '{{artist}} - {{title}}' | cut -c -30
 click-left = playerctl play-pause
 click-right = menu-open-0
 format-underline = ${colors.background-alt}

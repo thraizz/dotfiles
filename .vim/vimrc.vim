@@ -43,6 +43,10 @@ set shiftwidth=4
 set expandtab
 " View line numbers
 set number
+" Dont wrap lines
+set nowrap
+" Use global clipboard instead of vim buffer
+set clipboard+=unnamedplus
 
 syntax on
 "set hi VertSplit ctermfg=2
