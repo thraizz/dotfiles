@@ -1,4 +1,4 @@
-set_from_resourc $bg           i3wm.color0 #ff0000
+set_from_resource $bg           i3wm.color0 #ff0000
 set_from_resource $bg-alt       i3wm.color8 #ff0000
 set_from_resource $fg           i3wm.color7 #ff0000
 set_from_resource $fg-alt       i3wm.color8 #ff0000
@@ -181,14 +181,6 @@ set $center move absolute position center
 set $inner 32
 set $outer 16
 
-# colour of border, background, text, indicator, and child_border
-client.focused          $base05 $base0D $base00 $base0D $base0C
-client.focused_inactive $base01 $base01 $base0D $base03 $base01
-client.unfocused        $base01 $base00 $base0D $base01 $base01
-client.urgent           $base08 $base08 $base00 $base08 $base08
-client.placeholder      $base00 $base00 $base05 $base00 $base00
-client.background       $base07
-
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 for_window [class=".*"] border pixel 2
@@ -225,37 +217,9 @@ gaps inner current set 8 \
 gaps outer current set 10 \
 exec polybar-msg cmd show
 
-
-
-bindsym $mod+Shift+f \
-gaps inner current set 0 \
-gaps outer current set 0 \
-exec polybar-msg cmd hide 
-
-bindsym $mod+$alt+f \
-gaps inner current set 8 \
-gaps outer current set 10 \
-exec polybar-msg cmd show
-
 bindsym $mod+m mark --replace swapme
 bindsym $mod+Tab swap container with mark swapme
 bindsym $mod+Shift+Tab '[con_mark="swapme"]' focus
-
-
-bindsym $mod+Shift+f \
-gaps inner current set 0 \
-gaps outer current set 0 \
-exec polybar-msg cmd hide 
-
-bindsym $mod+$alt+f \
-gaps inner current set 8 \
-gaps outer current set 10 \
-exec polybar-msg cmd show
-
-bindsym $mod+m mark --replace swapme
-bindsym $mod+Tab swap container with mark swapme
-bindsym $mod+Shift+Tab '[con_mark="swapme"]' focus
-
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner

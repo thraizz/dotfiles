@@ -236,12 +236,8 @@ label-unfocused-padding = 0
 [module/xbacklight]
 type = internal/xbacklight
 
-<<<<<<< HEAD
 format = <label> <bar>
 label = BL
-=======
-format = <bar>
->>>>>>> origin/laptop
 
 bar-width = 10
 bar-indicator = |
@@ -273,10 +269,7 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 label = %percentage_used%%
-<<<<<<< HEAD
-=======
 label-foreground = ${colors.foreground-alt}
->>>>>>> origin/laptop
 
 [module/wlan]
 type = internal/network
@@ -326,11 +319,7 @@ label-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
-<<<<<<< HEAD
-battery = BAT0
-=======
 battery = BAT1
->>>>>>> origin/laptop
 adapter = ADP1
 full-at = 98
 
