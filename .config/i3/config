@@ -218,6 +218,20 @@ gaps outer 10
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+set $toggle1 Shift
+set $toggle2 Mod2
+
+bindsym $mod+Shift+f \
+gaps inner current set 0 \
+gaps outer current set 0 \
+exec polybar-msg cmd hide 
+
+bindsym $mod+$alt+f \
+gaps inner current set 8 \
+gaps outer current set 10 \
+exec polybar-msg cmd show
+
+
 
 bindsym $mod+Shift+f \
 gaps inner current set 0 \

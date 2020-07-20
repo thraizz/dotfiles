@@ -166,7 +166,7 @@ Thumbs.db
 
 #Firefox-specific (see also Profile folder):
 
-.mozilla/firefox/*/Cache
+.mozilla
 # in case Fx crashes dumps will be stored in this
 .mozilla/firefox/*/minidumps
 # session-specific 
@@ -225,34 +225,6 @@ Thumbs.db
 # Keychain dir (manage SSH and GPG keys, front-end to ssh-agent and ssh-add)
 /.keychain
 
-#Komodo Edit:
-
-.komodoedit/*/codeintel/db
-.komodoedit/*/host-*/*/codeintel
-.komodoedit/*/XRE/Cache
-.komodoedit/*/XRE/.activatestate/komodo edit/Crash Reports
-.komodoedit/*/XRE/.activatestate/komodo edit/*/Cache
-.komodoedit/*/XRE/.activatestate/komodo edit/*/minidump
-.komodoedit/*/XRE/.parentlock
-.komodoedit/*/XRE/extensions.rdf
-.komodoedit/*/XRE/extensions.ini
-.komodoedit/*/XRE/extensions.cache
-.komodoedit/*/XRE/XPC.mfasl
-.komodoedit/*/XRE/XUL.mfasl
-.komodoedit/*/XRE/xpti.dat
-.komodoedit/*/XRE/pluginreg.dat
-.komodoedit/*/XRE/compreg.dat
-.komodoedit/*/XRE/*.sqlite-journal
-.komodoedit/*/pystdout.log
-.komodoedit/*/pystderr.log
-.komodoedit/*/history.sqlite.bak
-.komodoedit/*/running.lock
-.komodoedit/*/mutex.lock
-.komodoedit/*/*.xmlc
-.komodoedit/*/startup-env.tmp
-.komodoedit/*/commandments.fifo
-.komodoedit/*/history.sqlite
-
 #GnuPG:
 
 .gnupg/rnd
@@ -276,13 +248,7 @@ Thumbs.db
 
 #Chromium:
 
-.config/chromium/Default/Local Storage
-.config/chromium/Default/Session Storage
-.config/chromium/Default/Application Cache
-.config/chromium/Default/History Index *
-/snap/chromium/common/.cache
-/snap/chromium/*/.config/chromium/Default/Service Worker/CacheStorage
-/snap/chromium/*/.local/share/
+.config/chromium
 
 #Riot
 /snap/riot-web/

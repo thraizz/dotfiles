@@ -36,4 +36,7 @@ ColorBackground=#2c2c2c
 ColorCursor=#dcdcdc
 BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
 TitleMode=TERMINAL_TITLE_REPLACE
+CommandLoginShell=TRUE
+RunCustomCommand=TRUE
+CustomCommand=zsh
 
