@@ -17,7 +17,7 @@ Plugin 'xolox/vim-misc'
 
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'dlanaraps/wal.vim'
+Plugin 'dylanaraps/wal.vim'
 Plugin 'Yggdroot/indentLine'
 
 
@@ -35,6 +35,10 @@ let g:indentLine_conceallevel=1
 let g:indentLine_char='|'
 let g:indentLine_enabled=1
 
+"let g:indentLine_conceallevel=1
+"let g:indentLine_char='|'
+"let g:indentLine_enabled=1
+
 map <C-n> :NERDTreeFocus<CR>
 
 noremap <F9> :! clear; %:p<ENTER>
@@ -49,4 +53,17 @@ set number
 
 colorscheme wal
 syntax on
-"set hi VertSplit ctermfg=2
+
+" In insert or command mode, move normally by using Ctrl
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+cnoremap <C-h> <Left>
+cnoremap <C-j> <Down>
+cnoremap <C-k> <Up>
+cnoremap <C-l> <Right>
+" for command mode
+nnoremap <S-Tab> <<
+" for insert mode
+inoremap <S-Tab> <C-d>

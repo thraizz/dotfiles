@@ -1,38 +1,32 @@
-set_from_resource $fg i3wm.color7 #f0f0f0
-set_from_resource $bg i3wm.color2 #f0f0f0
-set_from_resource $separator  i3wm.separator  $lighterbg
+set_from_resource $bg           i3wm.color0 #ff0000
+set_from_resource $bg-alt       i3wm.color8 #ff0000
+set_from_resource $fg           i3wm.color7 #ff0000
+set_from_resource $fg-alt       i3wm.color8 #ff0000
+set_from_resource $hl           i3wm.color3 #ff0000
+set_from_resource $hl-alt       i3wm.color2 #ff0000
 
-# class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $fg  $bg       $bg
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
-client.urgent           $bg     $bg     $fg  $bg       $bg
-client.placeholder      $bg     $bg     $fg  $bg       $bg
-client.background       $bg
+# class                 border      backgr. text indicator      child_border
+client.focused          $hl         $bg     $hl  $fg-alt        $hl
+client.focused_inactive $fg-alt     $bg     $fg  $fg-alt        $fg-alt
+client.unfocused        $fg-alt     $bg     $fg  $fg-alt        $fg-alt
+client.urgent           $fg-alt     $bg     $fg  $fg-alt        $fg-alt
+client.placeholder      $fg-alt     $bg     $fg  $fg-alt        $fg-alt
+client.background $bg
+
 
 # i3 hotkeys
 set $mod Mod4
 set $alt Mod1
 
-font pango: Iosevka 10
+font pango: Hack 10
 
-# Set keyboard to qwerty layout with altgr as modifier
-exec --no-startup-id setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
-# Set mouse speed
-exec --no-startup-id xinput --set-prop "2.4G Mouse" "Coordinate Transformation Matrix" 0.7 0 0 0 0.7 0 0 0 1
-
-# Start audio applications
-exec --no-startup-id pulseaudio
-exec --no-startup-id pa-applet
-
-# Autostart applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; picom
-exec --no-startup-id feh --randomize --bg-fill ~/Wallpapers/*
-exec --no-startup-id nm-applet
-exec --no-startup-id clipit
+# Start programms
+exec --no-startup-id $HOME/scripts/startup.sh
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+
+exec --no-startup-id $HOME/git/i3-alternating-layout/alternating_layouts.py
+
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
 bindsym $mod+Shift+Return exec xfce4-terminal --working-directory=$(cat /tmp/whereami)
@@ -44,40 +38,53 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id rofi -show drun -theme nord
-bindsym $mod+Tab exec --no-startup-id rofi -show window
+bindsym $mod+d exec --no-startup-id rofi -show drun -width 500
 
+# move to / show scratchpad
+bindsym $mod+Shift+c move scratchpad
+bindsym $mod+c scratchpad show
+
+set $up l
+set $down k
+set $left j
+set $right semicolon
 
 # focus windows
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-
 # move windows
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
-
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+bindsym $mod+s sticky toggle
+bindsym $mod+Shift+s exec --no-startup-id $HOME/scripts/layout_manager.sh
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+floating_modifier Mod4
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -85,48 +92,55 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+1 exec --no-startup-id ~/scripts/i3-workspace.sh goto 1
+bindsym $mod+2 exec --no-startup-id ~/scripts/i3-workspace.sh goto 2
+bindsym $mod+3 exec --no-startup-id ~/scripts/i3-workspace.sh goto 3
+bindsym $mod+4 exec --no-startup-id ~/scripts/i3-workspace.sh goto 4
+bindsym $mod+5 exec --no-startup-id ~/scripts/i3-workspace.sh goto 5
+bindsym $mod+6 exec --no-startup-id ~/scripts/i3-workspace.sh goto 6
+bindsym $mod+7 exec --no-startup-id ~/scripts/i3-workspace.sh goto 7
+bindsym $mod+8 exec --no-startup-id ~/scripts/i3-workspace.sh goto 8
+bindsym $mod+9 exec --no-startup-id ~/scripts/i3-workspace.sh goto 9
+bindsym $mod+0 exec --no-startup-id ~/scripts/i3-workspace.sh goto 0
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+bindsym $mod+Shift+1 exec --no-startup-id ~/scripts/i3-workspace.sh move 1
+bindsym $mod+Shift+2 exec --no-startup-id ~/scripts/i3-workspace.sh move 2
+bindsym $mod+Shift+3 exec --no-startup-id ~/scripts/i3-workspace.sh move 3
+bindsym $mod+Shift+4 exec --no-startup-id ~/scripts/i3-workspace.sh move 4
+bindsym $mod+Shift+5 exec --no-startup-id ~/scripts/i3-workspace.sh move 5
+bindsym $mod+Shift+6 exec --no-startup-id ~/scripts/i3-workspace.sh move 6
+bindsym $mod+Shift+7 exec --no-startup-id ~/scripts/i3-workspace.sh move 7
+bindsym $mod+Shift+8 exec --no-startup-id ~/scripts/i3-workspace.sh move 8
+bindsym $mod+Shift+9 exec --no-startup-id ~/scripts/i3-workspace.sh move 9
+bindsym $mod+Shift+0 exec --no-startup-id ~/scripts/i3-workspace.sh move 0
 
-# switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
 
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+workspace 1a output DP-1
+workspace 2a output DP-1
+workspace 3a output DP-1
+workspace 4a output DP-1
+workspace 5a output DP-1
+workspace 6a output DP-1
+workspace 7a output DP-1
+workspace 8a output DP-1
+workspace 9a output DP-1
+workspace 0a output DP-1
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
+
+workspace 1b output DP-4
+workspace 2b output DP-4
+workspace 3b output DP-4
+workspace 4b output DP-4
+workspace 5b output DP-4
+workspace 6b output DP-4
+workspace 7b output DP-4
+workspace 8b output DP-4
+workspace 9b output DP-4
+workspace 0b output DP-4
+
+bindsym $mod+F1 focus output DP-4
+bindsym $mod+F2 focus output DP-1
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -160,40 +174,20 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # set stuff
-# focus_wrapping no
-# show_marks no
-# default_border pixel 0
-# default_border none
-# default_border none
-# default_floating_border none
-# hide_edge_borders vertical
-# hide_edge_borders horizontal
-# hide_edge_borders both
+focus_wrapping no
+show_marks no
+default_border pixel 0
+default_border none
+default_border none
+default_floating_border none
+hide_edge_borders vertical
+hide_edge_borders horizontal
+hide_edge_borders both
 
 
 set $center move absolute position center
 set $inner 32
 set $outer 16
-
-bindsym $mod+l exec "~/.local/bin/fuzzy_lock.sh"
-exec dunst
- 
-
-# panel
-bar {
-        colors {
-        background $base0A
-        statusline $base05
-        separator  $base01
-
-        # colour of border, background, and text
-        focused_workspace       $base05 $base0D $base05
-        inactive_workspace      $base02 $base0B $base05
-        active_workspace        $base02 $base0B $base05
-        urgent_workspace        $base08 $base0B $base00
-    }
-        status_command i3blocks
-}
 
 # colour of border, background, text, indicator, and child_border
 client.focused          $base05 $base0D $base00 $base0D $base0C
@@ -203,15 +197,11 @@ client.urgent           $base08 $base08 $base00 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
 
+exec_always --no-startup-id dunst
 
 for_window [class=".*"] border pixel 2
-assign [class=KeePassXC] 8
-assign [class=Firefox|Transmission-gtk] 2
-for_window [class=Chromium] border pixel 2
-assign [class=Thunar|File-roller] 3
-assign [class=Geany|Evince|Gucharmap|Soffice|libreoffice*] 4
-assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 5
-assign [class=Lxappearance|System-config-printer.py|Lxtask|GParted|Pavucontrol|Exo-helper*|Lxrandr|Arandr] 6
+for_window [class=albert] border none; position set 400 400
+# for_window [title="Timer"] floating enable; sticky enable; resize set 300 50
 for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
 for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
@@ -222,16 +212,28 @@ for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo
 
 # Set inner/outer gaps
 gaps inner 8
-gaps outer 0
+gaps outer 10
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px> 
 
-# Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps on
-
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+
+bindsym $mod+Shift+f \
+gaps inner current set 0 \
+gaps outer current set 0 \
+exec polybar-msg cmd hide 
+
+bindsym $mod+$alt+f \
+gaps inner current set 8 \
+gaps outer current set 10 \
+exec polybar-msg cmd show
+
+bindsym $mod+m mark --replace swapme
+bindsym $mod+Tab swap container with mark swapme
+bindsym $mod+Shift+Tab '[con_mark="swapme"]' focus
+
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -269,3 +271,4 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+

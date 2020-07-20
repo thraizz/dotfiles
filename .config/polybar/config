@@ -1,0 +1,406 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+background = ${xrdb:color8}
+background-alt = #00ffffff
+background-alt2 = ${xrdb:color0}
+foreground = ${xrdb:color6}
+foreground-alt = ${xrdb:color7}
+primary = ${xrdb:color1}
+secondary = ${xrdb:color2}
+alert = #bd2c40
+
+[bar/dp4]
+monitor = ${env:MONITOR:DP-4}
+background = ${colors.background}
+enable-ipc = true
+width = 100%
+height = 34
+radius = 6.0
+fixed-center = true
+separator = %{F#33ffffff} | %{F-}
+
+
+font-0 = Hack:style=Regular,Bold:size=10
+font-1 = Noto Sans Symbols2:style=Regular:pixelsize=12;1
+
+line-size = 3
+line-color = #f00
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 2
+
+modules-left = mpd toggl
+modules-right = cpu eth temperature date
+
+tray-position = right
+tray-padding = 2
+tray-color = ${colors.foreground-alt}
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/dp1]
+monitor = ${env:MONITOR:DP-1}
+enable-ipc=true
+width = 100%
+background = ${colors.background}
+height = 27
+radius = 6.0
+fixed-center = false
+
+font-0 = Hack:style=Regular, Bold:size=10;1
+font-1 = Noto Sans Symbols2:style=Regular:pixelsize=12;1
+
+line-size = 3
+line-color = #fff
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 2
+
+
+modules-left = live temperature
+modules-right = weather
+
+tray-position = right
+tray-padding = 2
+tray-color = ${colors.foreground-alt}
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/dp4-i3]
+inherit = bar/dp4
+modules-center = i3
+wm-restack = i3
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+[bar/dp1-i3]
+inherit = bar/dp1 
+modules-center = i3
+wm-restack = i3
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+[bar/dp4-bspwm]
+inherit = bar/dp4
+modules-center = bspwm
+wm-restack = bspwm
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+[bar/dp1-bspwm]
+inherit = bar/dp1
+modules-center = bspwm
+wm-restack = bspwm
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+label-mode-padding = 4
+label-mode-foreground = ${colors.primary}
+label-mode-background = ${colors.secondary}
+
+; focused = Active workspace on focused monitor
+label-focused = %{F#b48ead}%index:0:1%%{F-}
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 4
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %{F${colors.background-alt}%index:0:1%%{F-}
+label-unfocused-padding = 4
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index:0:1%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${colors.secondary}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index:0:1%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 4
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %{F#b48ead}%name%%{F-}
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 4
+
+label-occupied = %name%
+label-occupied-padding = 4
+
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 4
+
+label-empty = ""
+label-empty-padding = 0
+label-empty-separator = ""
+
+; Separator in between workspaces
+ label-separator = ""
+[module/mpd]
+type = custom/script
+exec = playerctl metadata --format '{{artist}} | {{title}}' | cut -c -30
+click-left = playerctl play-pause
+click-right = menu-open-0
+format-underline = ${colors.background-alt}
+label-foreground = ${colors.foreground-alt}
+
+[module/spotifymenu]
+type = custom/menu
+expand-right = false
+menu-0-0 = "[  next"
+menu-0-0-exec = playerctl next
+menu-0-1 = pick_playlist
+menu-0-1-exec = $HOME/scripts/spotify-selector.py
+menu-0-2 = open_spotify
+menu-0-2-exec = i3-msg "[class=Spotify] focus"
+label-open = ""
+label-close = "x  ]"
+format-spacing = 2
+label-padding = 4
+label-unfocused-padding = 0
+
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 0
+bar-fill = ─
+bar-fill-font = 1
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 1
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+label = %percentage:2%%
+label-foreground = ${colors.foreground-alt}
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+label = %percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = net1
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/eth]
+type = internal/network
+interface = enp39s0
+interval = 3.0
+
+label-connected = %local_ip%
+label-connected-foreground = ${colors.foreground-alt}
+
+label-disconnected = %ifname% disconnected
+format-disconnected = <label-disconnected>
+label-disconnected-foreground = ${colors.foreground}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%d.%m,"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+label = %date% %time%
+label-foreground = ${colors.foreground-alt}
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+format-underline = ${colors.background-alt}
+warn-temperature = 60
+
+format = <ramp> <label>
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-foreground = ${colors.foreground-alt}
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+hwmon-path = /sys/devices/platform/nct6775.2592/hwmon/hwmon2/temp2_input
+ramp-0 = ~
+ramp-1 = +
+ramp-2 = !
+ramp-foreground = ${colors.foreground-alt}
+
+[module/live]
+type = custom/script
+exec = /home/arons/scripts/get_live.sh
+format-underline = ${colors.background-alt}
+label-foreground = ${colors.foreground-alt}
+
+[module/weather]
+type = custom/script
+exec = curl wttr.in/${1:-Köln}\?lang=de\&format="+%c+%t+%o" --silent
+format-active-font = 2
+label-active-font = 2
+label-foreground = ${colors.foreground-alt}
+format-underline = #00ffffff
+
+[module/toggl]
+type = custom/script
+exec = ~/go/bin/toggl current | cut -d $'\n' -f5
+label-foreground = ${colors.foreground-alt}
+format-underline = #00ffffff
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

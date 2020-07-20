@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=World of Warcraft
+Comment=Launch World of Warcraft over Wine
+Icon=/home/arons/Pictures/wow_icon.png
+Exec=zsh -c 'source ~/.zshrc && wine ~/Applications/WorldOfWarcraft.exe'
+Terminal=false
+Catagories=Games
