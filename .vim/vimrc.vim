@@ -12,7 +12,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " My own plugins
 
-Plugin 'xolox/vim-notes'
+Plugin 'thraizz/vim-notes'
 Plugin 'xolox/vim-misc'
 
 Plugin 'scrooloose/nerdcommenter'
@@ -39,7 +39,12 @@ let g:indentLine_enabled=1
 "let g:indentLine_char='|'
 "let g:indentLine_enabled=1
 
+"let g:indentLine_conceallevel=1
+"let g:indentLine_char='|'
+"let g:indentLine_enabled=1
+
 map <C-n> :NERDTreeFocus<CR>
+map <silent> <F8> /^\(<\{7\}\\|>\{7\}\\|=\{7\}\\|\|\{7\}\)\( \\|$\)<cr>
 
 noremap <F9> :! clear; %:p<ENTER>
 " show existing tab with 4 spaces width
@@ -54,6 +59,11 @@ set number
 colorscheme wal
 syntax on
 
+" Settings for vim notes
+highlight link notesDoneItem Conceal
+highlight link notesInlineCode Special
+"set hi VertSplit ctermfg=2
+
 " In insert or command mode, move normally by using Ctrl
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
@@ -67,3 +77,7 @@ cnoremap <C-l> <Right>
 nnoremap <S-Tab> <<
 " for insert mode
 inoremap <S-Tab> <C-d>
+
+" Settings for vim notes
+highlight link notesDoneItem Conceal
+highlight link notesInlineCode Special

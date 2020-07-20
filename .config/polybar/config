@@ -26,16 +26,13 @@ primary = ${xrdb:color1}
 secondary = ${xrdb:color2}
 alert = #bd2c40
 
-[bar/dp4]
-monitor = ${env:MONITOR:DP-4}
-background = ${colors.background}
-enable-ipc = true
+[bar/main]
 width = 100%
 height = 34
 radius = 6.0
 fixed-center = true
 separator = %{F#33ffffff} | %{F-}
-
+enable-ipc = true
 
 font-0 = Hack:style=Regular,Bold:size=10
 font-1 = Noto Sans Symbols2:style=Regular:pixelsize=12;1
@@ -62,8 +59,8 @@ tray-color = ${colors.foreground-alt}
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[bar/dp1]
-monitor = ${env:MONITOR:DP-1}
+
+[bar/secondary]
 enable-ipc=true
 width = 100%
 background = ${colors.background}
@@ -86,7 +83,6 @@ padding-right = 2
 module-margin-left = 2
 module-margin-right = 2
 
-
 modules-left = live temperature
 modules-right = weather
 
@@ -97,32 +93,34 @@ tray-color = ${colors.foreground-alt}
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+
 [bar/dp4-i3]
-inherit = bar/dp4
+inherit = bar/main
+monitor = ${env:MONITOR:DP-4}
+modules-left = mpd spotifymenu 
 modules-center = i3
+modules-right = cpu eth temperature date
 wm-restack = i3
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
 [bar/dp1-i3]
-inherit = bar/dp1 
+inherit = bar/secondary
+monitor = ${env:MONITOR:DP-1}
+modules-left = live temperature
+modules-right = weather
 modules-center = i3
 wm-restack = i3
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-
-[bar/dp4-bspwm]
-inherit = bar/dp4
-modules-center = bspwm
-wm-restack = bspwm
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
-
-[bar/dp1-bspwm]
-inherit = bar/dp1
-modules-center = bspwm
-wm-restack = bspwm
+[bar/laptop]
+inherit = bar/main
+monitor = ${env:MONITOR:eDP1}
+modules-left = mpd 
+modules-center = i3
+modules-right = battery cpu memory eth temperature date xbacklight
+wm-restack = i3
 cursor-click = pointer
 cursor-scroll = ns-resize
 
@@ -238,8 +236,12 @@ label-unfocused-padding = 0
 [module/xbacklight]
 type = internal/xbacklight
 
+<<<<<<< HEAD
 format = <label> <bar>
 label = BL
+=======
+format = <bar>
+>>>>>>> origin/laptop
 
 bar-width = 10
 bar-indicator = |
@@ -271,6 +273,10 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 label = %percentage_used%%
+<<<<<<< HEAD
+=======
+label-foreground = ${colors.foreground-alt}
+>>>>>>> origin/laptop
 
 [module/wlan]
 type = internal/network
@@ -320,7 +326,11 @@ label-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
+<<<<<<< HEAD
 battery = BAT0
+=======
+battery = BAT1
+>>>>>>> origin/laptop
 adapter = ADP1
 full-at = 98
 

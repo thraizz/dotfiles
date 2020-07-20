@@ -5,7 +5,7 @@ cat ~/.cache/wal/sequences
 export PATH=/usr/bin:/bin:/usr/local/bin:~/go/bin:${PATH}
 
 #source $ZSH/.zsh_themes
-ZSH_THEME="refined"
+ZSH_THEME="gallois"
 
 plugins=(
   git
