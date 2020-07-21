@@ -18,6 +18,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'dylanaraps/wal.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'dense-analysis/ale'
+Plugin 'posva/vim-vue'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -58,9 +59,6 @@ highlight link notesDoneItem Conceal
 highlight link notesInlineCode Special
 
 map <C-n> :NERDTreeFocus<CR>
-map <silent> <F8> /^\(<\{7\}\\|>\{7\}\\|=\{7\}\\|\|\{7\}\)\( \\|$\)<cr>
-
-noremap <F9> :! clear; %:p<ENTER>
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -76,6 +74,7 @@ highlight link notesDoneItem Conceal
 highlight link notesInlineCode Special
 "set hi VertSplit ctermfg=2
 
+""" Keymaps
 " In insert or command mode, move normally by using Ctrl
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
@@ -89,3 +88,6 @@ cnoremap <C-l> <Right>
 nnoremap <S-Tab> <<
 " for insert mode
 inoremap <S-Tab> <C-d>
+map <silent> <F8> /^\(<\{7\}\\|>\{7\}\\|=\{7\}\\|\|\{7\}\)\( \\|$\)<cr>
+
+noremap <F9> :! clear; %:p<ENTER>
