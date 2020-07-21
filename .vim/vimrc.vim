@@ -10,16 +10,14 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-" My own plugins
-
 Plugin 'thraizz/vim-notes'
 Plugin 'xolox/vim-misc'
-
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'dylanaraps/wal.vim'
 Plugin 'Yggdroot/indentLine'
-
+Plugin 'dense-analysis/ale'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -28,40 +26,50 @@ autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
+" Ctrlp.vim settings
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
+let g:ctrlp_user_command = {
+	\ 'types': {
+		\ 1: ['.git', 'cd %s && git ls-files'],
+		\ 2: ['.hg', 'hg --cwd %s locate -I .'],
+		\ },
+	\ 'fallback': 'find %s -type f'
+	\ }
+" ALE Vim settings
+let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
+let g:ale_linters = {'vue': ['eslint', 'vls']}
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint', 'prettier'],
+\   'vue': ['eslint']
+\}
+let g:ale_fix_on_save = 1
+
+
+" Visual Settings
 set conceallevel=1
-
 let g:indentLine_conceallevel=1
 let g:indentLine_char='|'
 let g:indentLine_enabled=1
 
-"let g:indentLine_conceallevel=1
-"let g:indentLine_char='|'
-"let g:indentLine_enabled=1
-
-"let g:indentLine_conceallevel=1
-"let g:indentLine_char='|'
-"let g:indentLine_enabled=1
+highlight link notesDoneItem Conceal
+highlight link notesInlineCode Special
 
 map <C-n> :NERDTreeFocus<CR>
 map <silent> <F8> /^\(<\{7\}\\|>\{7\}\\|=\{7\}\\|\|\{7\}\)\( \\|$\)<cr>
 
 noremap <F9> :! clear; %:p<ENTER>
-" show existing tab with 4 spaces width
 set tabstop=4
-" when indenting with '>', use 4 spaces width
 set shiftwidth=4
-" On pressing tab, insert 4 spaces
 set expandtab
-" View line numbers
 set number
-" Dont wrap lines
 set nowrap
-" Use global clipboard instead of vim buffer
 set clipboard+=unnamedplus
 
-colorscheme wal
 syntax on
+colorscheme wal
 
 " Settings for vim notes
 highlight link notesDoneItem Conceal
@@ -81,7 +89,3 @@ cnoremap <C-l> <Right>
 nnoremap <S-Tab> <<
 " for insert mode
 inoremap <S-Tab> <C-d>
-
-" Settings for vim notes
-highlight link notesDoneItem Conceal
-highlight link notesInlineCode Special
