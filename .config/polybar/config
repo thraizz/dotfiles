@@ -119,7 +119,7 @@ inherit = bar/main
 monitor = ${env:MONITOR:eDP1}
 modules-left = mpd 
 modules-center = i3
-modules-right = battery cpu memory eth temperature date xbacklight
+modules-right = battery1 battery2 cpu memory eth temperature date xbacklight
 wm-restack = i3
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -319,7 +319,6 @@ label-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
-battery = BAT1
 adapter = ADP1
 full-at = 98
 
@@ -350,6 +349,13 @@ animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 
+[module/battery1]
+inherit = module/battery
+battery = BAT0
+
+[module/battery2]
+inherit = module/battery
+battery = BAT1
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
