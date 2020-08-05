@@ -19,6 +19,7 @@ Plugin 'dylanaraps/wal.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'dense-analysis/ale'
 Plugin 'posva/vim-vue'
+Plugin 'junegunn/goyo.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
