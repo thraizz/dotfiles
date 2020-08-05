@@ -6,8 +6,7 @@ setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
 
 # Start audio applications
 pulseaudio -D
-setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
-/home/arons/.screenlayout/default.sh
+DISPLAY=:0.0 xscreensaver-systemd & disown;
 xinput --set-prop 11 303 -0.8
 
 pkill pa-applet
@@ -18,4 +17,4 @@ nm-applet &>/dev/null & disown;
 pkill picom
 picom &>/dev/null & disown;
 wal -R
-
+$HOME/.config/polybar/launch.sh

@@ -61,6 +61,10 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# move across outputs
+bindsym $mod+Shift+F1 move output DP-4
+bindsym $mod+Shift+F2 move output DP-1
+
 # split in vertical orientation
 bindsym $mod+v split h
 
@@ -176,13 +180,17 @@ hide_edge_borders vertical
 hide_edge_borders horizontal
 hide_edge_borders both
 
-
 set $center move absolute position center
 set $inner 32
 set $outer 16
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# Assign workspaces
+assign [class="Mailspring"] 5b
+assign [class="Steam"] 8b
+assign [class="Mailspring"] 9b
+
+# Render settings, gaps etc.
 for_window [class=".*"] border pixel 2
 for_window [class=albert] border none; position set 400 400
 # for_window [title="Timer"] floating enable; sticky enable; resize set 300 50

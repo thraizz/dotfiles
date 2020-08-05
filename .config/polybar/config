@@ -17,19 +17,19 @@
 ;==========================================================
 
 [colors]
-background = ${xrdb:color8}
+background = ${xrdb:color3}
 background-alt = #00ffffff
-background-alt2 = ${xrdb:color0}
-foreground = ${xrdb:color6}
-foreground-alt = ${xrdb:color7}
+background-alt2 = ${xrdb:color3}
+foreground = ${xrdb:color0}
+foreground-alt = ${xrdb:color0}
 primary = ${xrdb:color1}
 secondary = ${xrdb:color2}
 alert = #bd2c40
 
 [bar/main]
 width = 100%
+background = ${colors.background}
 height = 34
-radius = 6.0
 fixed-center = true
 separator = %{F#33ffffff} | %{F-}
 enable-ipc = true
@@ -43,8 +43,8 @@ line-color = #f00
 border-size = 4
 border-color = #00000000
 
-padding-left = 2
-padding-right = 2
+padding-left = 6
+padding-right = 6
 
 module-margin-left = 2
 module-margin-right = 2
@@ -65,7 +65,6 @@ enable-ipc=true
 width = 100%
 background = ${colors.background}
 height = 27
-radius = 6.0
 fixed-center = false
 
 font-0 = Hack:style=Regular, Bold:size=10;1
@@ -168,13 +167,13 @@ label-mode-foreground = ${colors.primary}
 label-mode-background = ${colors.secondary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %{F#b48ead}%index:0:1%%{F-}
+label-focused = %{F${colors.foreground}%index:0:1%%{F-}
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 4
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %{F${colors.background-alt}%index:0:1%%{F-}
+label-unfocused = %{F${colors.foreground-alt}%index:0:1%%{F-}
 label-unfocused-padding = 4
 
 ; visible = Active workspace on unfocused monitor

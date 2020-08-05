@@ -40,10 +40,10 @@ let g:ctrlp_user_command = {
 	\ }
 " ALE Vim settings
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
-let g:ale_linters = {'vue': ['eslint', 'vls']}
+let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_linters = {'vue': ['eslint']}
 let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint', 'prettier'],
+\   'javascript': ['eslint'],
 \   'vue': ['eslint']
 \}
 let g:ale_fix_on_save = 1
