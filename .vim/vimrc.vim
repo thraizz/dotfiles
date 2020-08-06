@@ -20,6 +20,7 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'dense-analysis/ale'
 Plugin 'posva/vim-vue'
 Plugin 'junegunn/goyo.vim'
+Plugin 'itchyny/lightline.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -66,6 +67,8 @@ set expandtab
 set number
 set nowrap
 set clipboard+=unnamedplus
+set laststatus=2
+
 
 syntax on
 colorscheme wal
@@ -73,7 +76,6 @@ colorscheme wal
 " Settings for vim notes
 highlight link notesDoneItem Conceal
 highlight link notesInlineCode Special
-"set hi VertSplit ctermfg=2
 
 """ Keymaps
 " In insert or command mode, move normally by using Ctrl
