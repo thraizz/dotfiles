@@ -1,13 +1,39 @@
 set_from_resource $bg           i3wm.color0 #ff0000
-set_from_resource $bg-alt       i3wm.color8 #ff0000
-set_from_resource $fg           i3wm.color7 #ff0000
-set_from_resource $fg-alt       i3wm.color8 #ff0000
-set_from_resource $hl           i3wm.color3 #ff0000
-set_from_resource $hl-alt       i3wm.color2 #ff0000
+set_from_resource $bg-alt       i3wm.color1 #ff0000
+set_from_resource $fg           i3wm.color2 #ff0000
+set_from_resource $fg-alt       i3wm.color3 #ff0000
+set_from_resource $hl           i3wm.color4 #ff0000
+set_from_resource $hl-alt       i3wm.color5 #ff0000
+
+# class                 border  backgr.   text      indicator child_border
+client.focused          $hl     $fg-alt   $bg       $bg       $bg
+client.focused_inactive $hl     $bg       $fg-alt   $bg       $bg
+client.unfocused        $hl     $bg       $fg-alt   $bg       $bg
+client.urgent           $hl     $hl       $fg       $bg       $bg
+client.placeholder      $hl     $bg       $fg       $bg       $bg
+
+client.background       $bg
+
+# set stuff
+focus_wrapping no
+show_marks yes
+default_border pixel 0
+default_floating_border none
+hide_edge_borders none
+
+set $center move absolute position center
+set $inner 32
+set $outer 16
 
 # i3 hotkeys
 set $mod Mod4
 set $alt Mod1
+set $up h
+set $down j
+set $left k
+set $right l
+
+floating_modifier Mod4
 
 font pango: Hack 10
 
@@ -15,7 +41,6 @@ font pango: Hack 10
 exec --no-startup-id $HOME/scripts/startup.sh
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-
 exec --no-startup-id $HOME/git/i3-alternating-layout/alternating_layouts.py
 
 # start a terminal
@@ -26,20 +51,13 @@ bindsym $mod+Shift+T exec terminator -e "vim +'Note todo'"
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
+# start rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun -width 500
 
 # move to / show scratchpad
 bindsym $mod+Shift+c move scratchpad
 bindsym $mod+c scratchpad show
 
-set $up l
-set $down k
-set $left j
-set $right semicolon
 
 # focus windows
 bindsym $mod+$left focus left
@@ -80,7 +98,6 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-floating_modifier Mod4
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -134,68 +151,38 @@ workspace 8b output DP-4
 workspace 9b output DP-4
 workspace 0b output DP-4
 
+# Focus outputs
 bindsym $mod+F1 focus output DP-4
 bindsym $mod+F2 focus output DP-1
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# Focus mode: Hide polybar and remove gaps
+bindsym $mod+Shift+f \
+gaps inner current set 0 \
+gaps outer current set 0 \
+exec polybar-msg cmd hide 
+bindsym $mod+$alt+f \
+gaps inner current set 8 \
+gaps outer current set 10 \
+exec polybar-msg cmd show
+
+# Swap windows
+bindsym $mod+m mark --replace swapme
+bindsym $mod+Tab swap container with mark swapme
+bindsym $mod+Shift+Tab '[con_mark="swapme"]' focus
+
+# Restart i3
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
+# Exit i3
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window?s width.
-        # Pressing right will grow the window?s width.
-        # Pressing up will shrink the window?s height.
-        # Pressing down will grow the window?s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym odiaeresis resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
-# set stuff
-focus_wrapping no
-show_marks no
-default_border pixel 0
-default_border none
-default_border none
-default_floating_border none
-hide_edge_borders vertical
-hide_edge_borders horizontal
-hide_edge_borders both
-
-set $center move absolute position center
-set $inner 32
-set $outer 16
-
 
 # Assign workspaces
 assign [class="Mailspring"] 5b
 assign [class="Steam"] 8b
-assign [class="Mailspring"] 9b
+assign [class="Spotify"] 9b
 
 # Render settings, gaps etc.
-for_window [class=".*"] border pixel 2
 for_window [class=albert] border none; position set 400 400
-# for_window [title="Timer"] floating enable; sticky enable; resize set 300 50
 for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
-for_window [class=Xfce4-terminal|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 for_window [class=Terminator] floating enable
 
@@ -203,31 +190,8 @@ for_window [class=Terminator] floating enable
 ### settings for i3-gaps: ###
 #############################
 
-# Set inner/outer gaps
 gaps inner 8
 gaps outer 10
-
-# Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
-# gaps inner|outer current|all set|plus|minus <px> 
-
-# Smart borders (draw borders around container only if it is not the only container on this workspace) 
-# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-set $toggle1 Shift
-set $toggle2 Mod2
-
-bindsym $mod+Shift+f \
-gaps inner current set 0 \
-gaps outer current set 0 \
-exec polybar-msg cmd hide 
-
-bindsym $mod+$alt+f \
-gaps inner current set 8 \
-gaps outer current set 10 \
-exec polybar-msg cmd show
-
-bindsym $mod+m mark --replace swapme
-bindsym $mod+Tab swap container with mark swapme
-bindsym $mod+Shift+Tab '[con_mark="swapme"]' focus
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
