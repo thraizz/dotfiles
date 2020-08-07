@@ -157,12 +157,12 @@ bindsym $mod+F2 focus output DP-1
 
 # Focus mode: Hide polybar and remove gaps
 bindsym $mod+Shift+f \
-gaps inner current set 0 \
-gaps outer current set 0 \
+gaps inner all set 0 \
+gaps outer all set 0 \
 exec polybar-msg cmd hide 
 bindsym $mod+$alt+f \
-gaps inner current set 8 \
-gaps outer current set 10 \
+gaps inner all set 8 \
+gaps outer all set 10 \
 exec polybar-msg cmd show
 
 # Swap windows
