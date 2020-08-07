@@ -1,4 +1,5 @@
 set nocompatible              " be iMproved, required
+set noshowmode
 set shell=/bin/bash
 filetype off                  " required
 
