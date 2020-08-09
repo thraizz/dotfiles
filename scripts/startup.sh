@@ -8,6 +8,7 @@ xscreensaver & disown;
 python $HOME/git/i3-alternating-layout/alternating_layouts.py & disown;
 
 # Set keyboard and mouse preferences
+xmodmap $HOME/.xmodmap
 setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
 xinput --set-prop 11 303 -0.8
 
