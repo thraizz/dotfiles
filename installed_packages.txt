@@ -71,6 +71,7 @@ firefox
 flac
 flex
 freerdp
+fzf
 garcon-gtk3
 gawk
 gcc
