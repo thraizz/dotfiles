@@ -9,6 +9,7 @@ ZSH_THEME="refined"
 
 plugins=(
   git
+  tmux
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
@@ -30,6 +31,7 @@ unsetopt correct_all
 export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 export EDITOR="vim"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # Alias
 alias python="python3.8"
@@ -38,7 +40,26 @@ alias note="vim $HOME/note.md"
 alias git="nocorrect git"
 alias log="nocorrect log"
 
+autoload -Uz add-zsh-hook
+
+function xterm_title_precmd () {
+	print -Pn -- '\e]2;%n@%m %~\a'
+	[[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-}\e\\'
+}
+
+function xterm_title_preexec () {
+	print -Pn -- '\e]2;%n@%m %~ %# ' && print -n -- "${(q)1}\a"
+	[[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{g}%n\005{-}@\005{m}%m\005{-} \005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
+}
+
+if [[ "$TERM" == (alacritty*|gnome*|konsole*|putty*|rxvt*|screen*|tmux*|xterm*) ]]; then
+	add-zsh-hook -Uz precmd xterm_title_precmd
+	add-zsh-hook -Uz preexec xterm_title_preexec
+fi
+
 # This logs the current path for opening a new terminal in same path
 logpath() { pwd > /tmp/whereami }
 precmd_functions+=logpath
+
+xmodmap $HOME/.Xmodmap 2>/dev/null
 
