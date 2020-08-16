@@ -8,9 +8,9 @@ xscreensaver & disown;
 python $HOME/git/i3-alternating-layout/alternating_layouts.py & disown;
 
 # Set keyboard and mouse preferences
-xmodmap $HOME/.xmodmap
+xmodmap $HOME/.Xmodmap
 setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
-xinput --set-prop 11 303 -0.8
+xinput --set-prop "2.4G Mouse" 302 -0.8
 
 # Start audio applications
 pulseaudio -D
