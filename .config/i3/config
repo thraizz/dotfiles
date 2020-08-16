@@ -6,18 +6,18 @@ set_from_resource $hl           i3wm.color4 #ff0000
 set_from_resource $hl-alt       i3wm.color5 #ff0000
 
 # class                 border  backgr.   text      indicator child_border
-client.focused          $hl     $fg-alt   $bg       $bg       $bg
-client.focused_inactive $hl     $bg       $fg-alt   $bg       $bg
-client.unfocused        $hl     $bg       $fg-alt   $bg       $bg
-client.urgent           $hl     $hl       $fg       $bg       $bg
-client.placeholder      $hl     $bg       $fg       $bg       $bg
+client.focused          $fg     $fg-alt   $bg       $bg       $bg
+client.focused_inactive $fg     $bg       $fg-alt   $bg       $bg
+client.unfocused        $fg     $bg       $fg-alt   $bg       $bg
+client.urgent           $fg     $hl       $fg       $bg       $bg
+client.placeholder      $fg     $bg       $fg       $bg       $bg
 
 client.background       $bg
 
 # set stuff
 focus_wrapping no
 show_marks yes
-default_border pixel 0
+default_border pixel 2
 default_floating_border none
 hide_edge_borders none
 
@@ -179,6 +179,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 assign [class="Mailspring"] 5b
 assign [class="Steam"] 8b
 assign [class="Spotify"] 9b
+assign [class=Telegram|Discord] 5a
 
 # Render settings, gaps etc.
 for_window [class=albert] border none; position set 400 400
