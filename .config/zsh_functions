@@ -30,3 +30,7 @@ function log {
 	    cat $HOME/logfile.txt
 	fi
 }
+
+function wetter {
+    curl wttr.in/${1:-Köln}\?lang=de --silent
+}
