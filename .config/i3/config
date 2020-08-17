@@ -34,6 +34,8 @@ set $left k
 set $right l
 
 floating_modifier Mod4
+floating_minimum_size 1000 x 600
+floating_maximum_size -1 x -1
 
 font pango: Hack 10
 
@@ -48,11 +50,14 @@ bindsym $mod+Return exec xfce4-terminal
 bindsym $mod+Shift+Return exec xfce4-terminal --working-directory=$(cat /tmp/whereami)
 bindsym $mod+Shift+T exec terminator -e "vim +'Note todo'"
 
+# start ranger
+bindsym $mod+r exec dex /home/arons/.local/share/applications/ranger.desktop
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start rofi
-bindsym $mod+d exec --no-startup-id rofi -show drun -width 500
+bindsym $mod+d exec --no-startup-id rofi -show drun -width 500 -show-icons
 
 # move to / show scratchpad
 bindsym $mod+Shift+c move scratchpad
@@ -186,6 +191,7 @@ for_window [class=albert] border none; position set 400 400
 for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 for_window [class=Terminator] floating enable
+for_window [title="ranger-floating"] floating enable scratchpad enable
 
 ############################
 ### settings for i3-gaps: ###
