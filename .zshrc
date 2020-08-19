@@ -39,6 +39,7 @@ alias note="vim $HOME/note.md"
 # Disable zsh correction for following commands
 alias git="nocorrect git"
 alias log="nocorrect log"
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 
 # This logs the current path for opening a new terminal in same path
