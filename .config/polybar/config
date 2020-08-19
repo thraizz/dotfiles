@@ -17,12 +17,12 @@
 ;==========================================================
 
 [colors]
-background = ${xrdb:color3}
+background = ${xrdb:background}
 background-alt = #00ffffff
 background-alt2 = ${xrdb:color3}
-foreground = ${xrdb:color0}
+foreground = ${xrdb:foreground}
 foreground-alt = ${xrdb:color0}
-primary = ${xrdb:color1}
+primary = ${xrdb:color4}
 secondary = ${xrdb:color2}
 alert = #bd2c40
 
@@ -40,16 +40,16 @@ font-1 = Noto Sans Symbols2:style=Regular:pixelsize=12;1
 line-size = 3
 line-color = #f00
 
-border-size = 4
+border-size = 18
+border-top = 5
+border-bottom = 5
 border-color = #00000000
-
 padding-left = 6
 padding-right = 6
-
 module-margin-left = 2
 module-margin-right = 2
 
-modules-left = mpd toggl
+modules-left = mpd
 modules-right = cpu eth temperature date
 
 tray-position = right
@@ -61,49 +61,51 @@ cursor-scroll = ns-resize
 
 
 [bar/secondary]
-enable-ipc=true
 width = 100%
 background = ${colors.background}
-height = 27
-fixed-center = false
+height = 34
+fixed-center = true
+separator = %{F#33ffffff} | %{F-}
+enable-ipc = true
 
-font-0 = Hack:style=Regular, Bold:size=10;1
+font-0 = Hack:style=Regular,Bold:size=10
 font-1 = Noto Sans Symbols2:style=Regular:pixelsize=12;1
 
 line-size = 3
-line-color = #fff
+line-color = #f00
 
-border-size = 4
+border-size = 18
+border-top = 5
+border-bottom = 5
 border-color = #00000000
-
-padding-left = 2
-padding-right = 2
-
+padding-left = 6
+padding-right = 6
 module-margin-left = 2
 module-margin-right = 2
 
-modules-left = live temperature
+modules-left = temperature
 modules-right = weather
 
 tray-position = right
 tray-padding = 2
-tray-color = ${colors.foreground-alt}
+tray-color = ${colors.foreground}
+tray-background = ${colors.background}
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
 
-[bar/dp4-i3]
+[bar/main-i3]
 inherit = bar/main
 monitor = ${env:MONITOR:DP-4}
 modules-left = mpd spotifymenu 
 modules-center = i3
-modules-right = cpu eth temperature date
+modules-right = cpu eth date
 wm-restack = i3
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
-[bar/dp1-i3]
+[bar/secondary-i3]
 inherit = bar/secondary
 monitor = ${env:MONITOR:DP-1}
 modules-left = live temperature
@@ -113,14 +115,14 @@ wm-restack = i3
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[bar/dp4-ewmh]
+[bar/main-ewmh]
 inherit = bar/main
 monitor = ${env:MONITOR:DP-4}
 modules-left = mpd spotifymenu 
 modules-center = ewmh
 modules-right = cpu eth temperature date
 
-[bar/dp1-ewmh]
+[bar/secondary-ewmh]
 inherit = bar/secondary
 monitor = ${env:MONITOR:DP-1}
 modules-left = live temperature
@@ -147,6 +149,7 @@ blacklist-0 = num lock
 
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-background = ${xrdb:color5}
 format-prefix-underline = ${colors.secondary}
 
 label-layout = %layout%
@@ -177,11 +180,12 @@ wrapping-scroll = false
 pin-workspaces = true
 
 label-mode-padding = 4
-label-mode-foreground = ${colors.primary}
+label-mode-foreground = ${colors.background}
 label-mode-background = ${colors.secondary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %{F${colors.foreground}%index:0:1%%{F-}
+label-focused = %index:0:1%
+label-focused-foreground = ${colors.background}
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 4
@@ -192,14 +196,21 @@ label-unfocused-padding = 4
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index:0:1%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${colors.secondary}
-label-visible-padding = ${self.label-focused-padding}
+label-visible-foreground = ${colors.background}
+label-visible-background = ${colors.background-alt}
+label-visible-underline= ${colors.secondary}
+label-visible-padding = 4
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index:0:1%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 4
+icon-0 = Work;♚
+icon-1 = Media;♛
+icon-2 = Web;♜
+icon-3 = Mail;♝
+icon-4 = Other;♞
+icon-default = ♟
 
 [module/bspwm]
 type = internal/bspwm
@@ -227,8 +238,10 @@ type = custom/script
 exec = playerctl metadata --format '{{artist}} - {{title}}' | cut -c -30
 click-left = playerctl play-pause
 click-right = menu-open-0
-format-underline = ${colors.background-alt}
-label-foreground = ${colors.foreground-alt}
+format-underline = ${colors.background}
+label-foreground = ${colors.foreground}
+label-padding = 3
+label-background = ${colors.background}
 
 [module/spotifymenu]
 type = custom/menu
@@ -303,7 +316,7 @@ ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-foreground = ${colors.foreground}
 
 [module/eth]
 type = internal/network
@@ -311,7 +324,8 @@ interface = enp39s0
 interval = 3.0
 
 label-connected = %local_ip%
-label-connected-foreground = ${colors.foreground-alt}
+label-connected-foreground = ${colors.foreground}
+label-connected-background = ${colors.background}
 
 label-disconnected = %ifname% disconnected
 format-disconnected = <label-disconnected>
@@ -327,7 +341,8 @@ time = %H:%M
 time-alt = %H:%M:%S
 
 label = %date% %time%
-label-foreground = ${colors.foreground-alt}
+label-foreground = ${colors.foreground}
+label-background = ${colors.background}
 
 [module/ewmh]
 type = internal/xworkspaces
@@ -370,24 +385,24 @@ format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix-foreground = ${colors.foreground}
 format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-foreground = ${colors.foreground}
 
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-foreground = ${colors.foreground}
 animation-charging-framerate = 750
 
 animation-discharging-0 = 
 animation-discharging-1 = 
 animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-foreground = ${colors.foreground}
 animation-discharging-framerate = 750
 
 [module/battery1]
@@ -405,37 +420,37 @@ warn-temperature = 60
 
 format = <ramp> <label>
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+format-warn-underline = ${xrdb:color6}
 
 label = %temperature-c%
-label-foreground = ${colors.foreground-alt}
+label-foreground = ${colors.foreground}
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 hwmon-path = /sys/devices/platform/nct6775.2592/hwmon/hwmon2/temp2_input
 ramp-0 = ~
 ramp-1 = +
 ramp-2 = !
-ramp-foreground = ${colors.foreground-alt}
+ramp-foreground = ${colors.foreground}
 
-[module/live]
-type = custom/script
-exec = /home/arons/scripts/get_live.sh
-format-underline = ${colors.background-alt}
-label-foreground = ${colors.foreground-alt}
+;[module/live]
+;type = custom/script
+;exec = $HOME/scripts/get_live.sh
+;format-underline = ${colors.background-alt}
+;label-foreground = ${colors.foreground-alt}
 
 [module/weather]
 type = custom/script
 exec = curl wttr.in/${1:-Köln}\?lang=de\&format="+%c+%t+%o" --silent
 format-active-font = 2
 label-active-font = 2
-label-foreground = ${colors.foreground-alt}
-format-underline = #00ffffff
+label-foreground = ${colors.foreground}
+format-underline = ${xrdb:color3}
 
 [module/toggl]
 type = custom/script
 exec = ~/go/bin/toggl current | cut -d $'\n' -f5
-label-foreground = ${colors.foreground-alt}
-format-underline = #00ffffff
+label-foreground = ${colors.foreground}
+format-underline = ${xrdb:color5}
 
 [settings]
 screenchange-reload = true
