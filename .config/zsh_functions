@@ -1,0 +1,36 @@
+function cdt {
+    # Display dir as tree and truncate after 20 lines
+    builtin cd "$@" && tree -L 1 -tC | sed '
+        20 {
+            a[...]
+            q
+        }
+    '
+}
+
+
+function t {
+    tree -L 2 -t -C --filelimit 8 | sed '
+        20 {
+            a[...]
+            q
+        }
+    '
+}
+
+function addtheme {
+    echo ZSH_THEME_RANDOM_CANDIDATES+=\"$(echo $RANDOM_THEME | sed -r 's/.*themes\///' | sed -r 's/.zsh-theme//')\" >> $ZSH/.zsh_themes
+}
+
+function log {
+    echo $#
+	if [ $# -gt 0 ]; then
+	    echo "$(date +%d.%m.%Y-%H:%M): $*" >> $HOME/logfile.txt
+    else
+	    cat $HOME/logfile.txt
+	fi
+}
+
+function wetter {
+    curl wttr.in/${1:-Köln}\?lang=de --silent
+}

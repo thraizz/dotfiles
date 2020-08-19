@@ -1,0 +1,239 @@
+set_from_resource $bg           i3wm.color0 #ff0000
+set_from_resource $bg-alt       i3wm.color1 #ff0000
+set_from_resource $fg           i3wm.color2 #ff0000
+set_from_resource $fg-alt       i3wm.color3 #ff0000
+set_from_resource $hl           i3wm.color4 #ff0000
+set_from_resource $hl-alt       i3wm.color5 #ff0000
+
+# class                 border  backgr.   text      indicator child_border
+client.focused          $fg     $fg-alt   $bg       $bg       $bg
+client.focused_inactive $fg     $bg       $fg-alt   $bg       $bg
+client.unfocused        $fg     $bg       $fg-alt   $bg       $bg
+client.urgent           $fg     $hl       $fg       $bg       $bg
+client.placeholder      $fg     $bg       $fg       $bg       $bg
+
+client.background       $bg
+
+# set stuff
+focus_wrapping no
+show_marks yes
+default_border pixel 2
+default_floating_border none
+hide_edge_borders none
+
+set $center move absolute position center
+set $inner 32
+set $outer 16
+
+# i3 hotkeys
+set $mod Mod4
+set $alt Mod1
+set $up h
+set $down j
+set $left k
+set $right l
+
+floating_modifier Mod4
+floating_minimum_size 1000 x 600
+floating_maximum_size -1 x -1
+
+font pango: Hack 10
+
+# Start programms
+exec --no-startup-id $HOME/scripts/startup.sh
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
+exec --no-startup-id $HOME/git/i3-alternating-layout/alternating_layouts.py
+
+# start a terminal
+bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Shift+Return exec xfce4-terminal --working-directory=$(cat /tmp/whereami)
+bindsym $mod+Shift+T exec terminator -e "vim +'Note todo'"
+
+# start ranger
+bindsym $mod+r exec dex /home/arons/.local/share/applications/ranger.desktop
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start rofi
+bindsym $mod+d exec --no-startup-id rofi -show drun -width 500 -show-icons
+
+# move to / show scratchpad
+bindsym $mod+Shift+c move scratchpad
+bindsym $mod+c scratchpad show
+
+
+# focus windows
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move windows
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# move across outputs
+bindsym $mod+Shift+F1 move output DP-4
+bindsym $mod+Shift+F2 move output DP-1
+
+# split in vertical orientation
+bindsym $mod+v split h
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s sticky toggle
+bindsym $mod+Shift+s exec --no-startup-id $HOME/scripts/layout_manager.sh
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+bindsym $mod+1 exec --no-startup-id ~/scripts/i3-workspace.sh goto 1
+bindsym $mod+2 exec --no-startup-id ~/scripts/i3-workspace.sh goto 2
+bindsym $mod+3 exec --no-startup-id ~/scripts/i3-workspace.sh goto 3
+bindsym $mod+4 exec --no-startup-id ~/scripts/i3-workspace.sh goto 4
+bindsym $mod+5 exec --no-startup-id ~/scripts/i3-workspace.sh goto 5
+bindsym $mod+6 exec --no-startup-id ~/scripts/i3-workspace.sh goto 6
+bindsym $mod+7 exec --no-startup-id ~/scripts/i3-workspace.sh goto 7
+bindsym $mod+8 exec --no-startup-id ~/scripts/i3-workspace.sh goto 8
+bindsym $mod+9 exec --no-startup-id ~/scripts/i3-workspace.sh goto 9
+bindsym $mod+0 exec --no-startup-id ~/scripts/i3-workspace.sh goto 0
+
+bindsym $mod+Shift+1 exec --no-startup-id ~/scripts/i3-workspace.sh move 1
+bindsym $mod+Shift+2 exec --no-startup-id ~/scripts/i3-workspace.sh move 2
+bindsym $mod+Shift+3 exec --no-startup-id ~/scripts/i3-workspace.sh move 3
+bindsym $mod+Shift+4 exec --no-startup-id ~/scripts/i3-workspace.sh move 4
+bindsym $mod+Shift+5 exec --no-startup-id ~/scripts/i3-workspace.sh move 5
+bindsym $mod+Shift+6 exec --no-startup-id ~/scripts/i3-workspace.sh move 6
+bindsym $mod+Shift+7 exec --no-startup-id ~/scripts/i3-workspace.sh move 7
+bindsym $mod+Shift+8 exec --no-startup-id ~/scripts/i3-workspace.sh move 8
+bindsym $mod+Shift+9 exec --no-startup-id ~/scripts/i3-workspace.sh move 9
+bindsym $mod+Shift+0 exec --no-startup-id ~/scripts/i3-workspace.sh move 0
+
+
+workspace 1a output DP-1
+workspace 2a output DP-1
+workspace 3a output DP-1
+workspace 4a output DP-1
+workspace 5a output DP-1
+workspace 6a output DP-1
+workspace 7a output DP-1
+workspace 8a output DP-1
+workspace 9a output DP-1
+workspace 0a output DP-1
+
+
+workspace 1b output DP-4
+workspace 2b output DP-4
+workspace 3b output DP-4
+workspace 4b output DP-4
+workspace 5b output DP-4
+workspace 6b output DP-4
+workspace 7b output DP-4
+workspace 8b output DP-4
+workspace 9b output DP-4
+workspace 0b output DP-4
+
+# Focus outputs
+bindsym $mod+F1 focus output DP-4
+bindsym $mod+F2 focus output DP-1
+
+# Focus mode: Hide polybar and remove gaps
+bindsym $mod+Shift+f \
+gaps inner all set 0 \
+gaps outer all set 0 \
+exec polybar-msg cmd hide 
+bindsym $mod+$alt+f \
+gaps inner all set 8 \
+gaps outer all set 10 \
+exec polybar-msg cmd show
+
+# Swap windows
+bindsym $mod+m mark --replace swapme
+bindsym $mod+Tab swap container with mark swapme
+bindsym $mod+Shift+Tab '[con_mark="swapme"]' focus
+
+# Restart i3
+bindsym $mod+Shift+r restart
+# Exit i3
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# Assign workspaces
+assign [class="Mailspring"] 5b
+assign [class="Steam"] 8b
+assign [class="Spotify"] 9b
+assign [class=Telegram|Discord] 5a
+
+# Render settings, gaps etc.
+for_window [class=albert] border none; position set 400 400
+for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
+for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
+for_window [class=Terminator] floating enable
+for_window [title="ranger-floating"] floating enable scratchpad enable
+
+############################
+### settings for i3-gaps: ###
+#############################
+
+gaps inner 8
+gaps outer 10
+
+# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+

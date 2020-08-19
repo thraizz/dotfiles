@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=WoW
+Icon=/home/arons/Pictures/wow_icon.png
+Exec=zsh -c 'source ~/.zshrc && wine ~/Applications/WorldOfWarcraft.exe'
+Terminal=false
+Catagories=Games
