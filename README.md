@@ -11,4 +11,6 @@
     `git clone --bare https://github.com/thraizz/dotfiles.git $HOME/.dotfiles`
 6. Checkout the actual dotfiles content:
     `dotfiles checkout`
+7. Run the init script under scripts/init.sh:
+    `bash -c $HOME/scripts/init.sh`
 
