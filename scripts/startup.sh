@@ -5,7 +5,7 @@ $HOME/.screenlayout/default.sh
 xscreensaver & disown;
 
 # Manage i3 layout
-python $HOME/git/i3-alternating-layout/alternating_layouts.py & disown;
+python $HOME/scripts/i3-alternating-layout.py & disown;
 
 # Set keyboard and mouse preferences
 xmodmap $HOME/.Xmodmap
