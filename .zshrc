@@ -16,6 +16,7 @@ plugins=(
 
 source $HOME/.config/zsh_functions
 source $ZSH/oh-my-zsh.sh
+source $HOME/.token
 
 #ENABLE_CORRECTION="true"
 DISALE_CORRECTION="true"

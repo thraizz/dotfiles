@@ -34,3 +34,9 @@ function log {
 function wetter {
     curl wttr.in/${1:-Köln}\?lang=de --silent
 }
+
+function newwallpaper {
+    url=$(curl -s "https://api.unsplash.com/photos/random?client_id=daYXaH70NsAGQzapSFmlWQ-kp4tRKFWtK5yItwMPsMY&query=nature&orientation=landscape" | jq --raw-output ".urls.raw")
+    curl -s -o $HOME/Wallpapers/current.png $url
+    wal -i $HOME/Wallpapers/current.png --saturate 1
+}
