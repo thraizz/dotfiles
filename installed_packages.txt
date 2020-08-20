@@ -40,3 +40,7 @@ vlc
 volumeicon
 xfce4-terminal
 zsh
+jq
+htop
+lsd
+neovim
