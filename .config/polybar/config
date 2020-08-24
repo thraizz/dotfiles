@@ -28,6 +28,7 @@ alert = #bd2c40
 
 [bar/main]
 width = 100%
+foreground = ${colors.foreground}
 background = ${colors.background}
 height = 34
 fixed-center = true
@@ -41,8 +42,8 @@ line-size = 3
 line-color = #f00
 
 border-size = 18
-border-top = 5
-border-bottom = 5
+border-top-size = 5
+border-bottom-size = 5
 border-color = #00000000
 padding-left = 6
 padding-right = 6
@@ -54,7 +55,8 @@ modules-right = cpu eth temperature date
 
 tray-position = right
 tray-padding = 2
-tray-color = ${colors.foreground-alt}
+tray-color = ${colors.foreground}
+tray-background = ${colors.background}
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -75,8 +77,8 @@ line-size = 3
 line-color = #f00
 
 border-size = 18
-border-top = 5
-border-bottom = 5
+border-top-size = 5
+border-bottom-size = 5
 border-color = #00000000
 padding-left = 6
 padding-right = 6
@@ -88,7 +90,6 @@ modules-right = weather
 
 tray-position = right
 tray-padding = 2
-tray-color = ${colors.foreground}
 tray-background = ${colors.background}
 
 cursor-click = pointer
@@ -134,7 +135,7 @@ inherit = bar/main
 monitor = ${env:MONITOR1:eDP1}
 modules-left = mpd 
 modules-center = i3
-modules-right = battery1  date xbacklight
+modules-right = battery date xbacklight
 wm-restack = i3
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -191,7 +192,8 @@ label-focused-underline= ${colors.primary}
 label-focused-padding = 4
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %{F${colors.foreground-alt}%index:0:1%%{F-}
+label-unfocused = %index:0:1%
+label-unfocused-foreground = ${colors.foreground}
 label-unfocused-padding = 4
 
 ; visible = Active workspace on unfocused monitor
@@ -205,12 +207,6 @@ label-visible-padding = 4
 label-urgent = %index:0:1%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 4
-icon-0 = Work;♚
-icon-1 = Media;♛
-icon-2 = Web;♜
-icon-3 = Mail;♝
-icon-4 = Other;♞
-icon-default = ♟
 
 [module/bspwm]
 type = internal/bspwm
@@ -264,10 +260,11 @@ type = internal/xbacklight
 
 format = <label> <bar>
 label = BL
+label-foreground = ${colors.foreground}
 
 bar-width = 10
 bar-indicator = |
-bar-indicator-foreground = #fff
+bar-indicator-foreground = ${colors.foreground}
 bar-indicator-font = 0
 bar-fill = ─
 bar-fill-font = 1
@@ -280,6 +277,9 @@ bar-empty-foreground = ${colors.foreground-alt}
 inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
+label-foreground = ${colors.foreground}
+format-foreground = ${colors.foreground}
+
 
 [module/cpu]
 type = internal/cpu
@@ -303,6 +303,7 @@ interface = net1
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
+format-connected-foreground = ${colors.foreground}
 label-connected = %essid%
 
 format-disconnected =
@@ -376,42 +377,51 @@ label-empty-padding = 3
 [module/battery]
 type = internal/battery
 adapter = ADP1
-full-at = 98
+battery = BAT0
+full-at = 100
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #ffb52a
 
 format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground}
-format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground}
 
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground}
 animation-charging-framerate = 750
 
 animation-discharging-0 = 
 animation-discharging-1 = 
 animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground}
 animation-discharging-framerate = 750
+
+label-discharging-underline = ${self.format-charging-underline}
+label-discharging-foreground = ${colors.foreground}
+label-full-underline = ${self.format-charging-underline}
+label-full-foreground = ${colors.foreground}
+label-capacity-foreground = ${colors.foreground}
+label-charging-foreground = ${colors.foreground}
 
 [module/battery1]
 inherit = module/battery
 battery = BAT0
+foreground = ${colors.foreground}
+format-discharging-foreground = ${colors.foreground}
+format-charging-foreground = ${colors.foreground}
 
 [module/battery2]
 inherit = module/battery
 battery = BAT1
+label-foreground = ${colors.foreground}
+format-full-foreground = ${colors.foreground}
+
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
@@ -431,12 +441,6 @@ ramp-0 = ~
 ramp-1 = +
 ramp-2 = !
 ramp-foreground = ${colors.foreground}
-
-;[module/live]
-;type = custom/script
-;exec = $HOME/scripts/get_live.sh
-;format-underline = ${colors.background-alt}
-;label-foreground = ${colors.foreground-alt}
 
 [module/weather]
 type = custom/script
