@@ -2,7 +2,7 @@
 
 export ZSH="$HOME/.oh-my-zsh"
 cat ~/.cache/wal/sequences
-export PATH=/usr/bin:/bin:/usr/local/bin:~/go/bin:${PATH}
+export PATH=/usr/bin:/bin:/usr/local/bin:~/go/bin:/home/arons/.gem/ruby/2.7.0/bin:${PATH}
 
 #source $ZSH/.zsh_themes
 ZSH_THEME="refined"
@@ -20,6 +20,7 @@ source $HOME/.token
 
 #ENABLE_CORRECTION="true"
 DISALE_CORRECTION="true"
+ZSH_TMUX_AUTOSTART=true
 export HISTCONTROL=ignoredups:ignorespace
 export HISTFILESIZE=999999
 export HISTSIZE=99999
