@@ -180,12 +180,12 @@ wrapping-scroll = false
 pin-workspaces = true
 
 label-mode-padding = 4
-label-mode-foreground = ${colors.background}
+label-mode-foreground = ${colors.primary}
 label-mode-background = ${colors.secondary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index:0:1%
-label-focused-foreground = ${colors.background}
+label-focused-foreground = ${colors.primary}
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 4
@@ -196,7 +196,7 @@ label-unfocused-padding = 4
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index:0:1%
-label-visible-foreground = ${colors.background}
+label-visible-foreground = ${colors.secondary}
 label-visible-background = ${colors.background-alt}
 label-visible-underline= ${colors.secondary}
 label-visible-padding = 4

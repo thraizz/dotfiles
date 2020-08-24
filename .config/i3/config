@@ -34,7 +34,7 @@ set $left k
 set $right l
 
 floating_modifier Mod4
-floating_minimum_size 1000 x 600
+#floating_minimum_size 1000 x 600
 floating_maximum_size -1 x -1
 
 font pango: Hack 10
@@ -46,7 +46,7 @@ exec_always --no-startup-id fix_xcursor
 exec --no-startup-id $HOME/git/i3-alternating-layout/alternating_layouts.py
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec xfce4-terminal -e "tmux attach"
 bindsym $mod+Shift+Return exec xfce4-terminal --working-directory=$(cat /tmp/whereami)
 bindsym $mod+Shift+T exec terminator -e "vim +'Note todo'"
 

@@ -16,3 +16,8 @@ for file in $(ls $HOME/aur); do
     makepkg -sif --noconfirm
 done
 
+# Install cht.sh
+mkdir -p ~/bin/
+curl https://cht.sh/:cht.sh > ~/bin/cht.sh
+chmod +x ~/bin/cht.sh
+
