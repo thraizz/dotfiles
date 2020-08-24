@@ -23,6 +23,7 @@ Plugin 'dense-analysis/ale'
 Plugin 'posva/vim-vue'
 Plugin 'junegunn/goyo.vim'
 Plugin 'itchyny/lightline.vim'
+Plugin 'fadein/vim-FIGlet'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
