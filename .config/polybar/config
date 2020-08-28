@@ -130,6 +130,35 @@ modules-left = live temperature
 modules-center = ewmh
 modules-right = weather
 
+[bar/openbox-applications]
+bottom = true
+monitor = ${env:MONITOR1:DP-4}
+modules-center = minimized
+width = 30%
+background = ${colors.background-alt}
+height = 34
+fixed-center = true
+separator = %{F#33ffffff} | %{F-}
+enable-ipc = true
+
+font-0 = Hack:style=Regular,Bold:size=10
+font-1 = Noto Sans Symbols2:style=Regular:pixelsize=12;1
+
+line-size = 3
+line-color = #f00
+
+border-size = 18
+border-top-size = 5
+border-bottom-size = 5
+border-color = #00000000
+padding-left = 6
+padding-right = 6
+module-margin-left = 2
+module-margin-right = 2
+tray-position = none
+cursor-click = pointer
+
+
 [bar/laptop]
 inherit = bar/main
 monitor = ${env:MONITOR1:eDP1}
@@ -455,17 +484,5 @@ type = custom/script
 exec = ~/go/bin/toggl current | cut -d $'\n' -f5
 label-foreground = ${colors.foreground}
 format-underline = ${xrdb:color5}
-
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-
-;compositing-foreground = source
-;compositing-border = over
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
 
 ; vim:ft=dosini

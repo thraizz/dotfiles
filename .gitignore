@@ -2,3 +2,12 @@ node_modules
 .cache
 .cmake
 .mozilla
+snap
+.wine
+.vscode-oss/extensions
+.steam
+.thunderbird
+.nv
+.npm
+.local
+.config/VSCodium
