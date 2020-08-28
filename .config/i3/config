@@ -43,7 +43,7 @@ font pango: Hack 10
 exec --no-startup-id $HOME/scripts/startup.sh
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-exec --no-startup-id $HOME/git/i3-alternating-layout/alternating_layouts.py
+exec --no-startup-id python $HOME/git/i3-alternating-layout/alternating_layouts.py
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal -e "tmux"
