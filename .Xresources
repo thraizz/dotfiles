@@ -1,0 +1,30 @@
+! Font options - ~/.fonts.conf seems to override this
+! Resolution for Xft in dots per inch (e.g. 96)
+Xft.dpi:       96
+! Type of subpixel antialiasing (none, rgb, bgr, vrgb or vbgr)
+Xft.rgba:      rgba
+Xft.antialias: 1
+Xft.hinting:   1
+Xft.autohint:  0
+! What degree of hinting to use (hintnone, hintslight, hintmedium, or hintfull)
+Xft.hintstyle: hintslight
+
+#define FONTSIZE 12
+
+xterm*faceName: xft:Hack-Regular:size=FONTSIZE:antialias=true:hinting=true:autohint=false:hintstyle=hintnone:dpi=96
+URxvt.font:     xft:Hack-Regular:size=FONTSIZE:antialias=true:hinting=true:autohint=false:hintstyle=hintnone:dpi=96
+URxvt.boldFont: xft:Hack-Bold:size=FONTSIZE:antialias=true:hinting=true:autohint=false:hintstyle=hintnone:dpi=96
+URxvt.scrollBar: false
+URxvt.perl-ext-common:  default,clipboard
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.depth: 32
+
+URxvt.keysym.Home: \033[1~
+URxvt.keysym.End: \033[4~
+URxvt.keysym.KP_Home: \033[1~
+URxvt.keysym.KP_End:  \033[4~
+
+Xcursor.size: 32
+
+#include ".Xcolors"
