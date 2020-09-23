@@ -35,13 +35,7 @@ export EDITOR="vim"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # Alias
-alias python="python3.8"
-alias note="vim $HOME/note.md"
-# Disable zsh correction for following commands
-alias git="nocorrect git"
-alias log="nocorrect log"
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
+source $HOME/.config/aliases
 
 # This logs the current path for opening a new terminal in same path
 logpath() { pwd > /tmp/whereami }
@@ -49,3 +43,7 @@ precmd_functions+=logpath
 
 xmodmap $HOME/.Xmodmap 2>/dev/null
 
+autoload -Uz compinit
+compinit
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
