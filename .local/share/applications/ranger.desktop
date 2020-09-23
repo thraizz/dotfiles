@@ -1,10 +1,10 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Ranger
-Comment=ranger
-Exec=bash -c "$HOME/scripts/i3-open-ranger.sh"
-Icon=ranger
+Name=Terminal
+Comment="Start tmux in urxvt"
+Exec=bash -c "$HOME/scripts/start_tmux.sh"
+Icon=terminal
 Terminal=false
 StartupNotify=false
 Categories=Application;

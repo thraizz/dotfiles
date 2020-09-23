@@ -148,8 +148,8 @@ line-size = 3
 line-color = #f00
 
 border-size = 18
-border-top-size = 5
-border-bottom-size = 5
+border-top-size-size = 5
+border-bottom-size-size = 5
 border-color = #00000000
 padding-left = 6
 padding-right = 6
@@ -393,12 +393,12 @@ label-active-background = ${colors.background-alt}
 label-active-underline = ${colors.primary}
 label-active-padding = 3
 
-label-occupied = %icon% %name%
+label-occupied = %{F${colors.foreground}%icon% %name%%{F-}
 label-occupied-background = ${colors.background}
 label-occupied-padding = 3
 
 ; visible = Active workspace on unfocused monitor
-label-empty = %name%
+label-empty = %{F${colors.foreground}%icon% %name%%{F-}
 label-empty-background = ${colors.background}
 label-empty-padding = 3
 

@@ -38,10 +38,7 @@ set $left k
 set $right l
 
 floating_modifier Mod4
-#floating_minimum_size 1000 x 600
-floating_maximum_size -1 x -1
 
-font pango: Hack 10
 
 # Start programms
 exec --no-startup-id $HOME/scripts/startup.sh
@@ -50,8 +47,8 @@ exec_always --no-startup-id fix_xcursor
 exec --no-startup-id python $HOME/git/i3-alternating-layout/alternating_layouts.py
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal -e "tmux"
-bindsym $mod+Shift+Return exec xfce4-terminal --working-directory=$(cat /tmp/whereami)
+bindsym $mod+Return exec xfce4-terminal -e start_tmux
+bindsym $mod+Shift+Return exec xfce4-terminal -e tmux attach
 bindsym $mod+Shift+T exec terminator -e "vim +'Note todo'"
 
 # start ranger
@@ -62,6 +59,7 @@ bindsym $mod+Shift+q kill
 
 # start rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun -width 500 -show-icons
+bindsym $alt+Tab exec --no-startup-id skippy-xd-runner --activate-window-picker
 
 # move to / show scratchpad
 bindsym $mod+Shift+c move scratchpad
@@ -178,7 +176,7 @@ exec polybar-msg cmd show
 
 # Swap windows
 bindsym $mod+m mark --replace swapme
-bindsym $mod+Tab swap container with mark swapme
+bindsym $mod+Tab swap container with mark swapme  
 bindsym $mod+Shift+Tab '[con_mark="swapme"]' focus
 
 # Restart i3
@@ -191,9 +189,29 @@ assign [class="Mailspring"] 5b
 assign [class="Steam"] 8b
 assign [class=Spotify] 9b
 assign [class=Telegram|Discord] 5a
+for_window [class="plasmashell"] floating enable
+for_window [class="Plasma"] floating enable; border none
+for_window [title="plasma-desktop"] floating enable
+for_window [class="Plasmoidviewer"] floating enable
+for_window [title="Desktop — Plasma"] kill; floating enable; border none
+for_window [class="plasmashell"] floating enable;
+for_window [class="Plasma"] floating enable; border none
+for_window [title="plasma-desktop"] floating enable; border none
+for_window [title="win7"] floating enable; border none
+for_window [class="krunner"] floating enable; border none
+for_window [class="Kmix"] floating enable; border none
+for_window [class="Klipper"] floating enable; border none
+for_window [class="Plasmoidviewer"] floating enable; border none
+for_window [class="plasmashell" window_type="notification"] floating enable, border none, move right 700px, move down 450px, no_focus 
+for_window [title="Desktop — Plasma"] kill; floating enable; border none
+for_window [class="plasmashell"] floating enable
+for_window [title="Desktop - Plasma"] kill floating enable border none
+no_focus [class="plasmashell" window_type="notification"]
+no_focus [class="plasmashell" window_type="on_screen_display"]
 
 # Render settings, gaps etc.
 for_window [class=albert] border none; position set 400 400
+
 for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 

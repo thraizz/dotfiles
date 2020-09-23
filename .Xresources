@@ -15,7 +15,8 @@ xterm*faceName: xft:Hack-Regular:size=FONTSIZE:antialias=true:hinting=true:autoh
 URxvt.font:     xft:Hack-Regular:size=FONTSIZE:antialias=true:hinting=true:autohint=false:hintstyle=hintnone:dpi=96
 URxvt.boldFont: xft:Hack-Bold:size=FONTSIZE:antialias=true:hinting=true:autohint=false:hintstyle=hintnone:dpi=96
 URxvt.scrollBar: false
-URxvt.perl-ext-common:  default,clipboard
+URxvt.perl-ext-common:  default,selection-to-clipboard
+URxvt.clipboard.autocopy: true
 URxvt.keysym.M-c:   perl:clipboard:copy
 URxvt.keysym.M-v:   perl:clipboard:paste
 URxvt.depth: 32
@@ -27,4 +28,4 @@ URxvt.keysym.KP_End:  \033[4~
 
 Xcursor.size: 32
 
-#include ".Xcolors"
+#include ".cache/wal/colors.Xresources"
