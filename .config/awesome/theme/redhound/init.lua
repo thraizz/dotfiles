@@ -15,6 +15,7 @@ theme.primary.hue_500 = '#d03c3f'
 -- theme.primary = mat_colors.indigo
 -- Accent
 theme.accent = mat_colors.orange
+theme.wallpaper = "~/Wallpapers/current.png"
 
 -- Background
 theme.background = mat_colors.blue_grey
