@@ -52,18 +52,15 @@ local globalKeys =
     {modkey},
     'd',
     function()
-      local flag = false
-      for _, c in ipairs(mouse.screen.selected_tag:clients()) do
-                 if c.minimized == true then
-                   flag = true
-                 end
-                 c.minimized = true
-      end
-      for _, c in ipairs(mouse.screen.selected_tag:clients()) do
-                 if flag == true then
-                   c.minimized = false
-                 end
-      end
+       awful.spawn("rofi -show drun -width 500 -show-icons")
+    end,
+    {description = 'minimize all clients', group = 'awesome'}
+  ),
+  awful.key(
+    {modkey},
+    'Return',
+    function()
+       awful.spawn("kitty")
     end,
     {description = 'minimize all clients', group = 'awesome'}
   ),
