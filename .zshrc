@@ -1,7 +1,6 @@
 # ~/.zshrc
-
+export TERM="xterm-256color"
 export ZSH="$HOME/.oh-my-zsh"
-cat ~/.cache/wal/sequences
 export PATH=/usr/bin:/bin:/usr/local/bin:~/go/bin:${PATH}
 
 #source $ZSH/.zsh_themes

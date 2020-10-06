@@ -213,7 +213,7 @@ label-mode-foreground = ${colors.primary}
 label-mode-background = ${colors.secondary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index:0:1%
+label-focused = %index%
 label-focused-foreground = ${colors.primary}
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
@@ -377,12 +377,6 @@ label-background = ${colors.background}
 type = internal/xworkspaces
 
 ; Separator in between workspaces
-icon-0 = Work;♚
-icon-1 = Media;♛
-icon-2 = Web;♜
-icon-3 = Mail;♝
-icon-4 = Other;♞
-icon-default = ♟
 format = <label-state>
 
 label-monitor = %name%

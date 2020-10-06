@@ -43,9 +43,8 @@ exec_always --no-startup-id fix_xcursor
 exec --no-startup-id python $HOME/git/i3-alternating-layout/alternating_layouts.py
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal -e start_tmux
-bindsym $mod+Shift+Return exec xfce4-terminal -e tmux attach
-bindsym $mod+Shift+T exec terminator -e "vim +'Note todo'"
+bindsym $mod+Return exec kitty
+bindsym $mod+Shift+Return exec kitty -e tmux attach
 
 # start ranger
 bindsym $mod+r exec dex $HOME/.local/share/applications/ranger.desktop

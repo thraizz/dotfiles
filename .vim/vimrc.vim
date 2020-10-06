@@ -1,6 +1,6 @@
 set nocompatible              " be iMproved, required
 set noshowmode
-set shell=/bin/bash
+set shell=/bin/zsh
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -15,7 +15,6 @@ Plugin 'thraizz/vim-notes'
 Plugin 'xolox/vim-misc'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'dylanaraps/wal.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'ciaranm/detectindent'
 Plugin 'dense-analysis/ale'
@@ -25,6 +24,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'fadein/vim-FIGlet'
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 Plugin 'itchyny/lightline.vim'
 Plugin 'mattn/emmet-vim'
@@ -43,17 +43,19 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 autocmd VimResized * wincmd =
 
 """ Making VIM look nice: Visual Settings
+syntax on
 set splitbelow
 set relativenumber
 set conceallevel=1
 set laststatus=2
-highlight link notesDoneItem Conceal
-highlight link notesInlineCode Special
-" Settings for vim notes
-highlight link notesDoneItem Conceal
-highlight link notesInlineCode Special
-colorscheme onehalflight
-syntax on
+set cursorline
+set t_Co=256
+colorscheme current
+" if exists('+termguicolors')
+"   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"   set termguicolors
+" endif
 
 """ Plugin Configurations
 " ALE Vim settings, a syntanx linter
@@ -73,6 +75,7 @@ let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
 let g:ack_autoclose = 1
 " Any empty ack search will search for the work the cursor is on
 let g:ack_use_cword_for_empty_search = 1
+let g:lightline = { 'colorscheme': 'onehalfdark' }
 
 
 """ Keymaps

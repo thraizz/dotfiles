@@ -1,12 +1,4 @@
-[submodule "i3-gaps-next-git"] 
-    path = aur/i3-gaps-next-git
-    url = https://aur.archlinux.org/i3-gaps-next-git.git
-[submodule "picom-git"] 
-    path = aur/picom-git
-    url = https://aur.archlinux.org/picom-git.git
-[submodule "polybar"] 
-    path = aur/polybar
-    url = https://aur.archlinux.org/polybar.git
-[submodule "ranger-git"] 
-    path = aur/ranger-git
-    url = https://aur.archlinux.org/ranger-git.git
+[submodule "icons"]
+	path = icons
+	url = https://github.com/thraizz/Reversal-blue-icons
+	shallow = true

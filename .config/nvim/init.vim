@@ -1,6 +1,6 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
-source ~/.vimrc
+source ~/.vim/vimrc.vim
 
 " Colors {{{
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -27,8 +27,6 @@ set showcmd                  " show command in bottom bar
 set wildmenu                 " visual autocomplete for command menu
 set showmatch                " highlight matching brace
 set laststatus=2             " window will always have a status line
-set nobackup
-set noswapfile
 " }}} UI Config
 " Search {{{
 set incsearch       " search as characters are entered

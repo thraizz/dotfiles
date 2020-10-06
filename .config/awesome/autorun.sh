@@ -23,3 +23,6 @@ picom &>/dev/null & disown;
 
 # Restore pywal settings
 feh --bg-fill $HOME/Wallpapers/current.png
+
+# Mpris Proxy
+mpris-proxy &>/dev/null & disown;
