@@ -7,11 +7,9 @@ $HOME/.screenlayout/default.sh
 # Start xscreensaver
 xscreensaver & disown;
 
-
 # Set keyboard and mouse preferences
-xmodmap $HOME/.Xmodmap
 setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
-xinput --set-prop "2.4G Mouse" 299 -0.8
+xmodmap $HOME/.Xmodmap
 
 # Start audio applications
 pa-applet &>/dev/null & disown;
@@ -23,9 +21,8 @@ nm-applet &>/dev/null & disown;
 picom &>/dev/null & disown;
 
 # Restore pywal settings
-wal -R
+#wal -R
+feh --bg-fill $HOME/Wallpapers/current.png
 
 # Launch polybar
 $HOME/.config/polybar/launch.sh
-
-

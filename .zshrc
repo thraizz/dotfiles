@@ -1,8 +1,7 @@
 # ~/.zshrc
-
+export TERM="xterm-256color"
 export ZSH="$HOME/.oh-my-zsh"
-cat ~/.cache/wal/sequences
-export PATH=/usr/bin:/bin:/usr/local/bin:~/go/bin:/home/arons/.gem/ruby/2.7.0/bin:${PATH}
+export PATH=/usr/bin:/bin:/usr/local/bin:~/go/bin:${PATH}
 
 #source $ZSH/.zsh_themes
 ZSH_THEME="refined"
