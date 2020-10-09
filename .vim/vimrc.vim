@@ -30,6 +30,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'vimlab/split-term.vim'
 Plugin 'mileszs/ack.vim'
+Plugin 'jeetsukumaran/vim-indentwise'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -50,7 +51,12 @@ set conceallevel=1
 set laststatus=2
 set cursorline
 set t_Co=256
-colorscheme current
+if (strftime("%H") >= 6 && strftime("%H") <= 19)
+  colorscheme onehalflight
+else
+  colorscheme onehalfdark
+endif
+
 " if exists('+termguicolors')
 "   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 "   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -60,8 +66,8 @@ colorscheme current
 """ Plugin Configurations
 " ALE Vim settings, a syntanx linter
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
-let g:ale_linters = {'javascript': ['eslint'], 'vue': ['eslint'], 'python': ['flake8', 'pylint']}
-let g:ale_fixers = {'javascript': ['eslint'], 'vue': ['eslint'], 'python': ['autopep8', 'yapf']}
+let g:ale_linters = {'javascript': ['eslint'], 'vue': ['eslint'], 'python': ['flake8']}
+let g:ale_fixers = {'javascript': ['eslint'], 'vue': ['eslint'], 'python': ['autopep8']}
 let g:ale_fix_on_save = 1
 " CtrlP Settings
 let g:ctrlp_user_command = 'fd --type f --hidden --follow --exclude .git'
