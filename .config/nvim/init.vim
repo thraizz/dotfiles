@@ -38,7 +38,7 @@ set smartcase       " ignore case if search pattern is lower case
 set foldenable
 set foldlevelstart=10  " default folding level when buffer is opened
 set foldnestmax=10     " maximum nested fold
-set foldmethod=syntax  " fold based on indentation
+set foldmethod=manual  " fold manual
 " }}} Folding
 nnoremap <leader>i mzgg=G`z<CR>
 
