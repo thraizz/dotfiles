@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+
+alias vim=nvim
+alias python="python3.8"
+alias note="vim $HOME/note.md"
+# Disable zsh correction for following commands
+alias git="nocorrect git"
+alias log="nocorrect log"
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias g='grep -rnw . -e $*'
+alias light='$HOME/scripts/light.sh'
+alias dark='$HOME/scripts/dark.sh'
