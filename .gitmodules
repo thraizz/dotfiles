@@ -1,4 +1,0 @@
-[submodule "icons"]
-	path = icons
-	url = https://github.com/thraizz/Reversal-blue-icons
-	shallow = true
