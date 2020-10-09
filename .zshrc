@@ -3,7 +3,6 @@ export TERM="xterm-256color"
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=/usr/bin:/bin:/usr/local/bin:~/go/bin:${PATH}
 
-#source $ZSH/.zsh_themes
 ZSH_THEME="refined"
 
 plugins=(
@@ -35,10 +34,6 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # Alias
 source $HOME/.config/aliases
-
-# This logs the current path for opening a new terminal in same path
-logpath() { pwd > /tmp/whereami }
-precmd_functions+=logpath
 
 xmodmap $HOME/.Xmodmap 2>/dev/null
 
