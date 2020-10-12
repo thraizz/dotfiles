@@ -51,7 +51,7 @@ set conceallevel=1
 set laststatus=2
 set cursorline
 set t_Co=256
-if (strftime("%H") >= 6 && strftime("%H") <= 19)
+if (strftime("%H") >= 6 && strftime("%H") < 18)
   colorscheme onehalflight
 else
   colorscheme onehalfdark
