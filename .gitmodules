@@ -1,0 +1,15 @@
+[submodule "/home/dubai/aur/firefox"]
+	path = /home/dubai/aur/firefox
+	url = https://aur.archlinux.org/firefox-beta-bin.git
+[submodule "/home/dubai/aur/i3-gaps-next-git"]
+	path = /home/dubai/aur/i3-gaps-next-git
+	url = https://aur.archlinux.org/i3-gaps-next-git.git
+[submodule "/home/dubai/aur/rofi"]
+	path = /home/dubai/aur/rofi
+	url = https://aur.archlinux.org/rofi-git.git
+[submodule "/home/dubai/aur/polybar"]
+	path = /home/dubai/aur/polybar
+	url = https://aur.archlinux.org/polybar.git
+[submodule "/home/dubai/aur/vscodium-bin"]
+	path = /home/dubai/aur/vscodium-bin
+	url = https://aur.archlinux.org/vscodium-bin.git
