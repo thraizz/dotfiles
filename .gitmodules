@@ -1,54 +1,54 @@
-[submodule "/home/dubai/aur/firefox"]
-	path = /home/dubai/aur/firefox
+[submodule "firefox"]
+	path = aur/firefox
 	url = https://aur.archlinux.org/firefox-beta-bin.git
-[submodule "/home/dubai/aur/i3-gaps-next-git"]
-	path = /home/dubai/aur/i3-gaps-next-git
+[submodule "i3-gaps-next-git"]
+	path = aur/i3-gaps-next-git
 	url = https://aur.archlinux.org/i3-gaps-next-git.git
-[submodule "/home/dubai/aur/rofi"]
-	path = /home/dubai/aur/rofi
+[submodule "rofi"]
+	path = aur/rofi
 	url = https://aur.archlinux.org/rofi-git.git
-[submodule "/home/dubai/aur/polybar"]
-	path = /home/dubai/aur/polybar
+[submodule "polybar"]
+	path = aur/polybar
 	url = https://aur.archlinux.org/polybar.git
-[submodule "/home/dubai/aur/vscodium-bin"]
-	path = /home/dubai/aur/vscodium-bin
+[submodule "vscodium-bin"]
+	path = aur/vscodium-bin
 	url = https://aur.archlinux.org/vscodium-bin.git
-[submodule "/home/dubai/aur/docker-compose"]
-	path = /home/dubai/aur/docker-compose
+[submodule "docker-compose"]
+	path = aur/docker-compose
 	url = https://aur.archlinux.org/docker-compose.git
-[submodule "/home/dubai/aur/docker-git"]
-	path = /home/dubai/aur/docker-git
+[submodule "docker-git"]
+	path = aur/docker-git
 	url = https://aur.archlinux.org/docker-git.git
-[submodule "/home/dubai/aur/lightdm-webkit2-greeter"]
-	path = /home/dubai/aur/lightdm-webkit2-greeter
+[submodule "lightdm-webkit2-greeter"]
+	path = aur/lightdm-webkit2-greeter
 	url = https://aur.archlinux.org/lightdm-webkit2-greeter.git
-[submodule "/home/dubai/aur/lutris"]
-	path = /home/dubai/aur/lutris
+[submodule "lutris"]
+	path = aur/lutris
 	url = https://aur.archlinux.org/lutris.git
-[submodule "/home/dubai/aur/mongodb-bin"]
-	path = /home/dubai/aur/mongodb-bin
+[submodule "mongodb-bin"]
+	path = aur/mongodb-bin
 	url = https://aur.archlinux.org/mongodb-bin.git
-[submodule "/home/dubai/aur/notion-app"]
-	path = /home/dubai/aur/notion-app
+[submodule "notion-app"]
+	path = aur/notion-app
 	url = https://aur.archlinux.org/notion-app.git
-[submodule "/home/dubai/aur/obs-studio-git"]
-	path = /home/dubai/aur/obs-studio-git
+[submodule "obs-studio-git"]
+	path = aur/obs-studio-git
 	url = https://aur.archlinux.org/obs-studio-git.git
-[submodule "/home/dubai/aur/picom-git"]
-	path = /home/dubai/aur/picom-git
+[submodule "picom-git"]
+	path = aur/picom-git
 	url = https://aur.archlinux.org/picom-git.git
-[submodule "/home/dubai/aur/peek"]
-	path = /home/dubai/aur/peek
+[submodule "peek"]
+	path = aur/peek
 	url = https://aur.archlinux.org/peek.git
-[submodule "/home/dubai/aur/ranger-git"]
-	path = /home/dubai/aur/ranger-git
+[submodule "ranger-git"]
+	path = aur/ranger-git
 	url = https://aur.archlinux.org/ranger-git.git
-[submodule "/home/dubai/aur/spotify"]
-	path = /home/dubai/aur/spotify
+[submodule "spotify"]
+	path = aur/spotify
 	url = https://aur.archlinux.org/spotify.git
-[submodule "/home/dubai/aur/thunderbird-beta-bin"]
-	path = /home/dubai/aur/thunderbird-beta-bin
+[submodule "thunderbird-beta-bin"]
+	path = aur/thunderbird-beta-bin
 	url = https://aur.archlinux.org/thunderbird-beta-bin.git
-[submodule "/home/dubai/aur/tmux-git"]
-	path = /home/dubai/aur/tmux-git
+[submodule "tmux-git"]
+	path = aur/tmux-git
 	url = https://aur.archlinux.org/tmux-git.git
