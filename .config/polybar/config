@@ -52,11 +52,7 @@ module-margin-left = 2
 module-margin-right = 2
 
 modules-left = mpd
-<<<<<<< HEAD
-modules-right = pacmd eth temperature date
-=======
 modules-right = output eth temperature date
->>>>>>> d0cf206
 
 tray-position = right
 tray-padding = 2
@@ -104,13 +100,8 @@ cursor-scroll = ns-resize
 
 [bar/main-i3]
 inherit = bar/main
-<<<<<<< HEAD
-monitor = ${env:MONITOR:DP-4}
-modules-left = mpd pacmd 
-=======
 monitor = ${env:MONITOR:DP-0}
 modules-left = mpd output 
->>>>>>> d0cf206
 modules-center = i3
 modules-right = weather eth date
 wm-restack = i3
@@ -404,17 +395,10 @@ label-empty-background = ${colors.background}
 label-empty-padding = 3
 
 
-<<<<<<< HEAD
-[module/pacmd]
-type = custom/script
-exec = $HOME/scripts/get_current_output.sh
-click-left = $HOME/scripts/switch_current_output.sh
-=======
 [module/output]
 type = custom/script
 exec = $HOME/scripts/get_current_output.sh
-click-left = zsh -c $HOME/scripts/switch_current_output.sh
->>>>>>> d0cf206
+click-left = bash -c $HOME/scripts/switch_current_output.sh
 format-underline = ${colors.background}
 label-foreground = ${colors.foreground}
 label-padding = 3

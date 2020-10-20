@@ -58,11 +58,7 @@ bindsym $mod+Shift+q kill
 
 # start rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun -width 500 -show-icons
-<<<<<<< HEAD
-bindsym $alt+Tab exec --no-startup-id skippy-xd-runner --activate-window-picker
-=======
 bindsym $alt+Tab exec --no-startup-id rofi -show window -mode window -window-thumbnail -theme icontheme
->>>>>>> d0cf206
 
 # move to / show scratchpad
 bindsym $mod+Shift+c move scratchpad
