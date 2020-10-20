@@ -11,3 +11,4 @@ snap
 .npm
 .local
 .config/VSCodium
+.dotfiles/
