@@ -18,6 +18,7 @@ source $HOME/.token
 
 #ENABLE_CORRECTION="true"
 DISALE_CORRECTION="true"
+ZSH_TMUX_AUTOSTART=true
 export HISTCONTROL=ignoredups:ignorespace
 export HISTFILESIZE=999999
 export HISTSIZE=99999

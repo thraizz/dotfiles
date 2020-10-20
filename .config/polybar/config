@@ -28,6 +28,7 @@ alert = #bd2c40
 
 [bar/main]
 width = 100%
+foreground = ${colors.foreground}
 background = ${colors.background}
 height = 34
 fixed-center = true
@@ -51,11 +52,16 @@ module-margin-left = 2
 module-margin-right = 2
 
 modules-left = mpd
+<<<<<<< HEAD
 modules-right = pacmd eth temperature date
+=======
+modules-right = output eth temperature date
+>>>>>>> d0cf206
 
 tray-position = right
 tray-padding = 2
-tray-color = ${colors.foreground-alt}
+tray-color = ${colors.foreground}
+tray-background = ${colors.background}
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -90,7 +96,6 @@ modules-right = weather
 
 tray-position = right
 tray-padding = 2
-tray-color = ${colors.foreground}
 tray-background = ${colors.background}
 
 cursor-click = pointer
@@ -99,20 +104,24 @@ cursor-scroll = ns-resize
 
 [bar/main-i3]
 inherit = bar/main
+<<<<<<< HEAD
 monitor = ${env:MONITOR:DP-4}
 modules-left = mpd pacmd 
+=======
+monitor = ${env:MONITOR:DP-0}
+modules-left = mpd output 
+>>>>>>> d0cf206
 modules-center = i3
-modules-right = cpu eth date
+modules-right = weather eth date
 wm-restack = i3
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
 [bar/secondary-i3]
 inherit = bar/secondary
-monitor = ${env:MONITOR:DP-1}
-modules-left = live temperature
-modules-right = weather
+monitor = ${env:MONITOR2:DP-1}
 modules-center = i3
+modules-right = date
 wm-restack = i3
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -163,10 +172,10 @@ cursor-click = pointer
 
 [bar/laptop]
 inherit = bar/main
-monitor = ${env:MONITOR:eDP1}
+monitor = ${env:MONITOR1:eDP1}
 modules-left = mpd 
 modules-center = i3
-modules-right = battery1 battery2 cpu memory eth temperature date xbacklight
+modules-right = battery date xbacklight
 wm-restack = i3
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -223,7 +232,8 @@ label-focused-underline= ${colors.primary}
 label-focused-padding = 4
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %{F${colors.foreground-alt}%index:0:1%%{F-}
+label-unfocused = %index:0:1%
+label-unfocused-foreground = ${colors.foreground}
 label-unfocused-padding = 4
 
 ; visible = Active workspace on unfocused monitor
@@ -289,6 +299,7 @@ type = internal/xbacklight
 
 format = <label> <bar>
 label = BL
+label-foreground = ${colors.foreground}
 
 bar-width = 10
 bar-indicator = |
@@ -302,13 +313,16 @@ bar-empty-foreground = ${colors.foreground-alt}
 inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
+label-foreground = ${colors.foreground}
+format-foreground = ${colors.foreground}
+
 
 [module/cpu]
 type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-label = %percentage:2%%
+label = %percentage%
 label-foreground = ${colors.foreground-alt}
 
 [module/memory]
@@ -325,6 +339,7 @@ interface = net1
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
+format-connected-foreground = ${colors.foreground}
 label-connected = %essid%
 
 format-disconnected =
@@ -389,10 +404,17 @@ label-empty-background = ${colors.background}
 label-empty-padding = 3
 
 
+<<<<<<< HEAD
 [module/pacmd]
 type = custom/script
 exec = $HOME/scripts/get_current_output.sh
 click-left = $HOME/scripts/switch_current_output.sh
+=======
+[module/output]
+type = custom/script
+exec = $HOME/scripts/get_current_output.sh
+click-left = zsh -c $HOME/scripts/switch_current_output.sh
+>>>>>>> d0cf206
 format-underline = ${colors.background}
 label-foreground = ${colors.foreground}
 label-padding = 3
