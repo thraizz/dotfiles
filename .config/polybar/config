@@ -52,7 +52,7 @@ module-margin-left = 2
 module-margin-right = 2
 
 modules-left = mpd
-modules-right = pacmd eth temperature date
+modules-right = output eth temperature date
 
 tray-position = right
 tray-padding = 2
@@ -100,10 +100,10 @@ cursor-scroll = ns-resize
 
 [bar/main-i3]
 inherit = bar/main
-monitor = ${env:MONITOR:DP-4}
-modules-left = mpd pacmd 
+monitor = ${env:MONITOR:DP-0}
+modules-left = mpd output 
 modules-center = i3
-modules-right = cpu eth date
+modules-right = weather eth date
 wm-restack = i3
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -111,9 +111,8 @@ scroll-down = i3wm-wsprev
 [bar/secondary-i3]
 inherit = bar/secondary
 monitor = ${env:MONITOR2:DP-1}
-modules-left = live temperature
-modules-right = weather
 modules-center = i3
+modules-right = date
 wm-restack = i3
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -314,7 +313,7 @@ type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-label = %percentage:2%%
+label = %percentage%
 label-foreground = ${colors.foreground-alt}
 
 [module/memory]
@@ -396,10 +395,10 @@ label-empty-background = ${colors.background}
 label-empty-padding = 3
 
 
-[module/pacmd]
+[module/output]
 type = custom/script
 exec = $HOME/scripts/get_current_output.sh
-click-left = $HOME/scripts/switch_current_output.sh
+click-left = zsh -c $HOME/scripts/switch_current_output.sh
 format-underline = ${colors.background}
 label-foreground = ${colors.foreground}
 label-padding = 3

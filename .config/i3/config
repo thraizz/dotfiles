@@ -6,7 +6,7 @@ set_from_resource $hl           i3wm.color4 #ff0000
 set_from_resource $hl-alt       i3wm.color5 #ff0000
 
 set_from_resource $MONITOR1     i3wm.monitor1   DP-4
-set_from_resource $MONITOR2     i3wm.monitor2   DP-2
+set_from_resource $MONITOR2     i3wm.monitor2   DP-1
 
 
 # class                 border  backgr.   text      indicator child_border
@@ -58,7 +58,7 @@ bindsym $mod+Shift+q kill
 
 # start rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun -width 500 -show-icons
-bindsym $alt+Tab exec --no-startup-id skippy-xd-runner --activate-window-picker
+bindsym $alt+Tab exec --no-startup-id rofi -show window -mode window -window-thumbnail -theme icontheme
 
 # move to / show scratchpad
 bindsym $mod+Shift+c move scratchpad

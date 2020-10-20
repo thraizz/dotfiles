@@ -1,8 +1,10 @@
 set nocompatible              " be iMproved, required
+set hidden
 set noshowmode
 set shell=/bin/zsh
 filetype off                  " required
 
+let g:ale_disable_lsp = 1
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -31,6 +33,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'vimlab/split-term.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'jeetsukumaran/vim-indentwise'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -45,16 +48,18 @@ autocmd VimResized * wincmd =
 
 """ Making VIM look nice: Visual Settings
 syntax on
+set shortmess+=c
 set splitbelow
 set relativenumber
 set conceallevel=1
 set laststatus=2
 set cursorline
+set cmdheight=2
 set t_Co=256
 if (strftime("%H") >= 6 && strftime("%H") < 18)
   colorscheme onehalflight
 else
-  colorscheme onehalfdark
+ colorscheme onehalfdark
 endif
 
 " if exists('+termguicolors')
@@ -69,19 +74,34 @@ let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 let g:ale_linters = {'javascript': ['eslint'], 'vue': ['eslint'], 'python': ['flake8']}
 let g:ale_fixers = {'javascript': ['eslint'], 'vue': ['eslint'], 'python': ['autopep8']}
 let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
 " CtrlP Settings
 let g:ctrlp_user_command = 'fd --type f --hidden --follow --exclude .git'
 " Emmet Settings
 let g:user_emmet_leader_key=','
 let g:indentLine_conceallevel=1
-let g:indentLine_char='|'
+let g:indentLine_char='·'
 let g:indentLine_enabled=1
 let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
 " Auto close the Quickfix list after pressing '<enter>' on a list item
 let g:ack_autoclose = 1
 " Any empty ack search will search for the work the cursor is on
 let g:ack_use_cword_for_empty_search = 1
-let g:lightline = { 'colorscheme': 'onehalfdark' }
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
+let g:lightline = {
+      \ 'colorscheme': 'onehalfdark',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
+      \ }
 
 
 """ Keymaps
@@ -93,6 +113,7 @@ map <C-f> :CtrlPBuffer<CR>
 map <C-n> :NERDTreeToggle<CR>
 map <silent> <F8> /^\(<\{7\}\\|>\{7\}\\|=\{7\}\\|\|\{7\}\)\( \\|$\)<cr>
 " In insert or command mode, move normally by using Ctrl
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
