@@ -18,6 +18,7 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'itchyny/lightline.vim'
 Plug 'mattn/emmet-vim'
 Plug 'vimlab/split-term.vim'
+Plug 'kassio/neoterm'
 Plug 'mileszs/ack.vim'
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
