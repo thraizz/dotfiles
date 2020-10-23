@@ -1,42 +1,27 @@
-set nocompatible              " be iMproved, required
-set hidden
-set noshowmode
-set shell=/bin/zsh
-filetype off                  " required
-
 let g:ale_disable_lsp = 1
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'thraizz/vim-notes'
-Plugin 'xolox/vim-misc'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Yggdroot/indentLine'
-Plugin 'ciaranm/detectindent'
-Plugin 'dense-analysis/ale'
-Plugin 'posva/vim-vue'
-Plugin 'junegunn/goyo.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'fadein/vim-FIGlet'
-Plugin 'sonph/onehalf', {'rtp': 'vim/'}
-Plugin 'itchyny/lightline.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'vimlab/split-term.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'jeetsukumaran/vim-indentwise'
-Plugin 'neoclide/coc.nvim', {'branch': 'release'}
-
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#begin('~/.vim/bundle')
+Plug 'thraizz/vim-notes'
+Plug 'xolox/vim-misc'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'Yggdroot/indentLine'
+Plug 'ciaranm/detectindent'
+Plug 'dense-analysis/ale'
+Plug 'posva/vim-vue'
+Plug 'junegunn/goyo.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'fadein/vim-FIGlet'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'itchyny/lightline.vim'
+Plug 'mattn/emmet-vim'
+Plug 'vimlab/split-term.vim'
+Plug 'mileszs/ack.vim'
+Plug 'jeetsukumaran/vim-indentwise'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call plug#end()
 
 
 """ Behaviour on Events: Autocommands
@@ -56,7 +41,7 @@ set laststatus=2
 set cursorline
 set cmdheight=2
 set t_Co=256
-if (strftime("%H") >= 6 && strftime("%H") < 18)
+if (strftime("%H") >= 6 && strftime("%H") < 18 && !exists('$DARK')) 
   colorscheme onehalflight
 else
   colorscheme onehalfdark
@@ -65,7 +50,7 @@ endif
 " if exists('+termguicolors')
 "   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 "   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"   set termguicolors
+set termguicolors
 " endif
 
 """ Plugin Configurations
