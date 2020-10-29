@@ -1,0 +1,6 @@
+{
+  "diagnostic.displayByAle": true,
+  "eslint.codeAction.showDocumentation": {
+    "enable": false
+  }
+}
