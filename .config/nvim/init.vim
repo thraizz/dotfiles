@@ -21,13 +21,15 @@ Plug 'jeetsukumaran/vim-indentwise'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
- 
+" Set vim configuration path
+let $VIM_CONFIG=fnamemodify(expand("$MYVIMRC"), ":p:h")
+
 " Load plugin configuration
-so ~/.config/nvim/plugins.vim
+so $VIM_CONFIG/plugins.vim
 " Load keymaps
-so ~/.config/nvim/keymaps.vim
+so $VIM_CONFIG/keymaps.vim
 " Load autocommands
-so ~/.config/nvim/autocommands.vim
+so $VIM_CONFIG/autocommands.vim
 
 set tabstop=4             " number of visual spaces per TAB
 set softtabstop=2         " number of spaces in tab when editing

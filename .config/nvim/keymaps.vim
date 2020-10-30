@@ -21,8 +21,8 @@ cnoremap <C-l> <Right>
 " Bind Ack to Ctrl+S
 nnoremap <C-s> :Ack!<Space>
 " Navigate ALE quickfix list with ease
-nnoremap <silent> [q :cprevious<CR>
-nnoremap <silent> ]q :cnext<CR>
+nnoremap <silent> [q :ALEPrevious<CR>
+nnoremap <silent> ]q :ALENext<CR>
 nnoremap <S-Tab> <<
 noremap <F9> :!%:p<ENTER>
 " Don't jump to first match
