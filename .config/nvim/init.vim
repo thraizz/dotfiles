@@ -38,15 +38,15 @@ set copyindent            " copy indent from the previous line
 set clipboard+=unnamedplus
 
 
-if (strftime("%H") >= 6 && strftime("%H") < 17 && !exists('$DARK')) 
-  colorscheme onehalflight
-  set background light
-else
-  colorscheme gruvbox
-endif
-syntax enable
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
+if (strftime("%H") >= 6 && strftime("%H") < 17 && !exists('$DARK')) 
+  set background=light
+else
+  set background=dark
+endif
+colorscheme gruvbox
+syntax enable
 set splitbelow
 set relativenumber
 set laststatus=2
