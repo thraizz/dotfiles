@@ -19,6 +19,7 @@ Plug 'kassio/neoterm'
 Plug 'mileszs/ack.vim'
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'roman/golden-ratio'
 call plug#end()
 
 " Set vim configuration path
