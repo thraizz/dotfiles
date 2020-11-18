@@ -52,3 +52,6 @@
 [submodule "tmux-git"]
 	path = aur/tmux-git
 	url = https://aur.archlinux.org/tmux-git.git
+[submodule "nvim"]
+	path = nvim
+	url = /home/dubai/.config/nvim
