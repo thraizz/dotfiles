@@ -1,22 +1,25 @@
 set_from_resource $bg           i3wm.color0 #ff0000
 set_from_resource $bg-alt       i3wm.color1 #ff0000
-set_from_resource $fg           i3wm.color2 #ff0000
-set_from_resource $fg-alt       i3wm.color3 #ff0000
+set_from_resource $fg           i3wm.color3 #ff0000
+set_from_resource $fg-alt       i3wm.color2 #ff0000
 set_from_resource $hl           i3wm.color4 #ff0000
 set_from_resource $hl-alt       i3wm.color5 #ff0000
+set_from_resource $purple       i3wm.color5 #ff0000
 
 set_from_resource $MONITOR1     i3wm.monitor1   DP-4
 set_from_resource $MONITOR2     i3wm.monitor2   DP-1
 
 
-# class                 border  backgr.   text      indicator child_border
-client.focused          $fg     $fg-alt   $bg       $bg       $bg
-client.focused_inactive $fg     $bg       $fg-alt   $bg       $bg
-client.unfocused        $fg     $bg       $fg-alt   $bg       $bg
-client.urgent           $fg     $hl       $fg       $bg       $bg
-client.placeholder      $fg     $bg       $fg       $bg       $bg
+# class                 border      backgr.   text      indicator child_border
+client.focused          $fg-alt     $fg-alt   $bg       $bg       $bg
+client.focused_inactive $fg-alt     $bg       $purple   $bg
+client.unfocused        $fg-alt     $bg       $fg-alt   $bg       $bg
+client.urgent           $fg-alt     $hl       $fg       $bg       $bg
+client.placeholder      $fg-alt     $bg       $fg       $bg       $bg
 
 client.background       $bg
+
+font pango:JetBrainsMono Nerd Font 9
 
 # set stuff
 focus_wrapping no
@@ -32,9 +35,9 @@ set $outer 16
 # i3 hotkeys
 set $mod Mod4
 set $alt Mod1
-set $up h
-set $down j
-set $left k
+set $left h
+set $up j
+set $down k
 set $right l
 
 floating_modifier Mod4
@@ -44,7 +47,7 @@ floating_modifier Mod4
 exec --no-startup-id $HOME/scripts/startup.sh
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-exec --no-startup-id python $HOME/git/i3-alternating-layout/alternating_layouts.py
+exec --no-startup-id python $HOME/scripts/i3-alternating-layout.py
 
 # start a terminal
 bindsym $mod+Return exec kitty
@@ -57,12 +60,16 @@ bindsym $mod+r exec dex $HOME/.local/share/applications/ranger.desktop
 bindsym $mod+Shift+q kill
 
 # start rofi
-bindsym $mod+d exec --no-startup-id rofi -show drun -width 500 -show-icons
+bindsym $mod+d exec --no-startup-id $HOME/scripts/start_rofi.sh
 bindsym $alt+Tab exec --no-startup-id rofi -show window -mode window -window-thumbnail -theme icontheme
 
 # move to / show scratchpad
 bindsym $mod+Shift+c move scratchpad
 bindsym $mod+c scratchpad show
+
+# screenshot
+bindsym Print exec teiler --quick image area
+bindsym $mod+Print exec teiler --quickcopy area
 
 
 # focus windows
@@ -95,7 +102,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s sticky toggle
 bindsym $mod+Shift+s exec --no-startup-id $HOME/scripts/layout_manager.sh
-bindsym $mod+w layout tabbed
+bindsym $mod+w focus parent; layout tabbed
 bindsym $mod+e layout toggle split
 
 
@@ -109,12 +116,12 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # move across outputs
-bindsym $mod+Shift+F1 move output $MONITOR1
-bindsym $mod+Shift+F2 move output $MONITOR2
+bindsym $mod+Shift+F1 move output $MONITOR2
+bindsym $mod+Shift+F2 move output $MONITOR1
 
 # Focus outputs
-bindsym $mod+F1 focus output $MONITOR1
-bindsym $mod+F2 focus output $MONITOR2
+bindsym $mod+F1 focus output $MONITOR2
+bindsym $mod+F2 focus output $MONITOR1
 
 # focus workspaces
 bindsym $mod+1 exec ~/scripts/i3-workspace.sh goto 1
@@ -174,9 +181,9 @@ gaps outer all set 10 \
 exec polybar-msg cmd show
 
 # Swap windows
-bindsym $mod+m mark --replace swapme
-bindsym $mod+Tab swap container with mark swapme  
-bindsym $mod+Shift+Tab '[con_mark="swapme"]' focus
+bindsym $mod+m mark --replace a
+bindsym $mod+Tab swap container with mark a
+bindsym $mod+Shift+Tab [con_mark="a"] focus
 
 # Restart i3
 bindsym $mod+Shift+r restart
@@ -186,7 +193,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Assign workspaces
 assign [class="Mailspring"] 5b
 assign [class="Steam"] 8b
-assign [class=Spotify] 9b
+assign [class="Spotify"] 4b
 assign [class=Telegram|Discord] 5a
 
 # Render settings, gaps etc.
@@ -199,8 +206,8 @@ for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo
 ### settings for i3-gaps: ###
 #############################
 
-gaps inner 8
-gaps outer 10
+gaps inner 30
+gaps outer 60
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
