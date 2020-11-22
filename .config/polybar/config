@@ -100,7 +100,7 @@ cursor-scroll = ns-resize
 
 [bar/main-i3]
 inherit = bar/main
-monitor = DP-4
+monitor = ${env:MONITOR}
 modules-left = mpd output 
 modules-center = i3
 modules-right = weather eth date
@@ -110,7 +110,7 @@ scroll-down = i3wm-wsprev
 
 [bar/secondary-i3]
 inherit = bar/secondary
-monitor = DP-1
+monitor = ${env:MONITOR}
 modules-center = i3
 modules-right = date
 wm-restack = i3
@@ -163,7 +163,7 @@ cursor-click = pointer
 
 [bar/laptop]
 inherit = bar/main
-monitor = ${env:MONITOR1:eDP1}
+monitor = ${env:MONITOR}
 modules-left = mpd 
 modules-center = i3
 modules-right = battery date xbacklight
