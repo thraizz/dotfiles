@@ -388,9 +388,8 @@ Copy the file to $HOME/.config/openbox/ instead. -->
       </action>
     </keybind>
     <keybind key="C-A-Tab">
-        <action name="ShowMenu">
-    <menu>client-list-combined-menu</menu>
-
+      <action name="ShowMenu">
+        <menu>client-list-combined-menu</menu>
         <finalactions>
           <action name="Focus"/>
           <action name="Raise"/>
@@ -885,16 +884,7 @@ Copy the file to $HOME/.config/openbox/ instead. -->
 
 				# end of the example
 			-->
-				<application name="Toolkit"
-				class="firefox"
-				groupname="firefox"
-				groupclass="Firefox"
-				role="PictureInPicture"
-				title="Bild-im-Bild"
-				type="utility">
-				<decor>no</decor>
-
-				<shade>no</shade>
+    <application name="Toolkit" class="firefox" groupname="firefox" groupclass="Firefox" role="PictureInPicture" title="Bild-im-Bild" type="utility"><decor>no</decor><shade>no</shade>
 				# make the window shaded when it appears, or not
 
 				<position force="no">

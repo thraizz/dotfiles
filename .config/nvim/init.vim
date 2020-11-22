@@ -23,7 +23,8 @@ Plug 'roman/golden-ratio'
 call plug#end()
 
 " Set vim configuration path
-let $VIM_CONFIG=fnamemodify(expand("$MYVIMRC"), ":p:h")
+" let $VIM_CONFIG=fnamemodify(expand("$MYVIMRC"), ":p:h")
+let $VIM_CONFIG='/home/dubai/.config/nvim/'
 
 " Load plugin configuration
 so $VIM_CONFIG/plugins.vim
@@ -39,6 +40,7 @@ set expandtab             " tabs are space
 set autoindent
 set copyindent            " copy indent from the previous line
 set clipboard+=unnamedplus
+set mouse=nv
 
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1

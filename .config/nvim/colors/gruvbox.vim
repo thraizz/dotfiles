@@ -169,11 +169,12 @@ let s:none = ['NONE', 'NONE']
 " determine relative colors
 if s:is_dark
   let s:bg0  = s:gb.dark0
-  if g:gruvbox_contrast_dark == 'soft'
-    let s:bg0  = s:gb.dark0_soft
-  elseif g:gruvbox_contrast_dark == 'hard'
-    let s:bg0  = s:gb.dark0_hard
-  endif
+  "if g:gruvbox_contrast_dark == 'soft'
+  "  let s:bg0  = s:gb.dark0_soft
+  "elseif g:gruvbox_contrast_dark == 'hard'
+  "  let s:bg0  = s:gb.dark0_hard
+  let s:bg0  = s:gb.dark0_hard
+  "endif
 
   let s:bg1  = s:gb.dark1
   let s:bg2  = s:gb.dark2
