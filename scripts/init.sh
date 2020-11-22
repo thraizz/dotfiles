@@ -26,5 +26,5 @@ curl https://cht.sh/:cht.sh > ~/bin/cht.sh
 chmod +x ~/bin/cht.sh
 
 # Get dual monitors, if present
-echo "*.monitor1: $(xrandr --listmonitors | grep -G '0:' | grep -Po '(?<= .)[a-zA-Z0-9]*$')" >> .Xresources
-echo "*.monitor2: $(xrandr --listmonitors | grep -G '1:' | grep -Po '(?<= .)[a-zA-Z0-9]*$')" >> .Xresources
+echo "*.monitor1: $(xrandr --query | grep -P ' connected primary' | cut -d' ' -f1)" >> .Xresources
+echo "*.monitor2: $(xrandr --query | grep -P ' connected 1' | cut -d' ' -f1)" >> .Xresources
