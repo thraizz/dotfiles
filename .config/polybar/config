@@ -100,7 +100,7 @@ cursor-scroll = ns-resize
 
 [bar/main-i3]
 inherit = bar/main
-monitor = ${env:MONITOR:DP-0}
+monitor = DP-4
 modules-left = mpd output 
 modules-center = i3
 modules-right = weather eth date
@@ -110,7 +110,7 @@ scroll-down = i3wm-wsprev
 
 [bar/secondary-i3]
 inherit = bar/secondary
-monitor = ${env:MONITOR2:DP-1}
+monitor = DP-1
 modules-center = i3
 modules-right = date
 wm-restack = i3
@@ -216,7 +216,7 @@ label-mode-foreground = ${colors.primary}
 label-mode-background = ${colors.secondary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused = %index:0:1%
 label-focused-foreground = ${colors.primary}
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
