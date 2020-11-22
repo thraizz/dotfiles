@@ -21,7 +21,7 @@ nm-applet &>/dev/null & disown;
 picom &>/dev/null & disown;
 
 # Restore pywal settings
-#wal -R
+wal -R
 feh --bg-fill $HOME/Wallpapers/current.png
 
 # Launch polybar

@@ -6,8 +6,9 @@ set_from_resource $hl           i3wm.color4 #ff0000
 set_from_resource $hl-alt       i3wm.color5 #ff0000
 set_from_resource $purple       i3wm.color5 #ff0000
 
-set_from_resource $MONITOR1     i3wm.monitor1   DP-4
-set_from_resource $MONITOR2     i3wm.monitor2   DP-1
+set_from_resource $MONITOR1     i3wm.monitor1   eDP-1
+set_from_resource $MONITOR2     i3wm.monitor2   DP-4
+set_from_resource $MONITOR3     i3wm.monitor3   DP-1
 
 
 # class                 border      backgr.   text      indicator child_border
@@ -116,12 +117,14 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # move across outputs
-bindsym $mod+Shift+F1 move output $MONITOR2
-bindsym $mod+Shift+F2 move output $MONITOR1
+bindsym $mod+Shift+F1 move output $MONITOR1
+bindsym $mod+Shift+F2 move output $MONITOR2
+bindsym $mod+Shift+F3 move output $MONITOR3
 
 # Focus outputs
-bindsym $mod+F1 focus output $MONITOR2
-bindsym $mod+F2 focus output $MONITOR1
+bindsym $mod+F1 focus output $MONITOR1
+bindsym $mod+F2 focus output $MONITOR2
+bindsym $mod+F3 focus output $MONITOR3
 
 # focus workspaces
 bindsym $mod+1 exec ~/scripts/i3-workspace.sh goto 1
