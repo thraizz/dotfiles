@@ -47,6 +47,8 @@ _build
 #/games
 .local/share/Steam
 .steam
+/Games
+/games
 /Steam
 .minecraft
 .PlayOnLinux
