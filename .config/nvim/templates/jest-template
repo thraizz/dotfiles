@@ -1,7 +1,0 @@
-import { TEST_FUNCTION } from 'TEST_FILE'
-
-describe('TEST_FILE', function () {
-  it('TEST_DESCRIPTION', function () {
-    expect(TEST_FUNCTION).isEqual(TEST_RESULT)
-  })
-})
