@@ -23,7 +23,6 @@ npm
 openssh
 pavucontrol
 playerctl
-polybar
 prettier
 pulseaudio
 pulseaudio-alsa
@@ -34,7 +33,6 @@ qpdfview
 rclone
 rsync
 scrot
-steam
 sudo
 thunar
 tree
@@ -48,6 +46,7 @@ ttf-roboto
 ttf-roboto-mono
 vim
 xclip
+xrandr
 xscreensaver
 yarn
 zip
