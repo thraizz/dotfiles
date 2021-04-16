@@ -2,18 +2,19 @@ set_from_resource $bg           i3wm.color0 #ff0000
 set_from_resource $bg-alt       i3wm.color1 #ff0000
 set_from_resource $fg           i3wm.color3 #ff0000
 set_from_resource $fg-alt       i3wm.color2 #ff0000
-set_from_resource $hl           i3wm.color4 #ff0000
+set_from_resource $hl           i3wm.color4 #ff33ff
 set_from_resource $hl-alt       i3wm.color5 #ff0000
-set_from_resource $purple       i3wm.color5 #ff0000
+set $purple #c678dd
 
 set_from_resource $MONITOR1     i3wm.monitor1   eDP-1
 set_from_resource $MONITOR2     i3wm.monitor2   DP-4
 set_from_resource $MONITOR3     i3wm.monitor3   DP-1
 
 
+
 # class                 border      backgr.   text      indicator child_border
-client.focused          $fg-alt     $fg-alt   $bg       $bg       $bg
-client.focused_inactive $fg-alt     $bg       $purple   $bg
+client.focused          $fg-alt     $fg-alt   $bg       $bg       $purple
+client.focused_inactive $fg-alt     $bg       $purple   $bg       $bg
 client.unfocused        $fg-alt     $bg       $fg-alt   $bg       $bg
 client.urgent           $fg-alt     $hl       $fg       $bg       $bg
 client.placeholder      $fg-alt     $bg       $fg       $bg       $bg
@@ -62,7 +63,7 @@ bindsym $mod+Shift+q kill
 
 # start rofi
 bindsym $mod+d exec --no-startup-id $HOME/scripts/start_rofi.sh
-bindsym $alt+Tab exec --no-startup-id rofi -show window -mode window -window-thumbnail -theme icontheme
+bindsym $alt+Tab exec --no-startup-id rofi -show window -mode window -window-thumbnail -theme /home/dubai/.config/rofi/themes/slate.rasi
 
 # move to / show scratchpad
 bindsym $mod+Shift+c move scratchpad
@@ -102,8 +103,8 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s sticky toggle
-bindsym $mod+Shift+s exec --no-startup-id $HOME/scripts/layout_manager.sh
-bindsym $mod+w focus parent; layout tabbed
+bindsym $mod+Shift+s exec --no-startup-id teiler --quickcopy area
+bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 
@@ -116,61 +117,40 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# move across outputs
-bindsym $mod+Shift+F1 move output $MONITOR1
-bindsym $mod+Shift+F2 move output $MONITOR2
-bindsym $mod+Shift+F3 move output $MONITOR3
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
-# Focus outputs
-bindsym $mod+F1 focus output $MONITOR1
-bindsym $mod+F2 focus output $MONITOR2
-bindsym $mod+F3 focus output $MONITOR3
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
 
-# focus workspaces
-bindsym $mod+1 exec ~/scripts/i3-workspace.sh goto 1
-bindsym $mod+2 exec ~/scripts/i3-workspace.sh goto 2
-bindsym $mod+3 exec ~/scripts/i3-workspace.sh goto 3
-bindsym $mod+4 exec ~/scripts/i3-workspace.sh goto 4
-bindsym $mod+5 exec ~/scripts/i3-workspace.sh goto 5
-bindsym $mod+6 exec ~/scripts/i3-workspace.sh goto 6
-bindsym $mod+7 exec ~/scripts/i3-workspace.sh goto 7
-bindsym $mod+8 exec ~/scripts/i3-workspace.sh goto 8
-bindsym $mod+9 exec ~/scripts/i3-workspace.sh goto 9
-bindsym $mod+0 exec ~/scripts/i3-workspace.sh goto 0
-
-# send containers to workspaces
-bindsym $mod+Shift+1 exec ~/scripts/i3-workspace.sh move 1
-bindsym $mod+Shift+2 exec ~/scripts/i3-workspace.sh move 2
-bindsym $mod+Shift+3 exec ~/scripts/i3-workspace.sh move 3
-bindsym $mod+Shift+4 exec ~/scripts/i3-workspace.sh move 4
-bindsym $mod+Shift+5 exec ~/scripts/i3-workspace.sh move 5
-bindsym $mod+Shift+6 exec ~/scripts/i3-workspace.sh move 6
-bindsym $mod+Shift+7 exec ~/scripts/i3-workspace.sh move 7
-bindsym $mod+Shift+8 exec ~/scripts/i3-workspace.sh move 8
-bindsym $mod+Shift+9 exec ~/scripts/i3-workspace.sh move 9
-bindsym $mod+Shift+0 exec ~/scripts/i3-workspace.sh move 0
-
-workspace 1a output $MONITOR2
-workspace 2a output $MONITOR2
-workspace 3a output $MONITOR2
-workspace 4a output $MONITOR2
-workspace 5a output $MONITOR2
-workspace 6a output $MONITOR2
-workspace 7a output $MONITOR2
-workspace 8a output $MONITOR2
-workspace 9a output $MONITOR2
-workspace 0a output $MONITOR2
-
-workspace 1b output $MONITOR1
-workspace 2b output $MONITOR1
-workspace 3b output $MONITOR1
-workspace 4b output $MONITOR1
-workspace 5b output $MONITOR1
-workspace 6b output $MONITOR1
-workspace 7b output $MONITOR1
-workspace 8b output $MONITOR1
-workspace 9b output $MONITOR1
-workspace 0b output $MONITOR1
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
 
 
 # Focus mode: Hide polybar and remove gaps
@@ -193,11 +173,6 @@ bindsym $mod+Shift+r restart
 # Exit i3
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# Assign workspaces
-assign [class="Mailspring"] 5b
-assign [class="Steam"] 8b
-assign [class="Spotify"] 4b
-assign [class=Telegram|Discord] 5a
 
 # Render settings, gaps etc.
 for_window [class=albert] border none; position set 400 400
@@ -210,7 +185,7 @@ for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo
 #############################
 
 gaps inner 30
-gaps outer 60
+gaps outer 30
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
