@@ -55,6 +55,3 @@
 [submodule "nvim"]
 	path = .config/nvim
 	url = git@github.com:thraizz/dotfiles-nvim.git
-[submodule "/home/arons/.config/nvim"]
-	path = /home/arons/.config/nvim
-	url = ../dotfiles-nvim.git
