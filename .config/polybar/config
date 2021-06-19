@@ -21,9 +21,9 @@ background = ${xrdb:background}
 background-alt = #00ffffff
 background-alt2 = ${xrdb:color3}
 foreground = ${xrdb:foreground}
-foreground-alt = ${xrdb:color0}
+foreground-alt = #536879
 primary = ${xrdb:color5}
-secondary = ${xrdb:color2}
+secondary = #536879
 alert = #bd2c40
 
 [bar/main]
@@ -52,7 +52,7 @@ module-margin-left = 2
 module-margin-right = 2
 
 modules-left = mpd
-modules-right = output eth temperature date
+modules-right = eth temperature date pulseaudio-control
 
 tray-position = right
 tray-padding = 2
@@ -101,9 +101,9 @@ cursor-scroll = ns-resize
 [bar/main-i3]
 inherit = bar/main
 monitor = ${env:MONITOR}
-modules-left = mpd output 
+modules-left = mpd
 modules-center = i3
-modules-right = weather eth date
+modules-right = pulseaudio-control weather eth date
 wm-restack = i3
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -415,5 +415,23 @@ type = custom/script
 exec = ~/go/bin/toggl current | cut -d $'\n' -f5
 label-foreground = ${colors.foreground}
 format-underline = ${xrdb:color5}
+
+[module/pulseaudio-control]
+type = custom/script
+tail = true
+format-underline = ${colors.cyan}
+label-padding = 2
+label-foreground = ${colors.foreground}
+
+# Icons mixed from Font Awesome 5 and Material Icons
+# You can copy-paste your options for each possible action, which is more
+# trouble-free but repetitive, or apply only the relevant ones (for example
+# --sink-blacklist is only needed for next-sink).
+exec = pulseaudio-control --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.pci-0000_2f_00.4.analog-stereo:  Speakers" --sink-nickname "WH-1000XM3:  Kopfhörer" listen
+click-left = pulseaudio-control togmute
+click-right = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink
+click-middle = exec pavucontrol &
+scroll-up = pulseaudio-control --volume-max 130 up
+scroll-down = pulseaudio-control --volume-max 130 down
 
 ; vim:ft=dosini
