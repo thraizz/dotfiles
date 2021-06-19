@@ -55,3 +55,6 @@
 [submodule "nvim"]
 	path = nvim
 	url = /home/dubai/.config/nvim
+[submodule "/home/arons/.config/nvim"]
+	path = /home/arons/.config/nvim
+	url = ../dotfiles-nvim.git
