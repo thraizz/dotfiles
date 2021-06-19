@@ -1,7 +1,9 @@
 # ~/.zshrc
 export TERM="xterm-256color"
 export ZSH="$HOME/.oh-my-zsh"
-export PATH=/usr/bin:/bin:/usr/local/bin:~/go/bin:${PATH}
+export PATH=/usr/bin:/bin:$HOME/.local/bin:/usr/local/bin:~/go/bin:${PATH}
+export DARK=true
+export LANG=en_US.utf8
 
 ZSH_THEME="refined"
 
@@ -34,9 +36,3 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 # Alias
 source $HOME/.config/aliases
 
-xmodmap $HOME/.Xmodmap 2>/dev/null
-
-autoload -Uz compinit
-compinit
-# Completion for kitty
-kitty + complete setup zsh | source /dev/stdin
