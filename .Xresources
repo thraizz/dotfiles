@@ -9,6 +9,7 @@ URxvt.font:       xft:Hack: size=10: antialiasing=true
 Xft*antialias:    true
 Xft*hinting:      full
 
+Xcursor.size: 12
 
 ! Set terminal color scheme
 ! TODO: SET DIFFERENT BRIGHT/DARK VARIANTS
@@ -69,36 +70,3 @@ URxvt*borderColor:  [100]#282c34
 ! Black color that will not be affected by bold highlighting.
 *.color66: #282c34
 *color66:  #282c34
-
-! Xclock colors.
-XClock*foreground: #dcdfe4
-XClock*background: #282c34
-XClock*majorColor:  rgba:dc/df/e4/ff
-XClock*minorColor:  rgba:dc/df/e4/ff
-XClock*hourColor:   rgba:dc/df/e4/ff
-XClock*minuteColor: rgba:dc/df/e4/ff
-XClock*secondColor: rgba:dc/df/e4/ff
-
-! Set depth to make transparency work.
-URxvt*depth: 32
-
-! Enable normal copy/paste
-URxvt.iso14755:        false
-URxvt.iso14755_52:     false
-URxvt.keysym.C-M-c:    builtin-string:
-URxvt.keysym.C-M-v:    builtin-string:
-
-! Bind Ctrl-Shift-c & Ctrl-Shift-v to copy and paste
-URxvt.keysym.C-S-0x43: eval:selection_to_clipboard
-URxvt.keysym.C-S-0x56: eval:paste_clipboard
-
-urxvt*depth:32
-
-! urxvt*background:rgba:0250/1100/1b00/dddd
-! urxvt*background:rgba:1500/1800/2600/fa00
-urxvt*background:rgba:1e00/2100/3700/fa00
-
-! urxvt*background: #17273e
-*.monitor1: eDP1
-*.monitor2: DP2-2
-*.monitor3: DP2-1
