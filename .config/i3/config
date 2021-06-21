@@ -64,7 +64,7 @@ bindsym $mod+Shift+q kill
 
 # start rofi
 bindsym $mod+d exec --no-startup-id $HOME/scripts/start_rofi.sh
-bindsym $alt+Tab exec --no-startup-id rofi -show window -mode window -window-thumbnail -theme /home/dubai/.config/rofi/themes/slate.rasi
+bindsym $alt+Tab exec --no-startup-id rofi -show window -mode window -window-thumbnail -theme $HOME/.config/rofi/themes/slate.rasi
 
 # move to / show scratchpad
 bindsym $mod+Shift+c move scratchpad
