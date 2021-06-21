@@ -50,13 +50,14 @@ exec --no-startup-id $HOME/scripts/startup.sh
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id python $HOME/scripts/i3-alternating-layout.py
+exec --no-startup-id 1password
+
+# Focus 1password
+bindsym Control+period exec --no-startup-id $HOME/scripts/show_1password.sh
 
 # start a terminal
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+Return exec kitty -e tmux attach
-
-# start ranger
-bindsym $mod+r exec dex $HOME/.local/share/applications/ranger.desktop
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -179,6 +180,8 @@ for_window [class=albert] border none; position set 400 400
 
 for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
+
+for_window [class=1Password] move scratchpad
 
 ############################
 ### settings for i3-gaps: ###
