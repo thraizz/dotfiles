@@ -11,3 +11,4 @@ alias dark='$HOME/scripts/dark.sh'
 alias speakers='$HOME/scripts/speakers.sh'
 alias headset='$HOME/scripts/headset.sh'
 alias tmux="tmux -2"
+alias cht.sh="curl cht.sh/$*"
