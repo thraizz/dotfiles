@@ -166,7 +166,7 @@ inherit = bar/main
 monitor = ${env:MONITOR}
 modules-left = mpd 
 modules-center = i3
-modules-right = battery date xbacklight
+modules-right = battery1 battery2 date xbacklight
 wm-restack = i3
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -415,6 +415,26 @@ type = custom/script
 exec = ~/go/bin/toggl current | cut -d $'\n' -f5
 label-foreground = ${colors.foreground}
 format-underline = ${xrdb:color5}
+[module/battery1]
+type = internal/battery
+
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = AC
+[module/battery2]
+type = internal/battery
+
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT1
+adapter = AC
 
 [module/pulseaudio-control]
 type = custom/script
