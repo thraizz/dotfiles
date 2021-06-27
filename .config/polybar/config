@@ -18,10 +18,10 @@
 
 [colors]
 background = ${xrdb:background}
-background-alt = #00ffffff
+background-alt =${xrdb:background} 
 background-alt2 = ${xrdb:color3}
 foreground = ${xrdb:foreground}
-foreground-alt = #536879
+foreground-alt = ${xrdb:color4}
 primary = ${xrdb:color5}
 secondary = #536879
 alert = #bd2c40

@@ -17,6 +17,7 @@ secondary=$(xrandr --query | grep -P '^(?!e).* connected (?!primary)' | cut -d' 
 # Launch bars
 if [[ $primary ]]; then
   MONITOR=$primary polybar main-i3 >>/tmp/polybar.log 2>&1 & disown;
+fi
 if [[ $secondary ]]; then
   MONITOR=$secondary polybar secondary-i3 >>/tmp/polybar.log 2>&1 & disown;
 fi
