@@ -71,7 +71,7 @@ bindsym $mod+Shift+c move scratchpad
 bindsym $mod+c scratchpad show
 
 # screenshot
-bindsym Print exec teiler --quick image area
+bindsym Print exec teiler --quickcopy fullscreen
 bindsym $mod+Print exec teiler --quickcopy area
 
 
