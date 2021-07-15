@@ -38,8 +38,8 @@ set $outer 16
 set $mod Mod4
 set $alt Mod1
 set $left h
-set $up j
-set $down k
+set $up k
+set $down j
 set $right l
 
 floating_modifier Mod4
