@@ -21,13 +21,14 @@ set_brightness() {
 if [ "$1" = period-changed ]; then
 	case $3 in
 		night)
-		    wal --theme base16-gruvbox-hard -l
+		    cp ~/.config/kitty/light.conf ~/.config/kitty/current.conf
 			set_brightness $brightness_night 
 			;;
 		transition)
 			set_brightness $brightness_transition
 			;;
 		daytime)
+		    cp ~/.config/kitty/dark.conf ~/.config/kitty/current.conf
 			set_brightness $brightness_day
 			;;
 	esac
