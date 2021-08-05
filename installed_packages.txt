@@ -46,8 +46,10 @@ ttf-roboto
 ttf-roboto-mono
 vim
 xclip
-xrandr
+xorg-xmodmap
+xorg-xrandr
 xscreensaver
 yarn
 zip
 zsh
+redshift
