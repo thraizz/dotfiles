@@ -55,6 +55,3 @@
 [submodule "nvim"]
 	path = .config/nvim
 	url = git@github.com:thraizz/dotfiles-nvim.git
-[submodule "aur/dockd"]
-	path = aur/dockd
-	url = ./aur/1password
