@@ -1,7 +1,7 @@
 # ~/.zshrc
 export TERM="xterm-256color"
 export ZSH="$HOME/.oh-my-zsh"
-export PATH=/usr/bin:/bin:$HOME/.local/bin:/usr/local/bin:~/go/bin:${PATH}
+export PATH=/usr/bin:/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:~/go/bin:${PATH}
 export DARK=true
 export LANG=en_US.utf8
 
