@@ -5,12 +5,12 @@
 ##  | |__| |_| | |__| |_| |  _ < ___) | 
 ##   \____\___/|_____\___/|_| \_\____/                                        
 [colors]
-background = ${xrdb:background}
-background-alt =${xrdb:background} 
-background-alt2 = ${xrdb:color3}
+background = #282828
+background-alt = #303030 
+background-alt2 = ${xrdb:color0}
 foreground = ${xrdb:foreground}
 foreground-alt = ${xrdb:color4}
-primary = ${xrdb:color5}
+primary = ${xrdb:color3}
 secondary = #536879
 alert = #bd2c40
 
@@ -48,7 +48,7 @@ padding-right = 6
 module-margin-left = 2
 module-margin-right = 2
 
-modules-left = mpd
+modules-left = launcher mpd
 modules-right = eth temperature date pulseaudio-control
 
 tray-position = right
@@ -69,7 +69,7 @@ separator = %{F#33ffffff} | %{F-}
 enable-ipc = true
 
 font-0 = hack:style=regular,bold:size=10
-font-1 = fontawesome:pixelsize=14;0
+font-1 = fontawesome:pixelsize=16;0
 font-2 = noto sans symbols2:style=regular:pixelsize=12;1
 
 line-size = 3
@@ -84,7 +84,7 @@ padding-right = 6
 module-margin-left = 2
 module-margin-right = 2
 
-modules-left = temperature
+modules-left = launcher temperature
 modules-right = weather
 
 tray-position = right
@@ -98,7 +98,7 @@ cursor-scroll = ns-resize
 [bar/main-i3]
 inherit = bar/main
 monitor = ${env:MONITOR}
-modules-left = mpd
+modules-left = launcher mpd
 modules-center = i3
 modules-right = pulseaudio-control weather eth date
 wm-restack = i3
@@ -108,6 +108,7 @@ scroll-down = i3wm-wsprev
 [bar/secondary-i3]
 inherit = bar/secondary
 monitor = ${env:MONITOR}
+modules-left = launcher temperature
 modules-center = i3
 modules-right = date
 wm-restack = i3
@@ -198,6 +199,7 @@ mount-0 = /
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
+
 
 [module/i3]
 type = internal/i3
@@ -450,5 +452,17 @@ click-right = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.
 click-middle = exec pavucontrol &
 scroll-up = pulseaudio-control --volume-max 130 up
 scroll-down = pulseaudio-control --volume-max 130 down
+
+
+[module/launcher]
+type = custom/text
+format-padding = 6
+padding-left = 6
+padding-right = 6
+content = "⚡ LAUNCH ⚡"
+content-foreground = ${color.foreground}
+click-left = rofi -no-config -no-lazy-grab -show drun -modi drun -show-icons -theme ~/.config/rofi/themes/appsmenu.rasi; exec killall dunst
+content-font = 1;
+
 
 ; vim:ft=dosini
