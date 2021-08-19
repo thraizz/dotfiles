@@ -1,5 +1,5 @@
 # ~/.zshrc
-export TERM="xterm-256color"
+export TERM="xterm-kitty"
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=/usr/bin:/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:~/go/bin:${PATH}
 export DARK=true
