@@ -3,7 +3,7 @@
 action="$1"
 workspace="$2"
 
-focused_workspace=$(i3-msg -t get_workspaces | jq --raw-output '.[]|select(.focused).name')
+focused_workspace=$(i3-msg -t get_workspaces | jq --raw-output '.[]|select(.focused).output')
 echo $focused_workspace
 active_postfix=${focused_workspace: -1}
 
