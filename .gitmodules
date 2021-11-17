@@ -55,3 +55,18 @@
 [submodule "nvim"]
 	path = .config/nvim
 	url = git@github.com:thraizz/dotfiles-nvim.git
+[submodule "aur/teams"]
+	path = aur/teams
+	url = https://aur.archlinux.org/teams.git
+[submodule "aur/neovim-git"]
+	path = aur/neovim-git
+	url = https://aur.archlinux.org/neovim-git.git
+[submodule "aur/telegram-desktop-bin"]
+	path = aur/telegram-desktop-bin
+	url = https://aur.archlinux.org/telegram-desktop-bin.git
+[submodule "/home/aron/aur/1password"]
+	path = /home/aron/aur/1password
+	url = https://aur.archlinux.org/1password.git
+[submodule "/home/aron/aur/visual-studio-code-bin"]
+	path = /home/aron/aur/visual-studio-code-bin
+	url = https://aur.archlinux.org/visual-studio-code-bin.git
