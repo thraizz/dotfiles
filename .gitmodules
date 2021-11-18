@@ -73,3 +73,12 @@
 [submodule "/home/aron/aur/vimix-gtk-themes-git"]
 	path = /home/aron/aur/vimix-gtk-themes-git
 	url = https://aur.archlinux.org/vimix-gtk-themes-git.git
+[submodule "aur/teiler-git"]
+	path = aur/teiler-git
+	url = https://aur.archlinux.org/teiler-git.git
+[submodule "/home/aron/aur/xininfo-git"]
+	path = /home/aron/aur/xininfo-git
+	url = https://aur.archlinux.org/xininfo-git.git
+[submodule "/home/aron/aur/nerd-fonts-hack"]
+	path = /home/aron/aur/nerd-fonts-hack
+	url = https://aur.archlinux.org/nerd-fonts-hack.git
