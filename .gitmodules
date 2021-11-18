@@ -82,3 +82,6 @@
 [submodule "/home/aron/aur/nerd-fonts-hack"]
 	path = /home/aron/aur/nerd-fonts-hack
 	url = https://aur.archlinux.org/nerd-fonts-hack.git
+[submodule "/home/aron/aur/mimeo"]
+	path = /home/aron/aur/mimeo
+	url = https://aur.archlinux.org/mimeo.git
