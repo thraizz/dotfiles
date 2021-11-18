@@ -1,0 +1,47 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 37194bb..9b22342 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -1,11 +1,11 @@
+ # Maintainer: Ingo Bürk <admin at airblader dot de>
+ 
+ pkgname=i3-gaps-next-git
+-pkgver=4.20.1.r26.g094f56aa
++pkgver=4.19.1.r231.g28da796d
+ pkgrel=1
+ pkgdesc='A fork of i3wm tiling window manager (development branch) with more features, including gaps'
+ arch=('i686' 'x86_64')
+-url='https://github.com/Airblader/i3/tree/gaps-next'
++url='https://github.com/thraizz/i3-tiling-drag/tree/main'
+ license=('BSD')
+ provides=('i3-wm')
+ conflicts=('i3-wm' 'i3-git' 'i3-gaps')
+@@ -17,16 +17,16 @@ makedepends=('git' 'bison' 'flex' 'asciidoc' 'xmlto' 'meson')
+ optdepends=('i3lock: For locking your screen.'
+             'i3status: To display system information with a bar.')
+ options=('docs')
+-source=('git://github.com/Airblader/i3#branch=gaps-next')
++source=('git://github.com/thraizz/i3-tiling-drag#branch=main')
+ sha1sums=('SKIP')
+ 
+ pkgver() {
+-  cd "${srcdir}/i3"
++  cd "${srcdir}/i3-tiling-drag"
+   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+ }
+ 
+ build() {
+-  cd "i3"
++  cd "i3-tiling-drag"
+   arch-meson \
+     -Ddocs=true \
+     -Dmans=true \
+@@ -35,7 +35,7 @@ build() {
+ }
+ 
+ package() {
+-  cd "i3"
++  cd "i3-tiling-drag"
+   DESTDIR="$pkgdir" meson install -C ../build
+ 
+   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE
