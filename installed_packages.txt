@@ -1,8 +1,13 @@
 arandr
+chromium
+docker
+docker-compose
 dunst
 fd
 feh
 figlet
+firefox
+flameshot
 flex
 fzf
 gimp
@@ -31,6 +36,8 @@ python-pip
 python-pipenv
 qpdfview
 rclone
+redshift
+rofi
 rsync
 scrot
 sudo
@@ -49,7 +56,7 @@ xclip
 xorg-xmodmap
 xorg-xrandr
 xscreensaver
+xsel
 yarn
 zip
 zsh
-redshift
