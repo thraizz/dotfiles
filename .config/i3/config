@@ -166,6 +166,7 @@ bindsym $mod+Shift+r restart
 # Exit i3
 bindsym $mod+Shift+e exec thunar
 # Render settings, gaps etc.
+for_window [all] title_window_icon on
 for_window [class=albert] border none; position set 400 400
 
 for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
