@@ -5,6 +5,9 @@ set_from_resource $fg-alt       i3wm.color2 #ff0000
 set_from_resource $hl           i3wm.color3 #ff33ff
 set_from_resource $hl-alt       i3wm.color5 #ff0000
 set $purple #c678dd
+set $white #fafafa
+set $fg-alt #2a2a2a
+set $bg #151515
 
 set_from_resource $MONITOR1     i3wm.monitor1   eDP-1
 set_from_resource $MONITOR2     i3wm.monitor2   DP-4
@@ -13,12 +16,12 @@ set_from_resource $MONITOR3     i3wm.monitor3   DP-1
 
 
 # class                 border      backgr.   text      indicator child_border
-client.focused          $purple     $fg-alt   $bg       $bg       $purple
-client.focused_inactive $fg-alt     $bg       $purple   $bg       $bg
+client.focused          $white      $bg       $white    $white   $white
+client.focused_inactive $fg-alt     $bg       $white    $bg       $bg
 client.unfocused        $fg-alt     $bg       $fg-alt   $bg       $bg
 client.urgent           $fg-alt     $hl       $fg       $bg       $bg
 client.placeholder      $fg-alt     $bg       $fg       $bg       $bg
-client.background       $b
+client.background       $fg-alt     $bg       $fg       $bg       $bg
 
 font pango:JetBrainsMono Nerd Font 14
 
@@ -50,7 +53,8 @@ exec --no-startup-id python $HOME/scripts/i3-alternating-layout.py
 exec --no-startup-id 1password
 
 # Focus 1password
-bindsym Control+period exec --no-startup-id $HOME/scripts/show_1password.sh
+bindsym Control+Shift+period exec --no-startup-id $HOME/scripts/show_1password
+bindsym Control+period exec --no-startup-id 1password --quick-access
 
 # Start flameshot
 bindsym $mod+Shift+s exec --no-startup-id flameshot gui
@@ -169,8 +173,8 @@ bindsym $mod+Shift+e exec thunar
 for_window [all] title_window_icon on
 for_window [class=albert] border none; position set 400 400
 
-for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
-for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
+for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol|Gnome-calculator] floating enable
+for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr|1password] focus
 
 for_window [class=1Password] move scratchpad
 
@@ -178,8 +182,8 @@ for_window [class=1Password] move scratchpad
 ### settings for i3-gaps: ###
 #############################
 
-gaps inner 5
-gaps outer 5
+gaps inner 15
+gaps outer 15
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -218,8 +222,3 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-bar {
-        position top
-        font pango:DejaVu Sans Mono 16
-        status_command i3status
-}
