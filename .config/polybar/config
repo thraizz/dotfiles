@@ -77,8 +77,8 @@ cursor-scroll = ns-resize
 inherit = bar/style
 monitor = ${env:MONITOR}
 modules-left = i3
-modules-center = mpd 
-modules-right = battery1 battery2 date xbacklight
+modules-right = battery1 battery2 xbacklight cpu memory temperature eth weather date
+tray-position = right
 wm-restack = i3
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -230,7 +230,7 @@ ramp-signal-foreground = ${colors.foreground}
 
 [module/eth]
 type = internal/network
-interface = enp0s31f6
+interface = enp0s20f0u5u2
 interval = 3.0
 
 label-connected = E: %local_ip% (%linkspeed%)
