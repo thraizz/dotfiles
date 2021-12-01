@@ -60,3 +60,4 @@ xsel
 yarn
 zip
 zsh
+source-highlight
