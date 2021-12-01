@@ -85,3 +85,6 @@
 [submodule "/home/aron/aur/mimeo"]
 	path = /home/aron/aur/mimeo
 	url = https://aur.archlinux.org/mimeo.git
+[submodule "/home/aron/aur/obsidian"]
+	path = /home/aron/aur/obsidian
+	url = https://aur.archlinux.org/obsidian.git
