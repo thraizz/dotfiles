@@ -7,11 +7,10 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 laptop=$(xrandr --query | grep -P '^e.* connected' | cut -d' ' -f1)
 if [[ $laptop ]]; then
-  primaryLaptop=$(xrandr --query | grep -P '^e.* connected primary' | cut -d' ' -f1)
-  if [[ $primaryLaptop ]]; then
-    MONITOR=$primaryLaptop polybar laptop >>/tmp/polybar.log 2>&1 & disown;
+  if [[ $(echo $laptop | grep "primary") ]]; then
+    MONITOR=$laptop polybar laptop >>/tmp/polybar.log 2>&1 & disown;
   else
-    MONITOR=$primaryLaptop polybar secondary-i3 >>/tmp/polybar.log 2>&1 & disown;
+    MONITOR=$laptop polybar secondary-i3 >>/tmp/polybar.log 2>&1 & disown;
   fi
 fi
 
