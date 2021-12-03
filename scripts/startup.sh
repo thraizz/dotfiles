@@ -1,6 +1,12 @@
+#!/bin/bash
+
+# Script that gets executed at the start of the WM
+
+eval $(gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK
+
 pkill picom
-pkill nm-applet
-pkill pa-applet & sleep 1;
+pkill xscreensaver
 # Set screenlayout
 $HOME/.screenlayout/default.sh
 
@@ -10,24 +16,17 @@ xscreensaver & disown;
 # Set keyboard and mouse preferences
 setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
 xmodmap $HOME/.Xmodmap
-pulseaudio --start
+xbindkeys --poll-rc -f $HOME/.xbindkeysrc
 
-# Start audio applications
-pa-applet &>/dev/null & disown;
 
-# Start networkmanager applett
-nm-applet &>/dev/null & disown;
+# Start flameshot
+flameshot &>/dev/null & disown;
 
-# Start picom composition manager
-picom &>/dev/null & disown;
-
-# Start alternating layout
-python3 $HOME/scripts/i3-alternating-layout.py & disown;
+# Start picom
+picom & disown;
 
 # Restore pywal settings
-feh --bg-fill $HOME/Wallpapers/current.png
+feh --bg-fill $HOME/assets/wallpaper.jpg
 
-# Launch polybar
-$HOME/.config/polybar/launch.sh
-
-xbindkeys --poll-rc -f $HOME/.xbindkeysrc
+# Start polybar
+$HOME/scripts/start_polybar.sh;

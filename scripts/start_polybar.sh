@@ -5,9 +5,10 @@ killall -q polybar
 # Wait until the processes have been shut down
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-laptop=$(xrandr --query | grep -P '^e.* connected' | cut -d' ' -f1)
-if [[ $laptop ]]; then
-  if [[ $(echo $laptop | grep "primary") ]]; then
+laptopDisplay=$(xrandr --query | grep -P '^e.* connected')
+if [[ $laptopDisplay ]]; then
+  laptop=$(echo $laptopDisplay | cut -d' ' -f1)
+  if [[ $(echo $laptopDisplay | grep "primary") ]]; then
     MONITOR=$laptop polybar laptop >>/tmp/polybar.log 2>&1 & disown;
   else
     MONITOR=$laptop polybar secondary-i3 >>/tmp/polybar.log 2>&1 & disown;
