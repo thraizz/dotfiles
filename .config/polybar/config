@@ -1,5 +1,5 @@
 [colors]
-background = #000
+background = ${xrdb:background}
 background-alt = #303030 
 background-alt2 = ${xrdb:color0}
 foreground = ${xrdb:foreground}
@@ -245,7 +245,7 @@ label-disconnected-foreground = ${colors.foreground}
 type = internal/date
 interval = 5
 
-date = "%d.%m,"
+date = "%A, %d.%m,"
 
 time = %H:%M
 time-alt = %H:%M:%S
@@ -325,7 +325,7 @@ thermal-zone = 0
 ; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
 ; to find path to desired file
 ; Default reverts to thermal zone setting
-hwmon-path = /sys/devices/platform/thinkpad_hwmon/hwmon/hwmon5/temp1_input
+; hwmon-path = /sys/devices/platform/thinkpad_hwmon/hwmon/hwmon4/temp1_input
 
 ; Base temperature for where to start the ramp (in degrees celsius)
 ; Default: 0

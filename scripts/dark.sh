@@ -1,7 +1,12 @@
 #!/bin/bash
 DISPLAY=":0.0"
 export DARK='True'
-cp $HOME/.config/kitty/dark.conf $HOME/.config/kitty/current.conf
-cp $HOME/.config/nvim/colors/gruvbox.vim $HOME/.vim/colors/current.vim
-feh --bg-fill --randomize /home/dubai/Wallpapers/Dark/*
+rm -r ~/assets/Wallpapers/current
+ln -fs ~/assets/Wallpapers/Dark ~/assets/Wallpapers/current
+feh --bg-fill --randomize ~/assets/Wallpapers/current
 wal --theme base16-gruvbox-hard
+rm ~/.config/kitty/current.conf
+ln -s ~/.cache/wal/colors-kitty.conf ~/.config/kitty/current.conf
+kitty @ --to=unix:/tmp/kitty set-colors -a "~/.config/kitty/current.conf"
+rm $HOME/.config/nvim/colors/current.vim
+ln -s $HOME/.config/nvim/colors/gruvbox.vim $HOME/.config/nvim/colors/current.vim
