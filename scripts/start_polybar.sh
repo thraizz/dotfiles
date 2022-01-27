@@ -7,24 +7,26 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 0.5; done
 
 # Get monitors
 query=$(xrandr --query)
-laptopDisplay=$(echo $query | grep -P '^e.* connected')
-primary=$(echo $query | grep -P '^(?!e).* connected primary' | cut -d' ' -f1)
-secondary=$(echo $query | grep -P '^(?!e).* connected (?!primary)' | cut -d' ' -f1)
+laptop=$(echo "$query" | grep -P '^e.* connected' | cut -d' ' -f1)
+laptopPrimary=$(echo "$query" | grep -P '^e.* connected primary' | cut -d' ' -f1)
+primary=$(echo "$query" | grep -P '^(?!e).* connected primary' | cut -d' ' -f1)
+secondary=$(echo "$query" | grep -P '^(?!e).* connected (?!primary)' | cut -d' ' -f1)
 
 # Launch bars
-if [[ $laptopDisplay ]]; then
-  laptop=$(echo $laptopDisplay | cut -d' ' -f1)
-  if [[ $(echo $laptopDisplay | grep "primary") ]]; then
+if [[ $laptop ]]; then
+  if [[ $(echo $laptopPrimary) ]]; then
     MONITOR=$laptop polybar laptop >>/tmp/polybar.log 2>&1 & disown;
   else
     MONITOR=$laptop polybar secondary-i3 >>/tmp/polybar.log 2>&1 & disown;
   fi
 fi
 if [[ $primary ]]; then
+  echo $primary
   MONITOR=$primary polybar main-i3 >>/tmp/polybar.log 2>&1 & disown;
 fi
 if [[ $secondary ]]; then
-  for monitor in $(echo $query | grep -P '^(?!e).* connected (?!primary)' | cut -d' ' -f1); do
+  echo $secondary
+  for monitor in $(echo "$query" | grep -P '^(?!e).* connected (?!primary)' | cut -d' ' -f1); do
     MONITOR=$monitor polybar secondary-i3 >>/tmp/polybar.log 2>&1 & disown;
   done
 fi
