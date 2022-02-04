@@ -10,7 +10,7 @@
     frame_width = 0
     sort = yes
     idle_threshold = 120
-    font = DejaVu Sans Mono:pixelsize 9.5
+    font = DejaVu Sans Mono:pixelsize 14
     line_height = 4
     allow_markup = yes
     markup = full
