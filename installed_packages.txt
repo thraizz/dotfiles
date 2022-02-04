@@ -27,6 +27,7 @@ nmap
 npm
 openssh
 pavucontrol
+peek
 playerctl
 prettier
 pulseaudio
@@ -40,6 +41,7 @@ redshift
 rofi
 rsync
 scrot
+source-highlight
 sudo
 thunar
 tree
@@ -60,4 +62,3 @@ xsel
 yarn
 zip
 zsh
-source-highlight
