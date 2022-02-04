@@ -1,23 +1,10 @@
 # ~/.zshrc
 export TERM="xterm-kitty"
 export ZSH="$HOME/.oh-my-zsh"
-export PATH=/usr/bin:/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:~/go/bin:${PATH}
-export DARK=true
 export LANG=en_US.utf8
-
-ZSH_THEME="refined"
-
-plugins=(
-  git
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-)
-
-source $HOME/.config/zsh_functions
-source $ZSH/oh-my-zsh.sh
-source $HOME/.token
-
-#ENABLE_CORRECTION="true"
+export PATH=/usr/bin:/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:~/go/bin:${PATH}
+#
+##ENABLE_CORRECTION="true"
 DISALE_CORRECTION="true"
 export HISTCONTROL=ignoredups:ignorespace
 export HISTFILESIZE=999999
@@ -33,6 +20,23 @@ export LESS=' -R '
 export EDITOR="vim"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
-# Alias
-source $HOME/.config/aliases
+# Android Studio stuff
+export ANDROID_SDK_ROOT=$HOME/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export STUDIO_PATH="/opt/android-studio/bin/studio.sh"
 
+
+ZSH_THEME="refined"
+
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
+source $HOME/.config/zsh_functions
+source $ZSH/oh-my-zsh.sh
+source $HOME/.token
+source $HOME/.config/aliases
