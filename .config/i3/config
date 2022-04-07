@@ -11,15 +11,17 @@ set_from_resource $MONITOR3     i3wm.monitor3   DP-1
 
 
 
-# class                 border      backgr.   text      indicator child_border
-client.focused          $fg         $bg       $fg       $fg       $fg
-client.focused_inactive $fg-alt     $bg       $white    $bg       $bg
-client.unfocused        $fg-alt     $bg       $fg-alt   $bg       $bg
-client.urgent           $fg-alt     $hl       $fg       $bg       $bg
-client.placeholder      $fg-alt     $bg       $fg       $bg       $bg
-client.background       $fg-alt     $bg       $fg       $bg       $bg
+# class                 border  backgr.   text          indicator    child_border
+client.focused          #ff0014 $bg       $fg-alt       $fg-alt      #ff0014
+client.focused_inactive $fg     $bg       $white        $bg          $bg
+client.unfocused        $fg     $bg       $fg           $bg          $bg
+client.urgent           $fg     $hl       $fg-alt       $bg          $bg
+client.placeholder      $fg     $bg       $fg-alt       $bg          $bg
+client.background       $fg     $bg       $fg-alt       $bg          $bg
 
-font pango:JetBrainsMono Nerd Font 14
+font pango:JetBrainsMono Nerd Font 10
+#font pango:DejaVu Sans Mono 10
+
 
 # set stuff
 focus_wrapping no
@@ -29,8 +31,6 @@ default_floating_border none
 hide_edge_borders none
 
 set $center move absolute position center
-set $inner 32
-set $outer 16
 
 # i3 hotkeys
 set $mod Mod4
@@ -58,9 +58,11 @@ bindsym $mod+Shift+s exec --no-startup-id flameshot gui
 # start a terminal
 bindsym $mod+Return exec kitty --single-instance --listen-on=unix:/tmp/kitty
 
+# start a vim instance
+bindsym $mod+Shift+v exec kitty $HOME/scripts/start_nvim.sh
+
 # kill focused window
 bindsym $mod+Shift+q kill
-
 # start rofi
 bindsym $mod+d exec --no-startup-id $HOME/scripts/start_rofi.sh
 bindsym $alt+Tab exec --no-startup-id rofi -show window -mode window -window-thumbnail -theme $HOME/.config/rofi/themes/slate.rasi
@@ -151,8 +153,8 @@ gaps inner all set 0 \
 gaps outer all set 0 \
 exec polybar-msg cmd hide 
 bindsym $mod+$alt+f \
-gaps inner all set 8 \
-gaps outer all set 10 \
+gaps inner all set 0 \
+gaps outer all set 0 \
 exec polybar-msg cmd show
 
 # Swap windows
@@ -168,7 +170,8 @@ bindsym $mod+Shift+e exec thunar
 for_window [all] title_window_icon on
 for_window [class=albert] border none; position set 400 400
 
-for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol|Gnome-calculator] floating enable
+for_window [title=output] floating disable
+for_window [class="Viewnior|.*Android Emulator.*|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol|Gnome-calculator"] floating enable
 #for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr|1password] focus
 
 for_window [class=1Password] move scratchpad
@@ -177,8 +180,8 @@ for_window [class=1Password] move scratchpad
 ### settings for i3-gaps: ###
 #############################
 
-gaps inner 15
-gaps outer 15
+gaps inner 0
+gaps outer 0
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
