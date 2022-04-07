@@ -21,11 +21,17 @@ export EDITOR="vim"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # Android Studio stuff
-export ANDROID_SDK_ROOT=$HOME/Android/sdk
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export STUDIO_PATH="/opt/android-studio/bin/studio.sh"
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+
+# NVM stuff
+export NVM_NO_USE=true
+export NVM_LAZY_LOAD=true
+export NVM_AUTO_USE=true
 
 
 ZSH_THEME="refined"
@@ -34,6 +40,7 @@ plugins=(
   git
   zsh-autosuggestions
   zsh-syntax-highlighting
+  zsh-nvm
 )
 
 source $HOME/.config/zsh_functions
