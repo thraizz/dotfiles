@@ -88,3 +88,12 @@
 [submodule "/home/aron/aur/obsidian"]
 	path = /home/aron/aur/obsidian
 	url = https://aur.archlinux.org/obsidian.git
+[submodule "aur/nnn-nerd/src/nnn-4.5/nnn-nerd"]
+	path = aur/nnn-nerd/src/nnn-4.5/nnn-nerd
+	url = /home/aron/aur/nnn-nerd
+[submodule "/home/aron/aur/nnn-nerd"]
+	path = /home/aron/aur/nnn-nerd
+	url = https://aur.archlinux.org/nnn-nerd.git
+[submodule "/home/aron/aur/flameshot-git"]
+	path = /home/aron/aur/flameshot-git
+	url = https://aur.archlinux.org/flameshot-git.git

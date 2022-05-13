@@ -1,4 +1,6 @@
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-surround'
 let mapleader = ','
 map <ESC> <ESC>:noh<CR>
 " Escape from insertmode with jj
@@ -19,6 +21,9 @@ map <leader>fs <Action>(GotoSymbol)
 map <leader>h <Action>(ShowIntentionActions)
 map <leader>ld <Action>(GotoDeclaration)
 map <leader>, <Action>(SurroundWithEmmet)
+nnoremap <leader>, <Action>(SurroundWithEmmet)
+map <C-n> <Action>(NextOccurence)
+map <C-p> <Action>(PreviousOccurence)
 
 set number relativenumber
 set clipboard=unnamed

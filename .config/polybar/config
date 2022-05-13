@@ -19,9 +19,9 @@ separator = %{F#33ffffff} | %{F-}
 foreground = ${colors.foreground}
 background = ${colors.background}
 
-font-0 = DejaVu Sans Mono:style=regular,bold:size=12
-font-1 = fontawesome:pixelsize=12;0
-font-2 = noto sans symbols2:style=regular:pixelsize=12;1
+font-0 = JetBrains Mono:style=regular,bold:size=10
+font-1 = fontawesome:pixelsize=10;0
+font-2 = noto sans symbols2:style=regular:pixelsize=10;1
 
 line-size = 4
 line-color = #f00

@@ -165,7 +165,7 @@ bindsym $mod+Shift+Tab [con_mark="a"] focus
 # Restart i3
 bindsym $mod+Shift+r restart
 # Exit i3
-bindsym $mod+Shift+e exec thunar
+bindsym $mod+Shift+e exec kitty nnn -nAde -T t
 # Render settings, gaps etc.
 for_window [all] title_window_icon on
 for_window [class=albert] border none; position set 400 400

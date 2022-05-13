@@ -2,7 +2,7 @@
 export TERM="xterm-kitty"
 export ZSH="$HOME/.oh-my-zsh"
 export LANG=en_US.utf8
-export PATH=/usr/bin:/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:~/go/bin:${PATH}
+export PATH=$HOME/scripts:/usr/bin:/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:~/go/bin:./node_modules/.bin:${PATH}
 #
 ##ENABLE_CORRECTION="true"
 DISALE_CORRECTION="true"
@@ -17,7 +17,7 @@ unsetopt correct_all
 
 export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
-export EDITOR="vim"
+export EDITOR="nvim"
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # Android Studio stuff
