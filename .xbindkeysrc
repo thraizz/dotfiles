@@ -1,0 +1,53 @@
+# For the benefit of emacs users: -*- shell-script -*-
+#
+"playerctl play-pause"
+  m:0x10 + c:172
+  Mod2 + XF86AudioPlay
+"i3-msg -q '[class=Thunderbird] focus'"
+    m:0x10 + c:163
+    Mod2 + XF86Mail
+
+# Increase volume
+"pactl set-sink-volume @DEFAULT_SINK@ +1000"
+   XF86AudioRaiseVolume
+
+# Decrease volume
+"pactl set-sink-volume @DEFAULT_SINK@ -1000"
+   XF86AudioLowerVolume
+
+# Mute volume
+"pactl set-sink-mute @DEFAULT_SINK@ toggle"
+   XF86AudioMute
+
+# Show rofi
+"rofi -show combi -combi-modi window,drun,ssh,run -modi combi -window-match-field title -show-icons -theme $HOME/.config/rofi/themes/gruvbox-hard.rasi -sorting-method fzf -drun-match-fields name,generic"
+    m:0x10 + c:225
+    Mod2 + XF86Search
+
+"i3-msg -q '[class=firefox] focus'"
+    m:0x10 + c:180
+    Mod2 + XF86HomePage
+
+"i3-msg -q '[class=teams-for-linux] focus'"
+    m:0x0 + c:193
+    XF86Launch6
+
+"gnome-calculator"
+    m:0x10 + c:148
+    Mod2 + XF86Calculator
+
+"playerctl pause"
+    m:0x0 + c:209
+    XF86AudioPause
+
+"playerctl play"
+    m:0x0 + c:208
+    XF86AudioPlay
+
+"playerctl next"
+    m:0x0 + c:171
+    XF86AudioNext
+
+ "playerctl previous"
+    m:0x0 + c:173
+    XF86AudioPrev
