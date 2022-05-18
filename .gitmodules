@@ -97,3 +97,6 @@
 [submodule "/home/aron/aur/flameshot-git"]
 	path = /home/aron/aur/flameshot-git
 	url = https://aur.archlinux.org/flameshot-git.git
+[submodule "/home/aron/aur/teams-for-linux"]
+	path = /home/aron/aur/teams-for-linux
+	url = https://aur.archlinux.org/teams-for-linux.git
