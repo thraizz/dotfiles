@@ -1,9 +1,10 @@
 # ~/.zshrc
 export TERM="xterm-kitty"
+export NNN_FIFO=/tmp/nnn.fifo
 export ZSH="$HOME/.oh-my-zsh"
 export LANG=en_US.utf8
-export PATH=$HOME/scripts:/usr/bin:/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:~/go/bin:./node_modules/.bin:${PATH}
-#
+export DISABLE_AUTO_TITLE=true
+export PATH=$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:~/go/bin:./node_modules/.bin:/usr/bin:/bin:${PATH}
 ##ENABLE_CORRECTION="true"
 DISALE_CORRECTION="true"
 export HISTCONTROL=ignoredups:ignorespace
@@ -22,9 +23,9 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # Android Studio stuff
 export ANDROID_SDK_ROOT=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
-export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+# export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
+# export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+# export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export STUDIO_PATH="/opt/android-studio/bin/studio.sh"
 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
 
@@ -49,3 +50,9 @@ source $HOME/.token
 source $HOME/.config/aliases
 
 [ -n "$NNNLVL" ] && PS1="N$NNNLVL $PS1"
+
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
+typeset -U path

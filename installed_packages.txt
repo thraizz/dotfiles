@@ -63,3 +63,6 @@ yarn
 zip
 zsh
 nnn
+bat
+rubygems
+ueberzug

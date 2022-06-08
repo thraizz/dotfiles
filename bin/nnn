@@ -1,0 +1,1 @@
+PAGER=bat NNN_PLUG='p:preview-tui' SPLIT=v /bin/nnn -nAad -P p -T t

@@ -34,3 +34,4 @@ chmod +x ~/bin/cht.sh
 # Get dual monitors, if present
 echo "*.monitor1: $(xrandr --query | grep -P ' connected primary' | cut -d' ' -f1)" >> .Xresources
 echo "*.monitor2: $(xrandr --query | grep -P ' connected 1' | cut -d' ' -f1)" >> .Xresources
+gem install tmuxinator
